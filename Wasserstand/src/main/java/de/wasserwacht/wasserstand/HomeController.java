@@ -24,7 +24,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/send/{passwort}/{stand}")
-	public String sendwasserstand(@PathVariable("pw") String password,@PathVariable("stand") int stand) {
+	public String sendwasserstand(@PathVariable("passwort") String password,@PathVariable("stand") int stand) {
 		if(password.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			this.wasserstand = stand;
 		}
