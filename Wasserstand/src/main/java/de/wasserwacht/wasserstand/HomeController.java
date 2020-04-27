@@ -26,7 +26,7 @@ public class HomeController {
 	
 	@GetMapping("/send/{stand}")
 	public RedirectView sendwasserstand(@PathVariable("stand") int stand) {
-		stand = wasserstand;
+		wasserstand = stand;
 		return new RedirectView("/request");
 	}
 }
