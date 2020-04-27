@@ -24,7 +24,8 @@ public class HomeController {
 	}
 	
 	@GetMapping("/send/{stand}")
-	public void sendwasserstand(@PathVariable("stand") int stand) {
+	public String sendwasserstand(@PathVariable("stand") int stand) {
 		this.wasserstand = stand;
+		return "";
 	}
 }
