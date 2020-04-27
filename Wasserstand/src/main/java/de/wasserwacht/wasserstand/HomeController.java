@@ -13,7 +13,7 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String test() {
-		return "index.php";
+		return "index2.html";
 	}
 	
 	@GetMapping("/request")
