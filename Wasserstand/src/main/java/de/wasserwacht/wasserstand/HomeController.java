@@ -12,8 +12,8 @@ public class HomeController {
 	private int wasserstand;
 	
 	@GetMapping("/")
-	public int test() {
-		return 1;
+	public String test() {
+		return "index.php";
 	}
 	
 	@GetMapping("/request")
@@ -26,7 +26,7 @@ public class HomeController {
 	
 	@GetMapping("/send/{stand}")
 	public RedirectView sendwasserstand(@PathVariable("stand") int stand) {
-		wasserstand = stand;
+		this.wasserstand = stand;
 		return new RedirectView("/request");
 	}
 }
