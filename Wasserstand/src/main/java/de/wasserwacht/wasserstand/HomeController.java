@@ -23,9 +23,11 @@ public class HomeController {
 		return mv;
 	}
 	
-	@GetMapping("/send/{stand}")
-	public String sendwasserstand(@PathVariable("stand") int stand) {
-		this.wasserstand = stand;
+	@GetMapping("/send/{passwort}/{stand}")
+	public String sendwasserstand(@PathVariable("pw") String password,@PathVariable("stand") int stand) {
+		if(password.equalsIgnoreCase("gxcxW&UxezdAgrhZ-z#2EZ$H")) {
+			this.wasserstand = stand;
+		}
 		return "";
 	}
 }
