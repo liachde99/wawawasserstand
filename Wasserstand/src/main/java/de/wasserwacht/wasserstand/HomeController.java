@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class HomeController {
@@ -24,7 +25,8 @@ public class HomeController {
 	}
 	
 	@GetMapping("/send/{stand}")
-	public void sendwasserstand(@PathVariable("stand") int stand) {
+	public RedirectView sendwasserstand(@PathVariable("stand") int stand) {
 		stand = wasserstand;
+		return new RedirectView("index.html");
 	}
 }
