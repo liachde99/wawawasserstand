@@ -27,4 +27,11 @@ body{
 #value{font-size: 180px;}
 #textbig{font-size: 75px;}
 #textsmall{font-size: 25px;}
-#verysmall{font-size: 20px;}
+
+#timestamp{
+	font-family: 'Open Sans', sans-serif;
+	color: #f4f0e5;
+	font-size: 20px;
+	float: right;
+	margin-bot: 0px;
+}
