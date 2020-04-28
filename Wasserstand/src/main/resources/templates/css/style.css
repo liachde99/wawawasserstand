@@ -61,4 +61,6 @@ body{
 	left: 0;
 	bottom: 0;
 	z-index: 25;
+	height: 50%;
+	width: 100%;
 }
