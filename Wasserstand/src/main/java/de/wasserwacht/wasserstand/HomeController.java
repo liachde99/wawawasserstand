@@ -50,7 +50,7 @@ public class HomeController {
 		return mv;
 	}
 	
-	private String formatieren(List<Wasserstand> input) {
+	public String formatieren(List<Wasserstand> input) {
 		
 		String output = "";
 		for (Wasserstand wasserstand : input) {
