@@ -19,8 +19,14 @@ public class HomeController {
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("index.html");
 		
+		String date;
 		Wasserstand last = wasserstandService.findLast();
-		String date = last.getDay() + '.' + last.getMonth() + ' ' + last.getHour() + ':' + last.getMin();
+		
+		if(last!=null) {
+			date = last.getDay() + '.' + last.getMonth() + ' ' + last.getHour() + ':' + last.getMin();
+		}else {
+			date = "none";
+		}
 		
 		mv.addObject("lasttimestamp", date);
 		mv.addObject("wasserstand", last);
