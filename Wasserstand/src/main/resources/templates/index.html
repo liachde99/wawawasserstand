@@ -11,11 +11,11 @@
 		<div class="container">
 			<div class="upper show" th:onclick="drawgraph(__${tag}__)">
 				<a th:text="${wasserstand}" id="value"></a>
-				<a id="textbig">cm</a>
+				<div style="float: right"><a id="textbig">cm</a></div>
 			</div>
 			<div class="lower show">
 				<a id="textsmall">Wasserstand</a><br/><br/><br/><br/><br/>
-				<div style="flot: right"><a id="timestamp" th:text="'Letztes Update: ' + ${lasttimestamp}"></a></div>
+				<a id="timestamp" th:text="'Letztes Update: ' + ${lasttimestamp}"></a>
 			</div>
 		</div>
 		<canvas id="graph">
