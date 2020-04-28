@@ -18,7 +18,7 @@ body{
 .show{
 	color: #f4f0e5;
 	font-size: 50px;
-	font-family: "Roboto Condensed", sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	padding: 3px;
 	transform: translate(-50%, -50%);
 }
