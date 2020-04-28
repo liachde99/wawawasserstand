@@ -45,9 +45,9 @@ body{
 }
 
 .btn{
-	height: 300px;
-	width: 0.5vw;
-	border: 3px solid #f4f0e5;
+	height: 150px;
+	width: 50%;
+	border: 2px solid #f4f0e5;
 	display: block;
 	text-align: center;
 	position: absolute;
@@ -57,20 +57,24 @@ body{
 
 .left-top{
 	left: 0px;
-	top: calc(50% - 300px);
+	top: calc(50% - 150px);
+	border-bottom-width: 1px;
 }
 
 .left-bot{
 	left: 0px;
 	top: 50%;
+	border-top-width: 1px;
 }
 
 .right-top{
-	left: 0.5vw;
-	top: calc(50% - 300px);
+	left: 50%;
+	top: calc(50% - 150px);
+	border-bottom-width: 1px;
 }
 
 .right-bot{
-	left: 0.5vw;
+	left: 50%;
 	top: 50%;
+	border-top-width: 1px;
 }
