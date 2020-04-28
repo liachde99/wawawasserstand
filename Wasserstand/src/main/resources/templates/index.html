@@ -4,7 +4,13 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	</head>
 	<body>
-		<h1>Wasserstand</h1>
-		<a th:text="${wasserstand} + ' cm'"></a>
+		<div class="container">
+			<div class="upper show">
+				<a th:text="${wasserstand} + ' cm'"></a>
+			</div>
+			<div class="lower show">
+				<a>Wasserstand</a>
+			</div>
+		</div>
 	</body>
 </html>

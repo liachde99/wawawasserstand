@@ -1,0 +1,23 @@
+body{
+	background-color: #256d7b;
+	filter: blur(8px);
+	-webkit-filter: blur(8px);
+}
+
+.container{
+	position: absolute;
+	display: block;
+	height: 200px;
+	width: 200px;
+	background-color: #256d7b;
+}
+.upper{
+	border-bottom: 1px solid #f4f0e5;
+}
+.lower{
+	
+}
+
+.show{
+	color: #f4f0e5;
+}
