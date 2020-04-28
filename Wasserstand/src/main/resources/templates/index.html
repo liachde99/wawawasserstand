@@ -21,4 +21,17 @@
 		<canvas id="graph">
 		</canvas>
 	</body>
+	<script type="javascript">
+		function drawgraph(){
+			var graph = document.getElementById('graph');
+			graph.fillStyle = '#f00';
+			graph.beginPath();
+			graph.moveTo(0, 0);
+			graph.moveTo(100, 0);
+			graph.moveTo(100, 100);
+			graph.moveTo(0, 100);
+			graph.closePath();
+			graph.fill();
+		}
+	</script>
 </html>
