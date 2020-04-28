@@ -20,16 +20,19 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("index.html");
 		
 		String date;
+		int stand;
 		Wasserstand last = wasserstandService.findLast();
 		
 		if(last!=null) {
 			date = last.getDay() + '.' + last.getMonth() + ' ' + last.getHour() + ':' + last.getMin();
+			stand = last.getStand();
 		}else {
 			date = "none";
+			stand = 0;
 		}
 		
 		mv.addObject("lasttimestamp", date);
-		mv.addObject("wasserstand", last);
+		mv.addObject("wasserstand", stand);
 		return mv;
 	}
 	

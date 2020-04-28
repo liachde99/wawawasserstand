@@ -12,8 +12,7 @@
 			</div>
 			<div class="lower show">
 				<a id="textsmall">Wasserstand</a><br/>
-				<a id="timestamp">Letztes Update:</a><br/>
-				<a id="timestamp" th:text="${lasttimestamp}"></a>
+				<a id="timestamp" th:text="'Letztes Update: ' + ${lasttimestamp}"></a>
 			</div>
 		</div>
 		<a id="timestamp" th:text="'Letztes Update: ' + ${lasttimestamp}"></a>
