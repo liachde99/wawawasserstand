@@ -11,6 +11,9 @@ body{
 	left: calc(50% - 300px);
 	display: block;
 	width: 600px;
+	height: 600px;
+	border-radius: 50%;
+	boreder: 1px solid #f4f0e5;
 }
 .upper{
 	border-bottom: 1px solid #f4f0e5;
