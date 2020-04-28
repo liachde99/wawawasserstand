@@ -22,6 +22,7 @@ public class Wasserstand {
 	private String hour;
 	private String min;
 	
+	public Wasserstand() {};
 	public Wasserstand(int wasserstand) {
 		day = new SimpleDateFormat("dd").format(new Date());
 		month = new SimpleDateFormat("MM").format(new Date());
