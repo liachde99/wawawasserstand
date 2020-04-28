@@ -16,6 +16,7 @@ body{
 .upper{
 	border-bottom: 2px solid #f4f0e5;
 	width: 220px;
+	margin: auto;
 }
 .show{
 	color: #f4f0e5;
