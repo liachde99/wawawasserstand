@@ -8,9 +8,9 @@ body{
 	position: absolute;
 	z-index: 100;
 	top: calc(50% - 200px);
-	left: calc(50% - 200px);
+	left: calc(50% - 600px);
 	display: block;
-	min-width: 400px;
+	width: 600px;
 }
 .upper{
 	border-bottom: 1px solid #f4f0e5;
