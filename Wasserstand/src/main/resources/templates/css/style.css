@@ -17,14 +17,14 @@ body{
 	border-bottom: 2px solid #f4f0e5;
 	width: 220px;
 	margin: auto;
+	padding: 3px 3px 3px 20px;
 }
-.upper a{
-	
+.lower{
+	padding: 3px;
 }
 .show{
 	color: #f4f0e5;
 	font-family: 'Open Sans', sans-serif;
-	padding: 3px;
 }
 
 #value{font-size: 60px;}
