@@ -44,7 +44,7 @@ body{
 	float: right;
 }
 
-#btn{
+.btn{
 	height: 300px;
 	width: 0.5vh;
 	border: 3px solid #f4f0e5;
@@ -52,24 +52,25 @@ body{
 	text-align: center;
 	position: absolute;
 	z-index: 50;
+	color: #f4f0e5;
 }
 
-#left-top{
+.left-top{
 	left: 0px;
 	top: calc(50% - 300px);
 }
 
-#left-bot{
+.left-bot{
 	left: 0px;
 	top: 50%;
 }
 
-#left-top{
+.left-top{
 	left: 0.5vh;
 	top: calc(50% - 300px);
 }
 
-#left-bot{
+.left-bot{
 	left: 0.5vh;
 	top: 50%;
 }
