@@ -25,15 +25,15 @@ public class WasserstandService {
 	}
 	
 	public List<Wasserstand> findByDay(String day){
-		return repo.findByDayOrderByHourASC(day);
+		return repo.findByDayOrderByHourAscMinAsc(day);
 	}
 	
 	public List<Wasserstand> findByMonth(String month){
-		return repo.findByMonthOrderByDayASC(month);
+		return repo.findByMonthOrderByDayAsc(month);
 	}
 	
 	public List<Wasserstand> findByYear(String year){
-		return repo.findByYearOrderByMonthASC(year);
+		return repo.findByYearOrderByMonthAsc(year);
 	}
 	
 	public <S extends Wasserstand> S save (S wasserstand) {
