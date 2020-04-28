@@ -43,3 +43,14 @@ body{
 	color: #f4f0e5;
 	font-size: 20px;
 }
+
+.navbar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100px;
+	width: 100%;
+	border-bottom: 1px solid #f4f0e5;
+	background-color: #f4f0e5;
+	opacity: .6;
+}
