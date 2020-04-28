@@ -52,5 +52,9 @@ body{
 	width: 100%;
 	border-bottom: 1px solid #f4f0e5;
 	background-color: #f4f0e5;
-	opacity: .6;
+	opacity: .5;
+}
+
+#graph{
+	background-color: red;
 }
