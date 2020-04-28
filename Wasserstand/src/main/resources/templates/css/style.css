@@ -26,12 +26,6 @@ body{
 	text-align: center;
 }
 
-#value{
-	size: 60px;
-}
-#textbig{
-	size: 45px;	
-}
-#textsmall{
-	size: 20px;
-}
+#value{size: 60px;}
+#textbig{size: 45px;}
+#textsmall{size: 20px;}
