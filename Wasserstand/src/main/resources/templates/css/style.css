@@ -26,6 +26,6 @@ body{
 	text-align: center;
 }
 
-#value{size: 60px;}
-#textbig{size: 45px;}
-#textsmall{size: 20px;}
+#value{fot-size: 60px;}
+#textbig{font-size: 45px;}
+#textsmall{font-size: 20px;}
