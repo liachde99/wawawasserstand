@@ -2,6 +2,7 @@ package de.wasserwacht.wasserstand;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,9 @@ public class HomeController {
 		String date;
 		int stand;
 		Wasserstand last = wasserstandService.findLast();
+		List<Wasserstand> today = wasserstandService.findByDay(new SimpleDateFormat("dd").format(new Date()));
+		List<Wasserstand> month = wasserstandService.findByMonth(new SimpleDateFormat("MM").format(new Date()));
+		List<Wasserstand> year = wasserstandService.findByYear(new SimpleDateFormat("YYYY").format(new Date()));
 		
 		if(last!=null) {
 			date = last.getDay() + '.' + last.getMonth() + ' ' + last.getHour() + ':' + last.getMin();
@@ -37,9 +41,9 @@ public class HomeController {
 		mv.addObject("lasttimestamp", date);
 		mv.addObject("wasserstand", stand);
 		
-		mv.addObject("tag", wasserstandService.findByDay(new SimpleDateFormat("dd").format(new Date())));
-		mv.addObject("monat", wasserstandService.findByMonth(new SimpleDateFormat("MM").format(new Date())));
-		mv.addObject("jahr", wasserstandService.findByYear(new SimpleDateFormat("YYYY").format(new Date())));
+		mv.addObject("tag", today);
+		mv.addObject("monat", month);
+		mv.addObject("jahr", year);
 		return mv;
 	}
 	
