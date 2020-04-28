@@ -4,6 +4,8 @@
 	-webkit-filter: blur(8px);
 	height: 120%;
 	width: 120%;
+	margin-top: -2%;
+	margin-left: -2%;
 }
 
 .container{
