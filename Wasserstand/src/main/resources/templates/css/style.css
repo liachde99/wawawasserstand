@@ -1,4 +1,4 @@
-.background{
+body{
 	background-color: #256d7b;
 	filter: blur(8px);
 	-webkit-filter: blur(8px);
@@ -6,7 +6,7 @@
 }
 
 .container{
-	position: absolut;
+	position: absolute;
 	z-index: 100;
 	top: 50%;
 	left: 50%;
