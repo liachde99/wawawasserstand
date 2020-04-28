@@ -33,7 +33,7 @@ body{
 	height: 220px;
 }
 
-#value{font-size: 180px;}
+#value{font-size: 360px;}
 #textbig{font-size: 75px;}
 #textsmall{font-size: 25px;}
 
@@ -42,4 +42,30 @@ body{
 	color: #f4f0e5;
 	font-size: 20px;
 	float: right;
+}
+
+#btn{
+	height: 300px;
+	width: 600px;
+	border: 3px solid #f4f0e5;
+}
+
+#left-top{
+	left: 0px;
+	top: calc(50% - 300px);
+}
+
+#left-bot{
+	left: 0px;
+	top: 50%;
+}
+
+#left-top{
+	left: calc(1vh - 600px);
+	top: calc(50% - 300px);
+}
+
+#left-bot{
+	left: calc(1vh - 600px);
+	top: 50%;
 }
