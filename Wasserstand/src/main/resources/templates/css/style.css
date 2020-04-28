@@ -45,39 +45,39 @@ body{
 }
 
 .btn{
-	height: 550px;
-	width: 600px;
+	height: 350px;
+	width: 500px;
 	border: 2px solid #f4f0e5;
 	display: block;
 	position: absolute;
 	z-index: 50;
 	color: #f4f0e5;
-	padding-top: 50px;
+	padding-top: 150px;
 	cursor: pointer;
 }
 
 .left-top{
-	left: 0px;
-	top: calc(50% - 150px);
+	left: calc(50% - 500px);
+	top: calc(50% - 500px);
 	border-bottom-width: 1px;
 	text-align: left;
-	border-top-left-radius: 50%;
+	border-top-left-radius: 100%;
 }
 
 .left-bot{
-	left: 0px;
+	left: calc(50% - 500px);
 	top: 50%;
 	border-top-width: 1px;
 	text-align: left;
-	border-bottom-left-radius: 50%;
+	border-bottom-left-radius: 100%;
 }
 
 .right-top{
 	left: 50%;
-	top: calc(50% - 150px);
+	top: calc(50% - 500px);
 	border-bottom-width: 1px;
 	text-align: right;
-	border-top-right-radius: 50%;
+	border-top-right-radius: 100%;
 }
 
 .right-bot{
@@ -85,5 +85,5 @@ body{
 	top: 50%;
 	border-top-width: 1px;
 	text-align: right;
-	border-bottom-right-radius: 50%;
+	border-bottom-right-radius: 100%;
 }
