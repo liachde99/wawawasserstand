@@ -1,5 +1,8 @@
 package de.wasserwacht.wasserstand;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,12 +36,16 @@ public class HomeController {
 		
 		mv.addObject("lasttimestamp", date);
 		mv.addObject("wasserstand", stand);
+		
+		mv.addObject("tag", wasserstandService.findByDay(new SimpleDateFormat("dd").format(new Date())));
+		mv.addObject("monat", wasserstandService.findByMonth(new SimpleDateFormat("MM").format(new Date())));
+		mv.addObject("jahr", wasserstandService.findByYear(new SimpleDateFormat("YYYY").format(new Date())));
 		return mv;
 	}
 	
 	
 	
-	@GetMapping("/send/{passwort}/{stand}")
+	@GetMapping("/{passwort}/{stand}")
 	public String sendwasserstand(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			wasserstandService.save(new Wasserstand(stand));

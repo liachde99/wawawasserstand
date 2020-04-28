@@ -9,7 +9,7 @@
 			&nbsp;
 		</div>
 		<div class="container">
-			<div class="upper show" onclick="drawgraph(50)">
+			<div class="upper show" th:onclick="drawgraph(${tag})">
 				<a th:text="${wasserstand}" id="value"></a>
 				<a id="textbig">cm</a>
 			</div>
@@ -22,17 +22,24 @@
 		</canvas>
 		
 		<script type="text/javascript">
-			function drawgraph(h){
-				debugger;
+			function drawgraph(aWasserstand){
+				var len = aWasserstand.length;
+				
 				var canvas = document.getElementById('graph');
 				var graph = canvas.getContext('2d');
-				graph.fillStyle = '#f00';
+				
+				var wid = canvas.offsetWidth;
+				var hei = canvas.offsetHeight;
+				
+				var schritt = wid / len;
+				
+				graph.fillStyle = '#0f0';
 				graph.beginPath();
-				graph.moveTo(0, 0);
-				graph.lineTo(100%, 0);
-				graph.lineTo(75%, 50%);
-				graph.lineTo(100%, 100%);
-				graph.lineTo(0, 100%);
+				graph.moveTo(0, hei);
+				for(i = 0; i < len; i++){
+					graph.lineTo(schritt*i, aWasserstand[i].stand);
+				}
+				graph.lineTo(wid, hei);
 				graph.closePath();
 				graph.fill();
 			}
