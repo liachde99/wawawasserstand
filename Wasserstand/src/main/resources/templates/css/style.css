@@ -18,13 +18,17 @@ body{
 	width: 220px;
 	margin: auto;
 }
+.upper{
+	margin-left: 20%;
+	display: inline;
+	float: left;
+}
 .show{
 	color: #f4f0e5;
 	font-family: 'Open Sans', sans-serif;
 	padding: 3px;
-	text-align: center;
 }
 
 #value{font-size: 60px;}
-#textbig{font-size: 45px;}
+#textbig{font-size: 25px;}
 #textsmall{font-size: 20px;}
