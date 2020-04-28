@@ -9,7 +9,7 @@ import de.wasserwacht.wasserstand.entities.Wasserstand;
 public interface WasserstandRepo extends Repository<Wasserstand,Long>{
 	Wasserstand findById(Long id);
 	Wasserstand findTopByOrderByIdDesc();
-	List<Wasserstand> findByDayOrderByHourASCMinASC(String day);
+	List<Wasserstand> findByDayOrderByHourASC(String day);
 	List<Wasserstand> findByMonthOrderByDayASC(String month);
 	List<Wasserstand> findByYearOrderByMonthASC(String year);
 	

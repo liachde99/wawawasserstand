@@ -21,29 +21,6 @@
 		<canvas id="graph">
 		</canvas>
 		
-		<script type="text/javascript">
-			function drawgraph(aWasserstand){
-				debugger;
-				var len = aWasserstand.length;
-				
-				var canvas = document.getElementById('graph');
-				var graph = canvas.getContext('2d');
-				
-				var wid = canvas.offsetWidth;
-				var hei = canvas.offsetHeight;
-				
-				var schritt = wid / ( len + 1 );
-				
-				graph.fillStyle = '#0f0';
-				graph.beginPath();
-				graph.moveTo(0, hei);
-				for(i = 0; i < len; i++){
-					graph.lineTo(schritt*i, aWasserstand[i].stand);
-				}
-				graph.lineTo(wid, hei);
-				graph.closePath();
-				graph.fill();
-			}
-		</script>
+		
 	</body>
 </html>

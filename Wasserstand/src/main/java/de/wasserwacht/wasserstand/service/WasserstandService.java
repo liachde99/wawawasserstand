@@ -25,7 +25,7 @@ public class WasserstandService {
 	}
 	
 	public List<Wasserstand> findByDay(String day){
-		return repo.findByDayOrderByHourASCMinASC(day);
+		return repo.findByDayOrderByHourASC(day);
 	}
 	
 	public List<Wasserstand> findByMonth(String month){
