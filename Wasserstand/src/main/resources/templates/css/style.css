@@ -7,7 +7,7 @@ body{
 .container{
 	position: absolute;
 	z-index: 100;
-	top: 50%;
+	top: calc(50% - 200px);
 	left: calc(50% - 200px);
 	display: block;
 	height: 400px;
