@@ -13,11 +13,9 @@ body{
 	height: 200px;
 	width: 200px;
 }
-.upper a{
+.upper{
 	border-bottom: 2px solid #f4f0e5;
 	width: 220px;
-	display: block;
-	margin: auto;
 }
 .show{
 	color: #f4f0e5;
@@ -26,6 +24,6 @@ body{
 	text-align: center;
 }
 
-#value{fot-size: 60px;}
+#value{font-size: 60px;}
 #textbig{font-size: 45px;}
 #textsmall{font-size: 20px;}
