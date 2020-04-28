@@ -38,11 +38,11 @@ public class HomeController {
 	
 	
 	
-	@GetMapping("/send/{passwort}/{stand}")
-	public String sendwasserstand(@PathVariable("passwort") String password,@PathVariable("stand") int stand) {
-		if(password.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
+	@GetMapping("/s/{stand}")
+	public String sendwasserstand(@PathVariable("stand") int stand) {
+		//if(password.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			wasserstandService.save(new Wasserstand(stand));
-		}
+		//}
 		return "";
 	}
 }
