@@ -28,8 +28,9 @@ public class HomeController {
 		if(password.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			this.wasserstand = stand;
 			Date date = new Date();
-			SimpleDateFormat format = new SimpleDateFormat("DD.MM + ' ' + hh:mm");
-			this.time = format.format(date);
+			SimpleDateFormat datum = new SimpleDateFormat("D.M");
+			SimpleDateFormat zeit = new SimpleDateFormat("hh:mm");
+			this.time = datum.format(date) + " " + zeit.format(date);
 		}
 		return "";
 	}
