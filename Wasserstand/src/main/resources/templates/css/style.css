@@ -65,12 +65,12 @@ body{
 	top: 50%;
 }
 
-.left-top{
+.right-top{
 	left: 0.5vw;
 	top: calc(50% - 300px);
 }
 
-.left-bot{
+.right-bot{
 	left: 0.5vw;
 	top: 50%;
 }
