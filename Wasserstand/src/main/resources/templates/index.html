@@ -9,7 +9,7 @@
 			&nbsp;
 		</div>
 		<div class="container">
-			<div class="upper show" th:onclick="drawgraph(${tag})">
+			<div class="upper show" th:onclick="drawgraph(__${tag}__)">
 				<a th:text="${wasserstand}" id="value"></a>
 				<a id="textbig">cm</a>
 			</div>
