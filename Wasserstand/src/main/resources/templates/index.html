@@ -11,7 +11,9 @@
 				<a id="textbig">cm</a>
 			</div>
 			<div class="lower show">
-				<a id="textsmall">Wasserstand</a>
+				<a id="textsmall">Wasserstand</a><br/>
+				<a id="timestamp">Letztes Update:</a><br/>
+				<a id="timestamp" th:text="${lasttimestamp}"></a>
 			</div>
 		</div>
 		<a id="timestamp" th:text="'Letztes Update: ' + ${lasttimestamp}"></a>
