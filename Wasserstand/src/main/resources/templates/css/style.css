@@ -46,9 +46,12 @@ body{
 
 #btn{
 	height: 300px;
-	width: 600px;
+	width: 0.5vh;
 	border: 3px solid #f4f0e5;
 	display: block;
+	text-align: center;
+	position: absolute;
+	z-index: 50;
 }
 
 #left-top{
@@ -62,11 +65,11 @@ body{
 }
 
 #left-top{
-	left: calc(1vh - 600px);
+	left: 0.5vh;
 	top: calc(50% - 300px);
 }
 
 #left-bot{
-	left: calc(1vh - 600px);
+	left: 0.5vh;
 	top: 50%;
 }
