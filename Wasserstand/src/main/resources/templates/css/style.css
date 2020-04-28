@@ -1,8 +1,9 @@
 .background{
 	background-color: #256d7b;
-	filter: blur(-8px);
-	-webkit-filter: blur(-8px);
-	height: 100%;
+	filter: blur(8px);
+	-webkit-filter: blur(8px);
+	height: 120%;
+	width: 120%;
 }
 
 .container{
