@@ -17,14 +17,18 @@ body{
 	background-color: #313131;
 }
 .upper{
-	width: 90%;
+	width: 100%;
+	width: 300px;
 	margin: auto;
 	padding-top: 20px !important;
+	border-top-radius: 100%;
 }
 .lower{
-	width: 80%;
+	width: 100%;
+	height: 300px;
 	margin: auto;
 	border-top: 2px solid #f4f0e5;
+	border-bottom-radius: 100%;
 }
 .show{
 	color: #f4f0e5;
