@@ -43,7 +43,7 @@
 					if(aWasserstand[i]!=','){
 						stand += aWasserstand[i];
 					}else{
-						graph.lineTo((schritt * i), parseInt(stand));
+						graph.lineTo((schritt * i), (hei - parseInt(stand)));
 						stand = '';
 					}
 				}
