@@ -18,8 +18,7 @@ body{
 	width: 220px;
 	margin: auto;
 }
-.upper{
-	margin-left: 20%;
+.upper a{
 	display: inline;
 	float: left;
 }
