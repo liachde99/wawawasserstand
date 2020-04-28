@@ -7,10 +7,11 @@
 	<body>
 		<div class="container">
 			<div class="upper show">
-				<a th:text="${wasserstand} + ' cm'"></a>
+				<a th:text="${wasserstand}" id="value"></a>
+				<a id="textbig"></a>
 			</div>
 			<div class="lower show">
-				<a>Wasserstand</a>
+				<a id="textsmall">Wasserstand</a>
 			</div>
 		</div>
 	</body>

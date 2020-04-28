@@ -17,11 +17,21 @@ body{
 	border-bottom: 2px solid #f4f0e5;
 	width: 220px;
 	display: block;
+	margin: auto;
 }
 .show{
 	color: #f4f0e5;
-	font-size: 50px;
 	font-family: 'Open Sans', sans-serif;
 	padding: 3px;
-	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+#value{
+	size: 60px;
+}
+#textbig{
+	size: 45px;	
+}
+#textsmall{
+	size: 20px;
 }
