@@ -56,12 +56,10 @@ body{
 }
 
 #graph{
-	background-color: lightblue;
 	position: absolute;
 	left: 0;
 	bottom: 0;
 	z-index: 25;
 	height: 50%;
 	width: 100%;
-	border-top: 2px solid blue;
 }
