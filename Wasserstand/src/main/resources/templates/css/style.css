@@ -17,15 +17,12 @@ body{
 	border-bottom: 2px solid #f4f0e5;
 	width: 220px;
 	margin: auto;
-	padding: 3px 3px 3px 20px;
-}
-.lower{
-	padding: 3px;
-	text-align: center;
 }
 .show{
 	color: #f4f0e5;
 	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+	padding: 3px;
 }
 
 #value{font-size: 60px;}
