@@ -11,11 +11,6 @@ public class HomeController {
 	private int wasserstand;
 	
 	@GetMapping("/")
-	public String test() {
-		return "index2.html";
-	}
-	
-	@GetMapping("/request")
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("index.html");
 		
