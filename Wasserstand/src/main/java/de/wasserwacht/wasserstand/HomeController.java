@@ -1,6 +1,7 @@
 package de.wasserwacht.wasserstand;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class HomeController {
 		
 		Wasserstand last = wasserstandService.findLast();
 		
-		List<Wasserstand> today = wasserstandService.findByDay(new SimpleDateFormat("dd").format(new Date()));
+		String today = formatieren(wasserstandService.findByDay(new SimpleDateFormat("dd").format(new Date())));
 		List<Wasserstand> month = wasserstandService.findByMonth(new SimpleDateFormat("MM").format(new Date()));
 		List<Wasserstand> year = wasserstandService.findByYear(new SimpleDateFormat("YYYY").format(new Date()));
 		
@@ -49,7 +50,14 @@ public class HomeController {
 		return mv;
 	}
 	
-	
+	private String formatieren(List<Wasserstand> input) {
+		
+		String output = "";
+		for (Wasserstand wasserstand : input) {
+			output.concat(wasserstand.getStand() + ",");
+		}
+		return output;
+	}
 	
 	@GetMapping("/{passwort}/{stand}")
 	public String sendwasserstand(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
