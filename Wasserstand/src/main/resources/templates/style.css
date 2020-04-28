@@ -27,15 +27,15 @@ body{
 	margin: auto;
 	border-top: 2px solid #f4f0e5;
 	border-radius: 0 0 300px 300px;
-	text-align: center;
 }
 .show{
 	color: #f4f0e5;
 	font-family: 'Open Sans', sans-serif;
+	text-align: center;
 }
 
-#value{font-size: 250px; float: center;}
-#textbig{font-size: 75px; float: right;}
+#value{font-size: 250px;}
+#textbig{font-size: 75px;}
 #textsmall{font-size: 25px;}
 
 #timestamp{
