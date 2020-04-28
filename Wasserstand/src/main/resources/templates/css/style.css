@@ -22,9 +22,9 @@ body{
 	padding-top: 20px !important;
 }
 .lower{
-	width: 150px;
+	width: 80%;
 	margin: auto;
-	border-top: 1px solid #f4f0e5;
+	border-top: 2px solid #f4f0e5;
 }
 .show{
 	color: #f4f0e5;
@@ -55,6 +55,7 @@ body{
 	z-index: 50;
 	color: #f4f0e5;
 	padding-top: 25px;
+	cursor: pointer;
 }
 
 .left-top{
