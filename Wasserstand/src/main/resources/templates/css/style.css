@@ -10,12 +10,10 @@ body{
 	top: calc(50% - 200px);
 	left: calc(50% - 200px);
 	display: block;
-	height: 400px;
-	width: 400px;
 }
 .upper{
 	border-bottom: 2px solid #f4f0e5;
-	width: 220px;
+	width: 90%;
 	margin: auto;
 }
 .show{
