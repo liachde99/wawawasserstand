@@ -8,7 +8,7 @@ body{
 	position: absolute;
 	z-index: 100;
 	top: 50%;
-	left: 50%;
+	left: calc(50% - 200px);
 	display: block;
 	height: 400px;
 	width: 400px;
