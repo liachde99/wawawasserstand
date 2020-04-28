@@ -6,6 +6,8 @@ body{
 
 .container{
 	position: absolute;
+	z-index: 2;
+	margin: auto;
 	display: block;
 	height: 200px;
 	width: 200px;
