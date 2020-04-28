@@ -1,28 +1,29 @@
 package de.wasserwacht.wasserstand;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
+//import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import de.wasserwacht.wasserstand.entities.Wasserstand;
-import de.wasserwacht.wasserstand.service.WasserstandService;
+//import de.wasserwacht.wasserstand.entities.Wasserstand;
+//import de.wasserwacht.wasserstand.service.WasserstandService;
 
 @Controller
 public class HomeController {
 	
-	@Autowired
-	private WasserstandService wasserstandService;
+//	@Autowired
+//	private WasserstandService wasserstandService;
 	
 	@GetMapping("/")
 	public ModelAndView index() {
 		return new ModelAndView("index2.html");
 	}
+	
 //	public ModelAndView home() {
 //		ModelAndView mv = new ModelAndView("index.html");
 //		
