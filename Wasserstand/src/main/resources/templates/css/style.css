@@ -1,5 +1,5 @@
 body{
-	background-color: #595959;
+	background-color: #313131;
 	height: 100%;
 	overflow: hidden;
 }
@@ -12,7 +12,7 @@ body{
 	display: block;
 }
 .upper{
-	border-bottom: 2px solid #f4f0e5;
+	border-bottom: 1px solid #f4f0e5;
 	width: 90%;
 	margin: auto;
 }
