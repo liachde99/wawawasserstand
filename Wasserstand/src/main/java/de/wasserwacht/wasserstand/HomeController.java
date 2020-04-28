@@ -27,6 +27,7 @@ public class HomeController {
 		int stand;
 		
 		Wasserstand last = wasserstandService.findLast();
+		
 		List<Wasserstand> today = wasserstandService.findByDay(new SimpleDateFormat("dd").format(new Date()));
 		List<Wasserstand> month = wasserstandService.findByMonth(new SimpleDateFormat("MM").format(new Date()));
 		List<Wasserstand> year = wasserstandService.findByYear(new SimpleDateFormat("YYYY").format(new Date()));
