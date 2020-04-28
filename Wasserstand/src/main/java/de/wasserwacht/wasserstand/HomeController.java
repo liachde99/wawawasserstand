@@ -1,8 +1,5 @@
 package de.wasserwacht.wasserstand;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +14,6 @@ public class HomeController {
 	
 	@Autowired
 	private WasserstandService wasserstandService;
-	
-	private String time;
 	
 	@GetMapping("/")
 	public ModelAndView home() {
