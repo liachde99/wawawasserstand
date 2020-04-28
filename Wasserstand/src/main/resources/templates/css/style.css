@@ -46,7 +46,7 @@ body{
 
 .btn{
 	height: 300px;
-	width: 0.5vh;
+	width: 0.5vw;
 	border: 3px solid #f4f0e5;
 	display: block;
 	text-align: center;
@@ -66,11 +66,11 @@ body{
 }
 
 .left-top{
-	left: 0.5vh;
+	left: 0.5vw;
 	top: calc(50% - 300px);
 }
 
 .left-bot{
-	left: 0.5vh;
+	left: 0.5vw;
 	top: 50%;
 }
