@@ -24,7 +24,8 @@
 		<script type="text/javascript">
 			function drawgraph(h){
 				debugger;
-				var graph = document.getElementById('graph');
+				var canvas = document.getElementById('graph');
+				var graph = canvas.getContext('2d');
 				graph.fillStyle = '#f00';
 				graph.beginPath();
 				graph.moveTo(0, 0);
