@@ -20,7 +20,7 @@ body{
 .upper{
 	width: 89%;
 	margin: auto;
-	height: calc(500px);
+	padding: 150px 0 0 0;
 	border-bottom: 2px solid #f4f0e5;
 	text-align: center;
 	color: #f4f0e5;
