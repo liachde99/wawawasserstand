@@ -9,7 +9,9 @@
 			&nbsp;
 		</div>
 		<div class="container">
-			<a th:text="${wasserstand}" id="value"></a>
+			<div class="upper">
+				<a th:text="${wasserstand} + ' cm" id="value"></a>
+			</div>
 		</div>
 	</body>
 </html>

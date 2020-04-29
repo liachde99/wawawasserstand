@@ -15,8 +15,13 @@ body{
 	border-radius: 50%;
 	border: 3px solid #f4f0e5;
 	background-color: #313131;
+}
+
+.upper{
+	width: 100%;
+	height: calc(500px);
 	text-align: center;
-	line-height: 1em;
+	color: #f4f0e5;
 }
 
 #value{font-size: 250px;}
