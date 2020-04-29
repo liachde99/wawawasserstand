@@ -9,20 +9,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Wasserstand")
 public class Wasserstand {
 	
 	@Id
-	@Column(name = "id")
+	@Column(name = "id", nullable = false, updatable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	@Column(name="wasserstand")
+	@NotNull
+	@Column(name = "wasserstand", nullable = false)
 	private int wasserstand;
 	
-	@Column(name="day")
+	@Column(name ="day")
 	private char[] day;
 	
 	@Column(name="month")
