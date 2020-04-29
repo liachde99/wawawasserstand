@@ -3,22 +3,24 @@ package de.wasserwacht.wasserstand;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import de.wasserwacht.wasserstand.Entity.Wasserstand;
+import de.wasserwacht.wasserstand.Service.WasserstandService;
+
 
 @Controller
 public class HomeController {
 	
-	
-//	TEMP
-	
 	private int stand;
 	private String time = "";
 	
-//	TEMPEND
+	@Autowired
+	private WasserstandService service;
 	
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -26,6 +28,18 @@ public class HomeController {
 		
 		mv.addObject("wasserstand", this.stand);
 		mv.addObject("timestamp", time);
+		
+		return mv;
+	}
+	
+	@GetMapping("/postgresql")
+	public ModelAndView postgresql() {
+		ModelAndView mv = new ModelAndView("index.html");
+		
+		Wasserstand last = service.findTopByOrderByIdDesc();
+		
+		mv.addObject("wasserstand", last.getWasserstand());
+		mv.addObject("timestamp", last.stamp());
 		
 		return mv;
 	}
