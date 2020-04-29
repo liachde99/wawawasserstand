@@ -16,6 +16,7 @@ public class HomeController {
 //	TEMP
 	
 	private int stand;
+	private String time = "";
 	
 //	TEMPEND
 	
@@ -24,7 +25,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("index.html");
 		
 		mv.addObject("wasserstand", this.stand);
-		mv.addObject("timestamp", new SimpleDateFormat("dd:MM - hh:mm").format(new Date()));
+		mv.addObject("timestamp", time);
 		
 		return mv;
 	}
@@ -35,6 +36,7 @@ public class HomeController {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			
 			this.stand = stand;
+			this.time = new SimpleDateFormat("dd:MM - hh:mm").format(new Date());
 		}
 		return "";
 	}
