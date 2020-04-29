@@ -2,6 +2,7 @@ package de.wasserwacht.wasserstand;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,8 +50,15 @@ public class HomeController {
 	public String sendwasserstand(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			
+			SimpleDateFormat format = new SimpleDateFormat("dd.MM - hh:mm");
+			TimeZone zone = TimeZone.getTimeZone("CET");
+			format.setTimeZone(zone);
+			Date datum = new Date();
+			this.time = format.format(datum);
+			
 			this.stand = stand;
-			this.time = new SimpleDateFormat("dd:MM - hh:mm").format(new Date());
+			
+			
 		}
 		return "";
 	}
