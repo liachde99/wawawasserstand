@@ -24,6 +24,13 @@ body{
 	color: #f4f0e5;
 }
 
+.lower{
+	color: #f4f0e5;
+    width: 100%;
+    text-align: center;
+    padding-top: 40px;
+}
+
 #value{font-size: 250px;}
 #textbig{font-size: 75px;}
 #textsmall{font-size: 25px;}

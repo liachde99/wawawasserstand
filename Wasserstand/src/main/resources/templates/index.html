@@ -12,6 +12,11 @@
 			<div class="upper">
 				<a th:text="${wasserstand} + ' cm'" id="value"></a>
 			</div>
+			<div class="lower">
+				<a id="textsmall">Wasserstand</a>
+				<br/>
+				<a th:text="'Letztes Update: ' + ${timestamp}"></a>
+			</div>
 		</div>
 	</body>
 </html>
