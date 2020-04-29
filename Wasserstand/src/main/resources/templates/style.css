@@ -64,3 +64,9 @@ body{
 	height: 50%;
 	width: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+	#value{font-size: 250px;}
+	#textbig{font-size: 100px;}
+	#textsmall{font-size: 50px;}
+}
