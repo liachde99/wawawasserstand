@@ -40,8 +40,6 @@ body{
 #textsmall{font-size: 25px;}
 
 #timestamp{
-	font-family: 'Open Sans', sans-serif;
-	color: #f4f0e5;
 	font-size: 20px;
 }
 
@@ -66,9 +64,10 @@ body{
 }
 
 @media only screen and (max-width: 768px) {
-	#value{font-size: 250px;}
-	#textbig{font-size: 100px;}
-	#textsmall{font-size: 50px;}
+	#value{font-size: 100px;}
+	#textbig{font-size: 50px;}
+	#textsmall{font-size: 20px;}
+	#timestamp{font-size: 20px;}
 
 	.container{
 		position: absolute;
@@ -85,7 +84,7 @@ body{
 	.upper{
 		width: 100%;
 		height: 150px;
-		line-height: 1.5;
+		line-height: 2;
 		border-radius: 150px 150px 0 0;
 	}
 	.lower{
