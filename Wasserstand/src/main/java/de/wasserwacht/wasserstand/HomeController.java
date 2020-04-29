@@ -62,4 +62,21 @@ public class HomeController {
 		}
 		return "";
 	}
+	
+	@GetMapping("/{passwort}/{stand}/time")
+	public String sendwasserstandtime(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
+		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
+			
+			SimpleDateFormat format = new SimpleDateFormat("dd.MM - hh:mm");
+			TimeZone zone = TimeZone.getTimeZone("CET");
+			format.setTimeZone(zone);
+			Date datum = new Date();
+			this.time = format.format(datum);
+			
+			this.stand = stand;
+			
+			
+		}
+		return time;
+	}
 }
