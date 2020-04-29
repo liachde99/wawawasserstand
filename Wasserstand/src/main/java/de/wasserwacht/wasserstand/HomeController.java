@@ -2,6 +2,7 @@ package de.wasserwacht.wasserstand;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView("index.html");
 		
 		mv.addObject("wasserstand", this.stand);
-		mv.addObject("timestamp", time);
+		mv.addObject("timestamp", this.time);
 		
 		return mv;
 	}
@@ -50,9 +51,7 @@ public class HomeController {
 	public String sendwasserstand(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			
-			SimpleDateFormat format = new SimpleDateFormat("dd.MM - hh:mm");
-			TimeZone zone = TimeZone.getTimeZone("CET");
-			format.setTimeZone(zone);
+			SimpleDateFormat format = new SimpleDateFormat("dd.MM - HH:mm", Locale.GERMANY);
 			Date datum = new Date();
 			this.time = format.format(datum);
 			
@@ -67,9 +66,7 @@ public class HomeController {
 	public String sendwasserstandtime(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			
-			SimpleDateFormat format = new SimpleDateFormat("dd.MM - hh:mm");
-			TimeZone zone = TimeZone.getTimeZone("CET");
-			format.setTimeZone(zone);
+			SimpleDateFormat format = new SimpleDateFormat("dd.MM - HH:mm", Locale.GERMANY);
 			Date datum = new Date();
 			this.time = format.format(datum);
 			
