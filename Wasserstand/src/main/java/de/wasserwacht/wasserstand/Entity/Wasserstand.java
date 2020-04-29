@@ -3,6 +3,7 @@ package de.wasserwacht.wasserstand.Entity;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,14 +15,26 @@ import javax.persistence.Table;
 public class Wasserstand {
 	
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
+	@Column(name="wasserstand")
 	private int wasserstand;
+	
+	@Column(name="day")
 	private char[] day;
+	
+	@Column(name="month")
 	private char[] month;
+	
+	@Column(name="year")
 	private char[] year;
+
+	@Column(name="hour")
 	private char[] hour;
+	
+	@Column(name="min")
 	private char[] min;
 	
 	public Wasserstand() {};
