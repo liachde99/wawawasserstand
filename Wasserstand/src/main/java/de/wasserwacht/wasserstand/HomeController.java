@@ -66,7 +66,7 @@ public class HomeController {
 	public String sendwasserstandtime(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			
-			SimpleDateFormat format = new SimpleDateFormat("dd.MM - HH:mm", Locale.GERMAN);
+			SimpleDateFormat format = new SimpleDateFormat("dd.MM - HH:mm");
 			format.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
 			Date datum = new Date();
 			this.time = format.format(datum);
