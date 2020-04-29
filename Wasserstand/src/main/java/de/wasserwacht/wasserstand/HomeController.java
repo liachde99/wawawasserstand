@@ -67,7 +67,7 @@ public class HomeController {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			
 			SimpleDateFormat format = new SimpleDateFormat("dd.MM - HH:mm");
-			format.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+			format.setTimeZone(TimeZone.getTimeZone("CET"));
 			Date datum = new Date();
 			this.time = format.format(datum);
 			
