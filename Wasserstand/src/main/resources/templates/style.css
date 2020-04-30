@@ -57,10 +57,10 @@ body{
 
 #graphcon {
 	position: absolute;
-	left: 0;
-	bottom: 0;
-	height: 50%;
-	width: 100%;
+	left: 5%;
+	bottom: 10%;
+	height: 40%;
+	width: 90%;
 	z-index: 50;
 }
 
