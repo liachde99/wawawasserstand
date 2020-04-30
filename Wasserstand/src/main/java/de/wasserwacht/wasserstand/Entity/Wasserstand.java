@@ -16,8 +16,8 @@ import javax.validation.constraints.NotNull;
 public class Wasserstand {
 	
 	@Id
-	@Column(name = "id", nullable = false, updatable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
 	@NotNull
