@@ -46,7 +46,7 @@ public class Wasserstand {
 	@SuppressWarnings("deprecation")
 	public Wasserstand(int stand) throws ParseException {
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.YYYY HH:mm");
+		SimpleDateFormat sdf = new SimpleDateFormat();
 		sdf.setTimeZone(TimeZone.getTimeZone("CET"));
 		Date datum = new Date();
 		String dat = datum.toString();
