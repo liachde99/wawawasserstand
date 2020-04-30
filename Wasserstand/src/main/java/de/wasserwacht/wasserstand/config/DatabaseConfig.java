@@ -1,4 +1,4 @@
-package de.wasserwacht.wasserstand;
+package de.wasserwacht.wasserstand.config;
 
 import com.zaxxer.hikari.*;
 import org.springframework.beans.factory.annotation.Value;
