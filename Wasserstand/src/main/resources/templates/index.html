@@ -34,9 +34,9 @@
 					var canvas = document.getElementById('graph');
 					var context = canvas.getContext('2d');
 					var maxheight = 150;
-					var barwidth= 300 /values.length - distance;
+					var barwidth= 300 /data.length - distance;
 					
-					for(var i = 0; i < values.length; i++)
+					for(var i = 0; i < data.length; i++)
 					{
 						ctx.fillRect(barwidth * i + distance * i, maxheight - maxheight * data[i].wasserstand / 100, barwidth, maxheight * data[i].wasserstand / 100);
 					}
