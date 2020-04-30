@@ -1,6 +1,5 @@
 package de.wasserwacht.wasserstand;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -68,7 +67,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/{passwort}/{stand}/postgresql")
-	public String sendwasserstandpostgresql(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) throws ParseException{
+	public String sendwasserstandpostgresql(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			repo.save(new Wasserstand(stand));
 		}

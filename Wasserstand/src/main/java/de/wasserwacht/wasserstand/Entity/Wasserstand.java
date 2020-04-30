@@ -1,9 +1,7 @@
 package de.wasserwacht.wasserstand.Entity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,20 +41,17 @@ public class Wasserstand {
 	
 	public Wasserstand() {};
 	
-	@SuppressWarnings("deprecation")
-	public Wasserstand(int stand) throws ParseException {
+	public Wasserstand(int stand) {
+		this.wasserstand = stand;
 		
-		SimpleDateFormat sdf = new SimpleDateFormat();
-		sdf.setTimeZone(TimeZone.getTimeZone("CET"));
-		Date datum = new Date();
-		String dat = datum.toString();
-		datum = sdf.parse(dat);
+		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
 		
-		day = datum.getDay();
-		month = datum.getMonth();
-		year = datum.getYear();
-		hour = datum.getHours();
-		min = datum.getMinutes();
+		this.day = date.getDayOfMonth();
+		this.month = date.getMonthValue();
+		this.year = date.getYear();
+		this.hour = date.getHour();
+		this.min = date.getMinute();
+		
 	}
 	
 	public int getWasserstand() {return wasserstand;}
