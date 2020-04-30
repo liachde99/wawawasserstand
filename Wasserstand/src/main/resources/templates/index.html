@@ -38,16 +38,16 @@
 					context.fillstyle = "#008b8b";
 					
 					context.beginPath();
-						context.moveTo(0, div.offsetHeight);
+						context.moveTo(div.offsetHeight, 0);
 						/*
 						for(i = 0; i < data.length; i++){
 							
 						}
 						*/
 						
-						context.lineTo(100, 50);
+						context.lineTo(50, 100);
 						
-						context.lineTo(div.offsetWidth, div.offsetHeight);
+						context.lineTo(div.offsetHeight, div.offsetWidth);
 					context.closePath();
 					context.fill();
 					
