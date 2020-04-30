@@ -3,7 +3,6 @@ package de.wasserwacht.wasserstand;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
-import de.wasserwacht.wasserstand.Service.WasserstandService;
+import de.wasserwacht.wasserstand.Repository.WasserstandRepo;
 
 
 @Controller
@@ -22,7 +21,7 @@ public class HomeController {
 	private String time = "";
 	
 	@Autowired
-	private WasserstandService service;
+	private WasserstandRepo repo;
 	
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -53,7 +52,7 @@ public class HomeController {
 	public ModelAndView postgresql() {
 		ModelAndView mv = new ModelAndView("index.html");
 		
-		Wasserstand last = service.findTopByOrderByIdDesc();
+		Wasserstand last = repo.findTopByOrderByIdDesc();
 		
 		if(last!=null) {
 			mv.addObject("wasserstand", last.getWasserstand());
@@ -68,9 +67,7 @@ public class HomeController {
 	@GetMapping("/{passwort}/{stand}/postgresql")
 	public String sendwasserstandpostgresql(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
-			
-			Wasserstand wasserstand = new Wasserstand(stand);
-			service.save(wasserstand);
+			repo.save(new Wasserstand(stand));
 		}
 		return "";
 	}

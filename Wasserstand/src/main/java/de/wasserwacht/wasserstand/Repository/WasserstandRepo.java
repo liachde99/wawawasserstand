@@ -1,16 +1,15 @@
 package de.wasserwacht.wasserstand.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
 
-public interface WasserstandRepo extends Repository<Wasserstand, Long> {
-
-	List<Wasserstand> findAll();
-	Wasserstand findById(Long id);
+public interface WasserstandRepo extends CrudRepository<Wasserstand, Long> {
+	
+	Optional<Wasserstand> findById(Long id);
 	Wasserstand findTopByOrderByIdDesc();
 	
-	<S extends Wasserstand> S save(S wasserstand);
 }
+
