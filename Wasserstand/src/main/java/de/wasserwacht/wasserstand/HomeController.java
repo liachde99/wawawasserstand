@@ -57,6 +57,8 @@ public class HomeController {
 		
 		if(last!=null) {
 			mv.addObject("wasserstand", last.getWasserstand());
+		}else {
+			mv.addObject("wasserstand", 0);
 		}
 		mv.addObject("timestamp", last.stamp());
 		
