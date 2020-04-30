@@ -6,7 +6,7 @@ import org.springframework.context.annotation.*;
 import javax.sql.DataSource;
 
 @Configuration
-public class DatabaseConfig {
+public class WasserstandDatabaseConfig {
 
   @Value("${spring.datasource.url}")
   private String dbUrl;
