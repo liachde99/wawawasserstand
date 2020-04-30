@@ -46,19 +46,19 @@ public class Wasserstand {
 	public Wasserstand(int stand) {
 		this.wasserstand = stand;
 		SimpleDateFormat dayformat = new SimpleDateFormat("dd");
-		dayformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		dayformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
 
 		SimpleDateFormat monthformat = new SimpleDateFormat("MM");
-		monthformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		monthformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
 
 		SimpleDateFormat yearformat = new SimpleDateFormat("YYYY");
-		yearformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		yearformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
 
 		SimpleDateFormat hourformat = new SimpleDateFormat("HH");
-		hourformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		hourformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
 
 		SimpleDateFormat minformat = new SimpleDateFormat("mm");
-		minformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		minformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
 		
 		day = dayformat.format(new Date());
 		month = monthformat.format(new Date());
