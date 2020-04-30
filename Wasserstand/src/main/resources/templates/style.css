@@ -64,6 +64,11 @@ body{
 	z-index: 50;
 }
 
+#graph{
+	height: 100%;
+	width: 100%;
+}
+
 @media only screen and (max-width: 768px) {
 	#value{font-size: 100px;}
 	#textbig{font-size: 50px;}
