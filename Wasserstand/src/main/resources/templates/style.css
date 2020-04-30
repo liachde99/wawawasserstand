@@ -59,7 +59,7 @@ body{
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	height: 50%;
+	height: 500px;
 	width: 100%;
 	z-index: 50;
 }
@@ -88,5 +88,8 @@ body{
 		height: 150px;
 		line-height: 2;
 		border-radius: 0 0 150px 150px;
+	}
+	#graphcon{
+		display: none;
 	}
 }
