@@ -3,6 +3,7 @@ package de.wasserwacht.wasserstand.Entity;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,11 +45,26 @@ public class Wasserstand {
 	
 	public Wasserstand(int stand) {
 		this.wasserstand = stand;
-		day = new SimpleDateFormat("dd", Locale.GERMANY).format(new Date());
-		month = new SimpleDateFormat("MM", Locale.GERMANY).format(new Date());
-		year = new SimpleDateFormat("YYYY", Locale.GERMANY).format(new Date());
-		hour = new SimpleDateFormat("HH", Locale.GERMANY).format(new Date());
-		min = new SimpleDateFormat("mm", Locale.GERMANY).format(new Date());
+		SimpleDateFormat dayformat = new SimpleDateFormat("dd");
+		dayformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+
+		SimpleDateFormat monthformat = new SimpleDateFormat("MM");
+		monthformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+
+		SimpleDateFormat yearformat = new SimpleDateFormat("YYYY");
+		yearformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+
+		SimpleDateFormat hourformat = new SimpleDateFormat("HH");
+		hourformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+
+		SimpleDateFormat minformat = new SimpleDateFormat("mm");
+		minformat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+		
+		day = dayformat.format(new Date());
+		month = monthformat.format(new Date());
+		year = yearformat.format(new Date());
+		hour = hourformat.format(new Date());
+		min = minformat.format(new Date());
 	}
 	
 	public int getWasserstand() {return wasserstand;}
