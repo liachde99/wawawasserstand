@@ -38,7 +38,7 @@
 					context.fillstyle = "#008b8b";
 					
 					context.beginPath();
-						context.moveTo(div.offsetHeight, 0);
+						context.moveTo(0, div.offsetHeight);
 						/*
 						for(i = 0; i < data.length; i++){
 							
@@ -47,7 +47,7 @@
 						
 						context.lineTo(50, 100);
 						
-						context.lineTo(div.offsetHeight, div.offsetWidth);
+						context.lineTo(div.offsetWidth, div.offsetHeight);
 					context.closePath();
 					context.fill();
 					
