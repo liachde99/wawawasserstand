@@ -55,7 +55,9 @@ public class HomeController {
 		
 		Wasserstand last = service.findTopByOrderByIdDesc();
 		
-		mv.addObject("wasserstand", last.getWasserstand());
+		if(last!=null) {
+			mv.addObject("wasserstand", last.getWasserstand());
+		}
 		mv.addObject("timestamp", last.stamp());
 		
 		return mv;
