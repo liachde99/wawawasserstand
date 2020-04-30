@@ -1,8 +1,8 @@
 package de.wasserwacht.wasserstand.Entity;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.persistence.Column;
@@ -27,57 +27,49 @@ public class Wasserstand {
 	private int wasserstand;
 	
 	@Column(name ="day")
-	private String day;
-	
+	private int day;
+	 
 	@Column(name="month")
-	private String month;
+	private int month;
 	
 	@Column(name="year")
-	private String year;
+	private int year;
 
 	@Column(name="hour")
-	private String hour;
+	private int hour;
 	
 	@Column(name="min")
-	private String min;
+	private int min;
 	
 	public Wasserstand() {};
 	
-	public Wasserstand(int stand) {
-		this.wasserstand = stand;
-		SimpleDateFormat dayformat = new SimpleDateFormat("dd");
-		dayformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-
-		SimpleDateFormat monthformat = new SimpleDateFormat("MM");
-		monthformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-
-		SimpleDateFormat yearformat = new SimpleDateFormat("YYYY");
-		yearformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-
-		SimpleDateFormat hourformat = new SimpleDateFormat("HH");
-		hourformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
-
-		SimpleDateFormat minformat = new SimpleDateFormat("mm");
-		minformat.setTimeZone(TimeZone.getTimeZone("GMT+2"));
+	@SuppressWarnings("deprecation")
+	public Wasserstand(int stand) throws ParseException {
 		
-		day = dayformat.format(new Date());
-		month = monthformat.format(new Date());
-		year = yearformat.format(new Date());
-		hour = hourformat.format(new Date());
-		min = minformat.format(new Date());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.YYYY HH:mm");
+		sdf.setTimeZone(TimeZone.getTimeZone("CET"));
+		Date datum = new Date();
+		String dat = datum.toString();
+		datum = sdf.parse(dat);
+		
+		day = datum.getDay();
+		month = datum.getMonth();
+		year = datum.getYear();
+		hour = datum.getHours();
+		min = datum.getMinutes();
 	}
 	
 	public int getWasserstand() {return wasserstand;}
 	public void setWasserstand(int wasserstand) {this.wasserstand = wasserstand;}
 	
-	public String getDay() {return day;}
-	public String getHour() {return hour;}
-	public String getMin() {return min;}
-	public String getMonth() {return month;}
-	public String getYear() {return year;}
+	public int getDay() {return day;}
+	public int getHour() {return hour;}
+	public int getMin() {return min;}
+	public int getMonth() {return month;}
+	public int getYear() {return year;}
 	
 	public String stamp() {
-		return getDay().toString() + "." + getMonth().toString() + " - " + getHour().toString() + ":" + getMin().toString();
+		return getDay() + "." + getMonth() + " - " + getHour() + ":" + getMin();
 	}
 	
 }
