@@ -17,7 +17,7 @@ public class Wasserstand {
 	
 	@Id
 	@Column(name = "id", nullable = false, updatable = false)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotNull
