@@ -1,5 +1,6 @@
 package de.wasserwacht.wasserstand.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,6 +11,7 @@ public interface WasserstandRepo extends CrudRepository<Wasserstand, Long> {
 	
 	Optional<Wasserstand> findById(Long id);
 	Wasserstand findTopByOrderByIdDesc();
+	List<Wasserstand> findByDayAndMonthAndYear(int day,int month,int year);
 	
 }
 

@@ -1,5 +1,8 @@
 package de.wasserwacht.wasserstand;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +23,7 @@ public class HomeController {
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("index.html");
 		
+		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
 		Wasserstand last = repo.findTopByOrderByIdDesc();
 		
 		if(last!=null) {
@@ -28,6 +32,7 @@ public class HomeController {
 			mv.addObject("wasserstand", 0);
 		}
 		mv.addObject("timestamp", last.stamp());
+		mv.addObject("data", repo.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear()));
 		
 		return mv;
 	}

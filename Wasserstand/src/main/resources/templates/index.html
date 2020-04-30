@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
-	<body>
+	<body onload="drawgraph()">
 		<div class="navbar">
 			&nbsp;
 		</div>
@@ -19,5 +19,38 @@
 				<a id="timestamp" th:text="${timestamp}"></a>
 			</div>
 		</div>
+		<div class="graphcon">
+			<canvas id="graph">
+			</canvas>
+		</div>
+		
+		
+		<script th:inline="javascript">
+			function drawgraph(){
+				/*<![CDATA[*/
+					
+					var data = /*[[${data}]]*/ [];
+					var canvas = document.getElementById('graph');
+					var context = canvas.getContext('2d');
+					context.globalAlpha = 0.4;
+					context.fillstyle = "#008b8b";
+					
+					context.beginPath();
+						context.moveTo(0, canvas.height);
+						/*
+						for(i = 0; i < data.length; i++){
+							
+						}
+						*/
+						
+						context.moveTo(0, 50);
+						
+						context.moveTo(canvas.width, canvas.height;)
+					context.closePath();
+					context.fill();
+					
+				/*]]>*/
+			}
+		</script>
 	</body>
 </html>
