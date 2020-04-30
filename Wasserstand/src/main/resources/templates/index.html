@@ -33,25 +33,13 @@
 					var data = /*[[${data}]]*/ [];
 					var canvas = document.getElementById('graph');
 					var context = canvas.getContext('2d');
+					var maxheight = 150;
+					var barwidth= 300 /values.length - distance;
 					
-					var hei, wit;
-					
-					context.globalAlpha = 0.4;
-					context.fillStyle = "#008b8b";
-					
-					context.beginPath();
-						context.moveTo(0, 150);
-						
-						for(i = 0; i < data.length; i++){
-							wit = i * (300 / data.length);
-							/*hei = (150 / 500) * data[i].wasserstand;*/
-							hei = 150 - ( data[i].wasserstand * 10 );
-							context.lineTo(wit, hei);
-						}
-						
-						context.lineTo(300, 150);
-					context.closePath();
-					context.fill();
+					for(var i = 0; i < values.length; i++)
+					{
+						ctx.fillRect(barwidth * i + distance * i, maxheight - maxheight * data[i].wasserstand / 100, barwidth, maxheight * data[i].wasserstand / 100);
+					}
 					
 				/*]]>*/
 			}
