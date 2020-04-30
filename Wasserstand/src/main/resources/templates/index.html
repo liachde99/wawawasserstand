@@ -44,7 +44,7 @@
 						
 						for(i = 0; i < data.length; i++){
 							wit = i * (300 / data.length);
-							hei = (150 / 500) * data.wasserstand;
+							hei = (150 / 500) * data[i].wasserstand;
 							context.lineTo(wit, hei);
 						}
 						
