@@ -38,13 +38,10 @@
 					
 					context.beginPath();
 						context.moveTo(0, 150);
-						/*
-						for(i = 0; i < data.length; i++){
-							
-						}
-						*/
 						
-						context.lineTo(50, 100);
+						for(i = 0; i < data.length; i++){
+							lineTo((i * (300 / data.length)), ((150 / 500) * data.wasserstand));
+						}
 						
 						context.lineTo(300, 150);
 					context.closePath();
