@@ -25,39 +25,39 @@ public class Wasserstand {
 	private int wasserstand;
 	
 	@Column(name ="day")
-	private char[] day;
+	private String day;
 	
 	@Column(name="month")
-	private char[] month;
+	private String month;
 	
 	@Column(name="year")
-	private char[] year;
+	private String year;
 
 	@Column(name="hour")
-	private char[] hour;
+	private String hour;
 	
 	@Column(name="min")
-	private char[] min;
+	private String min;
 	
 	public Wasserstand() {};
 	
 	public Wasserstand(int stand) {
 		this.wasserstand = stand;
-		day = new SimpleDateFormat("dd").format(new Date()).toCharArray();
-		month = new SimpleDateFormat("MM").format(new Date()).toCharArray();
-		year = new SimpleDateFormat("YYYY").format(new Date()).toCharArray();
-		hour = new SimpleDateFormat("hh").format(new Date()).toCharArray();
-		min = new SimpleDateFormat("mm").format(new Date()).toCharArray();
+		day = new SimpleDateFormat("dd").format(new Date());
+		month = new SimpleDateFormat("MM").format(new Date());
+		year = new SimpleDateFormat("YYYY").format(new Date());
+		hour = new SimpleDateFormat("hh").format(new Date());
+		min = new SimpleDateFormat("mm").format(new Date());
 	}
 	
 	public int getWasserstand() {return wasserstand;}
 	public void setWasserstand(int wasserstand) {this.wasserstand = wasserstand;}
 	
-	public char[] getDay() {return day;}
-	public char[] getHour() {return hour;}
-	public char[] getMin() {return min;}
-	public char[] getMonth() {return month;}
-	public char[] getYear() {return year;}
+	public String getDay() {return day;}
+	public String getHour() {return hour;}
+	public String getMin() {return min;}
+	public String getMonth() {return month;}
+	public String getYear() {return year;}
 	
 	public String stamp() {
 		return getDay().toString() + "." + getMonth().toString() + " - " + getHour().toString() + ":" + getMin().toString();
