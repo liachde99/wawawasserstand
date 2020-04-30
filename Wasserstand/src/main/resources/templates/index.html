@@ -31,14 +31,13 @@
 				/*<![CDATA[*/
 					
 					var data = /*[[${data}]]*/ [];
-					var div = document.getElementById('graphcon')
 					var canvas = document.getElementById('graph');
 					var context = canvas.getContext('2d');
 					context.globalAlpha = 0.4;
 					context.fillstyle = "#008b8b";
 					
 					context.beginPath();
-						context.moveTo(0, div.offsetHeight);
+						context.moveTo(0, context.offsetHeight);
 						/*
 						for(i = 0; i < data.length; i++){
 							
@@ -47,7 +46,7 @@
 						
 						context.lineTo(50, 100);
 						
-						context.lineTo(div.offsetWidth, div.offsetHeight);
+						context.lineTo(context.offsetWidth, context.offsetHeight);
 					context.closePath();
 					context.fill();
 					
