@@ -70,7 +70,7 @@ public class HomeController {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			
 			Wasserstand wasserstand = new Wasserstand(stand);
-			
+			service.save(wasserstand);
 		}
 		return "";
 	}

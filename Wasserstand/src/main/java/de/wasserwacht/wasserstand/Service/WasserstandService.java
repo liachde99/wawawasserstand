@@ -28,5 +28,10 @@ public class WasserstandService implements WasserstandRepo{
 	public Wasserstand findTopByOrderByIdDesc() {
 		return repo.findTopByOrderByIdDesc();
 	}
+
+	@Override
+	public <S extends Wasserstand> S save(S wasserstand) {
+		return repo.save(wasserstand);
+	}
 	
 }
