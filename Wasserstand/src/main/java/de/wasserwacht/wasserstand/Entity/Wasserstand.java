@@ -47,7 +47,7 @@ public class Wasserstand {
 		day = new SimpleDateFormat("dd", Locale.GERMANY).format(new Date());
 		month = new SimpleDateFormat("MM", Locale.GERMANY).format(new Date());
 		year = new SimpleDateFormat("YYYY", Locale.GERMANY).format(new Date());
-		hour = new SimpleDateFormat("hh", Locale.GERMANY).format(new Date());
+		hour = new SimpleDateFormat("HH", Locale.GERMANY).format(new Date());
 		min = new SimpleDateFormat("mm", Locale.GERMANY).format(new Date());
 	}
 	
