@@ -55,7 +55,7 @@ body{
 	opacity: .5;
 }
 
-.graphcon {
+#graphcon {
 	position: absolute;
 	left: 0;
 	bottom: 0;
