@@ -81,11 +81,11 @@ ul div{
 
 #graphcon {
 	position: absolute;
-	display: none;
-	left: 10%;
-	top: 20%;
-	height: 80%;
-	width: 80%;
+	display: block;
+	left: 0;
+	top: 100%;
+	height: 100%;
+	width: 100%;
 }
 
 @media only screen and (max-width: 768px) {

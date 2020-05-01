@@ -7,20 +7,6 @@
 		<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 	</head>
 	<body>
-		<div class="navbar">
-			<ul>
-				<li>
-					<div onclick="movewindows('graphcon')">
-						<a>Graph</a>
-					</div>
-				</li>
-				<li>
-					<div onclick="movewindows('anzeigecon')">
-						<a>Anzeige</a>
-					</div>
-				</li>
-			</ul>
-		</div>
 		<div class="container" id="anzeigecon">
 			<div class="upper show">
 				<a th:text="${wasserstand}" id="value"></a><a id="textbig">cm</a>
@@ -73,18 +59,6 @@
 					
 				/*]]>*/
 			});
-			
-			function movewindows(div){
-				
-				var centered = document.getElementById(div);
-				var containers = document.getElementsByClassName('container');
-				
-				Array.from(containers).forEach(function(item){
-					item.style.display="none";
-				});
-				centered.style.display = "block";
-				
-			};
 
 		</script>
 	</body>
