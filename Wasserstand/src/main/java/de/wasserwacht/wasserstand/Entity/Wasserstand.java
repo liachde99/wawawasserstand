@@ -2,6 +2,7 @@ package de.wasserwacht.wasserstand.Entity;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.temporal.IsoFields;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,6 +40,9 @@ public class Wasserstand {
 	@Column(name="min")
 	private int min;
 	
+	@Column(name="week")
+	private int week;
+	
 	public Wasserstand() {};
 	
 	public Wasserstand(int stand) {
@@ -51,7 +55,17 @@ public class Wasserstand {
 		this.year = date.getYear();
 		this.hour = date.getHour();
 		this.min = date.getMinute();
+		this.week = date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
 		
+	}
+	
+	public Wasserstand(	int stand, int day, int month, int year, int hour, int min) {
+		this.day = day;
+		this.hour = hour;
+		this.min = min;
+		this.month = month;
+		this.year = year;
+		this.wasserstand = stand;
 	}
 	
 	public int getWasserstand() {return wasserstand;}

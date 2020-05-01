@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
-import de.wasserwacht.wasserstand.Repository.WasserstandRepo;
+import de.wasserwacht.wasserstand.Service.WasserstandService;
 
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	private WasserstandRepo repo;
+	private WasserstandService service;
 	
 	@GetMapping("/")
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("index.html");
 		
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
-		Wasserstand last = repo.findTopByOrderByIdDesc();
+		Wasserstand last = service.findTopByOrderByIdDesc();
 		
 		if(last!=null) {
 			mv.addObject("wasserstand", last.getWasserstand());
@@ -32,7 +32,7 @@ public class HomeController {
 			mv.addObject("wasserstand", 0);
 		}
 		mv.addObject("timestamp", last.stamp());
-		mv.addObject("data", repo.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear()));
+		mv.addObject("datatoday", service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear()));
 		
 		return mv;
 	}
@@ -40,7 +40,7 @@ public class HomeController {
 	@GetMapping("/{passwort}/{stand}")
 	public String sendwasserstand(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
-			repo.save(new Wasserstand(stand));
+			service.save(new Wasserstand(stand));
 		}
 		return "";
 	}

@@ -3,8 +3,11 @@
 		<title>Wasserwacht Wasserstand</title>
 		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="style.css" />
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
 		<script src="https://cdn.anychart.com/releases/8.5.0/js/anychart-base.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<div class="container" id="anzeigecon">
@@ -24,11 +27,14 @@
 		
 		<script th:inline="javascript">
 			anychart.onDocumentReady(drawchart());
-
+			
+			
+			
+			
 			function drawchart() {
 				/*<![CDATA[*/
 					
-					var dbdata = /*[[${data}]]*/ [];
+					var datatoday = /*[[${datatoday}]]*/ [];
 					
 					var entries = [];
 					var entry = [];
@@ -43,8 +49,6 @@
 						
 						entries.push(entry);
 					})
-					
-					debugger;
 
 				 	var chart = anychart.area();
 				  	var series = chart.area(entries);
