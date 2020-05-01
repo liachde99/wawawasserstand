@@ -45,13 +45,13 @@
 					})
 					
 					debugger;
-					
-					var chart = anychart.area();
-					
-					var series = chart.area(entries);
 
-				    chart.xScale().mode('continuous'); 
-					chart.background().fill("none");
+				 	var chart = anychart.area();
+				  	var series = chart.area(entries);
+
+					chart.background().fill("none"); 
+				    chart.container('container');
+				    chart.xScale().mode('continuous');   
 					
 					series.normal().fill("#bbddff");
 					series.normal().stroke("#00bbaa", 3);
