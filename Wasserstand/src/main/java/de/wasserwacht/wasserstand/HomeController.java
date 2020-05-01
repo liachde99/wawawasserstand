@@ -61,6 +61,7 @@ public class HomeController {
 		case "week":
 			System.out.println("2");
 			wsl = service.findByWeek(date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR));
+			System.out.println(wsl.size());
 			break;
 		case "year":
 			wsl = service.findByYear(date.getYear());
