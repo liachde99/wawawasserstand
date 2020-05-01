@@ -49,10 +49,9 @@
 					var chart = anychart.area();
 					
 					var series = chart.area(entries);
-					
-					chart.container("graphcon");
+
+				    chart.xScale().mode('continuous'); 
 					chart.background().fill("none");
-					chart.xScale().mode("continuous");
 					
 					series.normal().fill("#bbddff");
 					series.normal().stroke("#00bbaa", 3);
@@ -61,7 +60,8 @@
 					var title = chart.title();
 					title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
 					title.fontSize("25");
-					
+
+					chart.container("graphcon");
 					chart.draw();
 					
 					
