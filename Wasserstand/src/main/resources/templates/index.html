@@ -21,9 +21,9 @@
 				<a id="timestamp" th:text="${timestamp}"></a>
 			</div>
 		</div>
-		<select onchange="drawchart" id="selectchart">
-			<option value="today">Tagesdiagramm</option>
-			<option value="week" selected>Wochendiagramm</option>
+		<select onchange="drawchart()" id="selectchart">
+			<option value="today" selected>Tagesdiagramm</option>
+			<option value="week">Wochendiagramm</option>
 			<option value="month">Monatsdiagramm</option>
 			<option value="year">Jahresdiagramm</option>
 		</select>
