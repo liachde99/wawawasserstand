@@ -60,7 +60,7 @@
 				var centered = document.getElementById(div);
 				var containers = document.getElementsByClassName('container');
 				
-				containers.forEach(function(item){
+				Array.from(containers).forEach(function(item){
 					item.style.display="none";
 				});
 				centered.style.display = "block";
