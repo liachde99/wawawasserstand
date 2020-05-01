@@ -64,10 +64,11 @@
 						rows: entries
 					};
 					
+					anychart.theme(anychart.themes.morning);
+					
 					var chart = anychart.column();
 					chart.data(data);
 					chart.container("graphcon");
-					chart.theme(anychart.themes.morning);
 					chart.background().stroke(null);
 					cahrt.background().fill(null);
 					chart.draw();
