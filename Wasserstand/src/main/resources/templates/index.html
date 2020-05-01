@@ -27,15 +27,34 @@
 		
 		
 		<script th:inline="javascript">
-			anychart.onDocumentReady(drawchart());
+			anychart.onDocumentReady(drawchart('today'));
 			
 			
 			
 			
-			function drawchart() {
-				/*<![CDATA[*/
+			function drawchart(input) {
 					
-					var dbdata = /*[[${data}]]*/ [];
+					var dbdata = [];
+
+					var datastr = {
+						searched: input
+					}
+					
+					$.ajax({
+						type: "POST",
+						contentType: "application/json",
+						url: "/chart"
+						data: JSON.stringify(datastr),
+						dataType: 'json',
+						cache: false,
+						timeout: 60000,
+						success: function(data) {
+							debugger;
+							dbdata = data;
+						}error: function(){
+							alert("DATENFEHLER");
+						}
+					});
 					
 					var entries = [];
 					var entry = [];
@@ -70,8 +89,6 @@
 					chart.container("graphcon");
 					chart.draw();
 					
-					
-				/*]]>*/
 			};
 		</script>
 	</body>
