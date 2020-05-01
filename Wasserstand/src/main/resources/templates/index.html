@@ -4,7 +4,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+		<script src="https://cdn.anychart.com/releases/8.5.0/js/anychart-base.min.js"></script>
 	</head>
 	<body>
 		<div class="container" id="anzeigecon">
@@ -51,8 +51,7 @@
 
 					chart.background().fill("none"); 
 				    chart.container('container');
-				    var xscale = chart.xAxis();
-				    xscale.mode('continuous');   
+				  	chart.xScale().mode('continuous');   
 					
 					series.normal().fill("#bbddff");
 					series.normal().stroke("#00bbaa", 3);
