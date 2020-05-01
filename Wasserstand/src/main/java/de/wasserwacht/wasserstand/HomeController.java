@@ -43,6 +43,12 @@ public class HomeController {
 		return mv;
 	}
 	
+	@GetMapping("/week")
+	public String week() {
+		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
+		return date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR) + "";
+	}
+	
 	@PostMapping("/chart")
 	@ResponseBody
 	public List<Wasserstand> getchartdata(@RequestBody ObjectNode on){
