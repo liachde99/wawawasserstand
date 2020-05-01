@@ -49,14 +49,15 @@
 						cache: false,
 						timeout: 60000,
 						success: function(data) {
-							debugger;
-							dbdata = data;
+							fortfahren(data);
 						},
 						error: function(){
 							alert("DATENFEHLER");
 						}
 					});
-					
+			};
+			
+			function fortfahren(dbdata){		
 					
 					debugger;
 					var entries = [];
