@@ -60,16 +60,11 @@
 					debugger;
 					var data = {
 						header: ["Datum", "Wasserstand"],
-						rows: [
-							["0:16", 69],
-							["0:17", 72],
-							["0:18", 56],
-							["0:19", 65],
-							["0:20", 67]
-						]
+						rows: entries
 					};
 					
 					var chart = anychart.column();
+					chart.data(data);
 					chart.container("graphcon");
 					chart.draw;
 					
