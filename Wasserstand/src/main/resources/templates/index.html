@@ -9,13 +9,16 @@
 		<div class="navbar">
 			<ul>
 				<li>
-					<div onclick="movewindows()">
+					<div onclick="movewindows('graphcon')">
 						<a>Graph</a>
+					</div>
+					<div onclick="movewindows('anzeigecon')">
+						<a>Anzeige</a>
 					</div>
 				</li>
 			</ul>
 		</div>
-		<div class="container">
+		<div class="container" id="anzeigecon">
 			<div class="upper show">
 				<a th:text="${wasserstand}" id="value"></a><a id="textbig">cm</a>
 			</div>
@@ -25,7 +28,7 @@
 				<a id="timestamp" th:text="${timestamp}"></a>
 			</div>
 		</div>
-		<div id="graphcon">
+		<div class="container" id="graphcon">
 			<canvas id="graph">
 			</canvas>
 		</div>
@@ -33,7 +36,6 @@
 		
 		<script th:inline="javascript">
 			function drawgraph(){
-				debugger;
 				/*<![CDATA[*/
 					
 					var data = /*[[${data}]]*/ [];
@@ -51,7 +53,19 @@
 				/*]]>*/
 			}
 			
+			function movewindows(div){
+				
+				var centered = document.getElementById(div);
+				var containers = document.getElementsByClassName('container');
+				
+				containers.forEach(beinv());
+				centered.style.display = "block";
+				
+			}
 			
+			function beinv(item,index){
+				item.style.display = "none";
+			}
 		</script>
 	</body>
 </html>

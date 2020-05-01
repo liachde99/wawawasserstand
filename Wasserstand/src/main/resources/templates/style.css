@@ -4,9 +4,8 @@ body{
 	overflow: hidden;
 }
 
-.container{
+#anzeigecon{
 	position: absolute;
-	z-index: 100;
 	top: calc(50% - 300px);
 	left: calc(50% - 300px);
 	display: block;
@@ -75,11 +74,12 @@ ul div{
 
 #graphcon {
 	position: absolute;
+	backgorund: red;
+	display: none;
 	left: 0;
-	bottom: 0;
-	height: 40%;
+	top: 0;
+	height: 100%;
 	width: 100%;
-	z-index: 50;
 }
 
 #graph{
