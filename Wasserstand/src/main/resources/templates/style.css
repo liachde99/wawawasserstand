@@ -60,6 +60,7 @@ ul{
 }
 
 ul li {
+	display: inline;
     height: 100%;
     margin: auto;
 }

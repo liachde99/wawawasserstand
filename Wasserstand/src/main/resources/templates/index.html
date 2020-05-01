@@ -58,14 +58,11 @@
 				var centered = document.getElementById(div);
 				var containers = document.getElementsByClassName('container');
 				
-				containers.forEach(beinv());
+				containers.forEach(element => element.style.display="none");
 				centered.style.display = "block";
 				
 			}
-			
-			function beinv(item,index){
-				item.style.display = "none";
-			}
+
 		</script>
 	</body>
 </html>
