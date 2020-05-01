@@ -63,6 +63,7 @@ public class WasserstandService {
 					if(tempSpeicher.getDay() == w.getDay()) {
 						System.out.println(".");
 						gesamtStand += w.getWasserstand();
+						System.out.println(gesamtStand);
 						counter++;
 						continue;
 					}
