@@ -39,6 +39,7 @@ public class WasserstandService {
 	}
 	
 	public List<Wasserstand> findByWeek(int week){
+		System.out.println("3");
 		return tagesdurchschnitt(repo.findByWeek(week));
 	}
 	
@@ -60,6 +61,7 @@ public class WasserstandService {
 			if(tempSpeicher.getYear() == w.getYear()) {
 				if(tempSpeicher.getMonth() == w.getMonth()) {
 					if(tempSpeicher.getDay() == w.getDay()) {
+						System.out.println(".");
 						gesamtStand += w.getWasserstand();
 						counter++;
 						continue;
@@ -80,7 +82,7 @@ public class WasserstandService {
 			counter = 0;
 			gesamtStand = 0;
 		}
-		
+		System.out.println("----------------");
 		return wasserstandTagesdurchschnitt;
 	}
 
