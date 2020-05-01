@@ -52,7 +52,7 @@ public class WasserstandService {
 		
 		Wasserstand tempSpeicher = wasserstand.get(0);
 		int gesamtStand = 0;
-		int counter = 0;
+		int counter = 1;
 		
 		for(int i = 1; i < wasserstand.size(); i++) {
 			
@@ -68,7 +68,6 @@ public class WasserstandService {
 				}
 			}
 
-			System.out.println(counter);
 			int durchschnitt = gesamtStand / counter;
 			wasserstandTagesdurchschnitt.add(new Wasserstand(	durchschnitt,
 																tempSpeicher.getDay(),
@@ -79,7 +78,7 @@ public class WasserstandService {
 																)
 					);
 			tempSpeicher = w;
-			counter = 0;
+			counter = 1;
 			gesamtStand = 0;
 		}
 		int durchschnitt = gesamtStand / counter;
