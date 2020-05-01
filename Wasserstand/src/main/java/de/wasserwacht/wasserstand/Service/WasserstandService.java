@@ -75,6 +75,9 @@ public class WasserstandService {
 																0
 																)
 					);
+			System.out.println(gesamtStand);
+			System.out.println(counter);
+			System.out.println(tempSpeicher.getDay() + " +" + tempSpeicher.getMonth() + "." + tempSpeicher.getYear());
 			tempSpeicher = w;
 			counter = 0;
 			gesamtStand = 0;
