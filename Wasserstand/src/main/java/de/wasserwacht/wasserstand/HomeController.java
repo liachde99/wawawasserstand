@@ -32,7 +32,7 @@ public class HomeController {
 			mv.addObject("wasserstand", 0);
 		}
 		mv.addObject("timestamp", last.stamp());
-		mv.addObject("datatoday", service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear()));
+		mv.addObject("data", service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear()));
 		
 		return mv;
 	}
