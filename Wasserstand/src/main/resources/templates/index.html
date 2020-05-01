@@ -21,19 +21,27 @@
 				<a id="timestamp" th:text="${timestamp}"></a>
 			</div>
 		</div>
+		<select onchange="drawchart" id="selectchart">
+			<option value="today">Tagesdiagramm</option>
+			<option value="week" selected>Wochendiagramm</option>
+			<option value="month">Monatsdiagramm</option>
+			<option value="year">Jahresdiagramm</option>
+		</select>
 		<div class="container" id="graphcon">
 			
 		</div>
 		
 		
 		<script th:inline="javascript">
-			anychart.onDocumentReady(drawchart("today"));
+			anychart.onDocumentReady(drawchart());
 			
 			
 			
 			
-			function drawchart(input) {
+			function drawchart() {
 					debugger;
+					var input = document.getElementById('selectchart')
+					
 					var dbdata = [];
 
 					var datastr = {
