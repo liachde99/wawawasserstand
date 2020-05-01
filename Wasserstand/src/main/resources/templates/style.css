@@ -60,14 +60,17 @@ ul{
 	margin: auto;
 }
 
-ul li{
-	display: inline-block;
+ul li {
+    height: 100%;
+    margin: auto;
 }
 
 ul div{
-	display: block;
-	width: 10%;
-	height: 100%;
+	color: #fff;
+    text-align: center;
+    font-size: 28px;
+    padding: calc(50px - 16px) 0;
+    cursor: pointer;
 }
 
 #graphcon {
