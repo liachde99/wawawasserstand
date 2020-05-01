@@ -5,7 +5,6 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-		<script src="https://cdn.anychart.com/themes/2.0.0/morning.min.js"></script>
 	</head>
 	<body onload="drawgraph()">
 		<div class="navbar">
@@ -58,17 +57,13 @@
 						entries.push(entry);
 					})
 					
-					debugger;
-					var data = {
-						header: ["Datum", "Wasserstand"],
-						rows: entries
-					};
 					
-					anychart.theme(anychart.themes.morning);
+					var chart = anychart.area();
 					
-					var chart = anychart.column();
-					chart.data(data);
+					var series = chart.area(data);
+					
 					chart.container("graphcon");
+					
 					chart.draw();
 					
 					
