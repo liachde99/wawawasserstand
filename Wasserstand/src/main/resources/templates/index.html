@@ -4,6 +4,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 	</head>
 	<body onload="drawgraph()">
 		<div class="navbar">
@@ -31,8 +32,7 @@
 			</div>
 		</div>
 		<div class="container" id="graphcon">
-			<canvas id="graph">
-			</canvas>
+			
 		</div>
 		
 		
@@ -40,17 +40,33 @@
 			function drawgraph(){
 				/*<![CDATA[*/
 					
-					var data = /*[[${data}]]*/ [];
-					var canvas = document.getElementById('graph');
-					var context = canvas.getContext('2d');
-					var distance = 10;
-					var maxheight = 150;
-					var barwidth= 300 /data.length - distance;
+					var dbdata = /*[[${data}]]*/ [];
+					var container = document.getElementById('graph');
 					
-					/*or(var i = 0; i < data.length; i++)
-					{
-						context.fillRect(barwidth * i + distance * i, maxheight - maxheight * data[i].wasserstand / 100, barwidth, maxheight * data[i].wasserstand / 100);
-					}*/
+					var entries = [];
+					var entry = [];
+					
+					dbdata.forEach(function(item){
+						entry = [];
+						
+						var date = item.hour + ":" + item.min;
+						
+						entry.push(date);
+						entry.push(item.wasserstand);
+						
+						entries.push(entry);
+					})
+					
+					
+					var data = {
+							header: ["Datum", "Wasserstand"],
+							rows: entries
+					};
+					
+					var chart = anychart.column();
+					chart.container("graphcon");
+					chart.draw;
+					
 					
 				/*]]>*/
 			}
