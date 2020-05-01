@@ -84,6 +84,15 @@ public class WasserstandService {
 			counter = 0;
 			gesamtStand = 0;
 		}
+		int durchschnitt = gesamtStand / counter;
+		wasserstandTagesdurchschnitt.add(new Wasserstand(	durchschnitt,
+															tempSpeicher.getDay(),
+															tempSpeicher.getMonth(),
+															tempSpeicher.getYear(),
+															0,
+															0
+															)
+				);
 		System.out.println("----------------");
 		return wasserstandTagesdurchschnitt;
 	}
