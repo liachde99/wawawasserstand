@@ -61,15 +61,14 @@ public class WasserstandService {
 			if(tempSpeicher.getYear() == w.getYear()) {
 				if(tempSpeicher.getMonth() == w.getMonth()) {
 					if(tempSpeicher.getDay() == w.getDay()) {
-						System.out.println(".");
 						gesamtStand += w.getWasserstand();
-						System.out.println(gesamtStand);
 						counter++;
 						continue;
 					}
 				}
 			}
-			
+
+			System.out.println(counter);
 			int durchschnitt = gesamtStand / counter;
 			wasserstandTagesdurchschnitt.add(new Wasserstand(	durchschnitt,
 																tempSpeicher.getDay(),
@@ -79,7 +78,6 @@ public class WasserstandService {
 																0
 																)
 					);
-			System.out.println(durchschnitt);
 			tempSpeicher = w;
 			counter = 0;
 			gesamtStand = 0;
@@ -93,7 +91,6 @@ public class WasserstandService {
 															0
 															)
 				);
-		System.out.println("----------------");
 		return wasserstandTagesdurchschnitt;
 	}
 
