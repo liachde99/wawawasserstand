@@ -23,7 +23,9 @@
 		
 		
 		<script th:inline="javascript">
-			anychart.onDocumentReady(function () {
+			anychart.onDocumentReady(drawchart());
+
+			function drawchart() {
 				/*<![CDATA[*/
 					
 					var dbdata = /*[[${data}]]*/ [];
@@ -50,17 +52,21 @@
 					
 					chart.container("graphcon");
 					chart.background().fill("none");
+					chart.xScale().mode('continuous');
+					
 					series.normal().fill("#bbddff");
 					series.normal().stroke("#00bbaa", 3);
 					series.name("Wasserstand");
-					chart.title(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
+					
+					var title = chart.title();
+					title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
+					title.fontSize("25");
 					
 					chart.draw();
 					
 					
 				/*]]>*/
-			});
-
+			};
 		</script>
 	</body>
 </html>
