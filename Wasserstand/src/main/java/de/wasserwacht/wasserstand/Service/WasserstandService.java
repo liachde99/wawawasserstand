@@ -78,6 +78,7 @@ public class WasserstandService {
 																0
 																)
 					);
+			System.out.println(durchschnitt);
 			tempSpeicher = w;
 			counter = 0;
 			gesamtStand = 0;
