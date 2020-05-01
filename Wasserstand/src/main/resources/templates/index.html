@@ -51,7 +51,8 @@
 
 					chart.background().fill("none"); 
 				    chart.container('container');
-				    chart.xScale().mode('continuous');   
+				    var xscale = chart.xScale();
+				    xscale.mode('continuous');   
 					
 					series.normal().fill("#bbddff");
 					series.normal().stroke("#00bbaa", 3);
