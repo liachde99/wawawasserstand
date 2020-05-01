@@ -52,6 +52,7 @@ body{
 	border-bottom: 1px solid #f4f0e5;
 	background-color: #3f3a3a;
 	opacity: .5;
+	z-index: 100;
 }
 
 ul{
@@ -60,13 +61,18 @@ ul{
 }
 
 ul li {
-	display: inline;
+	display: inline-block;
     height: 100%;
     margin: auto;
 }
 
+ul li:not(:last-of-type){
+	border-right: 1px solid white;
+}
+
 ul div{
 	color: #fff;
+	width: 10%;
     text-align: center;
     font-size: 28px;
     padding: calc(50px - 16px) 0;
