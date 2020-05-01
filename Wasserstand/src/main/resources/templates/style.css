@@ -81,17 +81,11 @@ ul div{
 
 #graphcon {
 	position: absolute;
-	backgorund: red;
 	display: none;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-}
-
-#graph{
-	height: 100%;
-	width: 100%;
+	left: 10%;
+	top: 20%;
+	height: 80%%;
+	width: 80%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -113,8 +107,5 @@ ul div{
 		height: 150px;
 		line-height: 2;
 		border-radius: 0 0 150px 150px;
-	}
-	#graphcon{
-		display: none;
 	}
 }
