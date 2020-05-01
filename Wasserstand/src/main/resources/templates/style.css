@@ -55,6 +55,21 @@ body{
 	opacity: .5;
 }
 
+ul{
+	list-style: none;
+	margin: auto;
+}
+
+ul li{
+	display: inline-block;
+}
+
+ul div{
+	display: block;
+	width: 10%;
+	height: 100%;
+}
+
 #graphcon {
 	position: absolute;
 	left: 0;
