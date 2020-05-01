@@ -10,12 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
@@ -43,10 +39,9 @@ public class HomeController {
 		return mv;
 	}
 	
-	@PostMapping("/chart")
+	@GetMapping("/chart/{searched}")
 	@ResponseBody
-	public List<Wasserstand> getchartdata(@RequestBody ObjectNode on){
-		String searched = on.get("searched").asText();
+	public List<Wasserstand> getchartdata(@PathVariable("searched") String searched){
 		List<Wasserstand> wsl = new ArrayList<>();
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
 		

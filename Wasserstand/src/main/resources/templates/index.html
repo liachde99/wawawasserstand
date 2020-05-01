@@ -35,17 +35,11 @@
 			function drawchart(input) {
 					debugger;
 					var dbdata = [];
-
-					var datastr = {
-						searched: input
-					};
 					
 					$.ajax({
-						type: "POST",
+						type: "GET",
 						contentType: "application/json",
-						url: "/chart"
-						data: JSON.stringify(datastr),
-						dataType: 'json',
+						url: "/chart/" + input
 						cache: false,
 						timeout: 60000,
 						success: function(data) {
