@@ -76,7 +76,15 @@
 					dbdata.forEach(function(item){
 						entry = [];
 						
-						var date = item.hour + ":" + item.min;
+						
+						if(input=="day"){
+							var date = item.hour + ":" + item.min;
+						}
+						else if(input=="week"||input=="month"){
+							var date = item.day + "." + item.month + "." + item.year;
+						}else{
+							var date = item.month;
+						}
 						
 						entry.push(date);
 						entry.push(item.wasserstand);
@@ -96,7 +104,52 @@
 					
 					var title = chart.title();
 					title.enabled(true);
-					title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
+					if(input=="day"){
+						title.text(dbdata[0].day + "." + dbdata[0].month + "." dbdata[0].year);
+					}else if(input=="week"){
+						title.text("Week: " + dbdata[0].week);
+					}else if(input=="month"){
+						switch(dbdata[0].month){
+						case 1:
+							title.text("Januar");
+							break;
+						case 2:
+							title.text("Februar");
+							break;
+						case 3:
+							title.text("März");
+							break;
+						case 4:
+							title.text("April");
+							break;
+						case 5:
+							title.text("Mai");
+							break;
+						case 6:
+							title.text("Juni");
+							break;
+						case 7:
+							title.text("Juli");
+							break;
+						case 8:
+							title.text("August");
+							break;
+						case 9:
+							title.text("September");
+							break;
+						case 10:
+							title.text("Oktober");
+							break;
+						case 11:
+							title.text("November");
+							break;
+						case 12:
+							title.text("Dezember");
+							break;
+						}
+					}else{
+						title.text(dbdata[0].year);
+					}
 					title.fontSize("25");
 
 					chart.container("graphcon");
