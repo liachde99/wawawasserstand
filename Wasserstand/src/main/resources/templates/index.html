@@ -78,7 +78,7 @@
 						entry = [];
 						
 						
-						if(input=="day"){
+						if(input=="today"){
 							var date = item.hour + ":" + item.min;
 						}
 						else if(input=="week"||input=="month"){
@@ -105,7 +105,7 @@
 					
 					var title = chart.title();
 					title.enabled(true);
-					if(input=="day"){
+					if(input=="today"){
 						title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
 					}else if(input=="week"){
 						title.text("Week: " + dbdata[0].week);
