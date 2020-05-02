@@ -55,8 +55,8 @@
 						dataType: 'json',
 						cache: false,
 						timeout: 60000,
-						success: function(data) {
-							fortfahren(data);
+						success: function(data, input) {
+							fortfahren(data, input);
 						},
 						error: function(){
 							alert("DATENFEHLER");
@@ -72,9 +72,8 @@
 					debugger;
 					var entries = [];
 					var entry = [];
-					var input = document.getElementById('selectchart').value;
 					
-					dbdata.forEach(function(item,input){
+					dbdata.forEach(function(item, input){
 						entry = [];
 						
 						
