@@ -76,15 +76,15 @@
 					
 					dbdata.forEach(function(item){
 						entry = [];
-						
+						var date;
 						
 						if(input=="today"){
-							var date = item.hour + ":" + item.min;
+							date = item.hour + ":" + item.min;
 						}
 						else if(input=="week"||input=="month"){
-							var date = item.day + "." + item.month + "." + item.year;
+							date = item.day + "." + item.month + "." + item.year;
 						}else{
-							var date = item.month;
+							date = item.month;
 						}
 						
 						entry.push(date);
