@@ -34,12 +34,13 @@
 		
 		<script th:inline="javascript">
 			var chart = anychart.area();
+			var input;
 		
 			anychart.onDocumentReady(drawchart());
 			
 			function drawchart() {
 					debugger;
-					var input = document.getElementById('selectchart').value;
+					input = document.getElementById('selectchart').value;
 					
 					var dbdata = [];
 
@@ -73,7 +74,7 @@
 					var entries = [];
 					var entry = [];
 					
-					dbdata.forEach(function(item, input){
+					dbdata.forEach(function(item){
 						entry = [];
 						
 						
