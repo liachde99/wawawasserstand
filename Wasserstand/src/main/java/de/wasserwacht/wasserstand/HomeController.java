@@ -93,12 +93,14 @@ public class HomeController {
 	}
 	
 	@GetMapping("/force")
-	public String forceing(){
+	public String forcing(){
+		System.out.println("forcing");
 		force();
 		return "";
 	}
 	
 	public void force() {
+		System.out.println("force");
 		List<Wasserstand> staende = new ArrayList<>();
 		List<Tagesdurchschnitt> tagesdurchschnitte = new ArrayList<>();
 		LocalDateTime date;
