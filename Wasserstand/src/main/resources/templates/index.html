@@ -32,20 +32,13 @@
 			anychart.onDocumentReady(drawchart());
 			
 			function drawchart() {
-					debugger;
 					
 					var dbdata = [];
-
-					var datastr = {
-						searched: ""
-					};
 					
 					$.ajax({
 						type: "POST",
 						contentType: "application/json",
 						url: "/chart",
-						data: JSON.stringify(datastr),
-						dataType: 'json',
 						cache: false,
 						timeout: 60000,
 						success: function(data) {
@@ -62,7 +55,6 @@
 					chart.dispose();
 					chart = anychart.area();
 					
-					debugger;
 					var entries = [];
 					var entry = [];
 					
@@ -85,12 +77,12 @@
 				  	chart.xScale().mode('continuous');   
 					
 					series.normal().fill("#bbddff");
-					series.normal().stroke("#00bbaa", 3);
+					series.normal().stroke("#FFFFFF", 3);
 					series.name("Wasserstand");
 					
 					var title = chart.title();
 					title.enabled(true);
-					title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
+					title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year + " - " + dbdata[dbdate.length-1].day + "." + dbdata[dbdate.length-1].month + "." + dbdata[dbdate.length-1].year);
 					
 					title.fontSize("25");
 

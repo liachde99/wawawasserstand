@@ -25,6 +25,10 @@ public class LastsevendaysService {
 		return repo.findByTageswasserstandid(tageswasserstand_id);
 	}
 	
+	public List<Lastsevendays> findAll(){
+		return repo.findAll();
+	}
+	
 	public <S extends Lastsevendays> S save(S lastsevendays) {
 		return repo.save(lastsevendays);
 	}

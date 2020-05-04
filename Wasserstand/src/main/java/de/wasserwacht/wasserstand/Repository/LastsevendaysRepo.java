@@ -11,6 +11,7 @@ public interface LastsevendaysRepo extends CrudRepository<Lastsevendays, Long> {
 	
 	Optional<Lastsevendays> findById(Long id);
 	List<Lastsevendays> findByTageswasserstandid(Long id);
+	List<Lastsevendays> findAll();
 	void deleteAll();
 	
 	<S extends Lastsevendays> S save(S lastsevendays);

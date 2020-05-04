@@ -2,7 +2,6 @@ package de.wasserwacht.wasserstand;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
 import java.time.temporal.IsoFields;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,19 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import de.wasserwacht.wasserstand.Entity.Lastsevendays;
-import de.wasserwacht.wasserstand.Entity.Monatsdurchschnitt;
-import de.wasserwacht.wasserstand.Entity.Tagesdurchschnitt;
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
 import de.wasserwacht.wasserstand.Service.LastsevendaysService;
-import de.wasserwacht.wasserstand.Service.MonatsdurchschnittService;
-import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
 
 
@@ -33,6 +25,9 @@ public class HomeController {
 	
 	@Autowired
 	private WasserstandService service;
+	
+	@Autowired
+	private LastsevendaysService lastsevendaysService;
 
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -58,11 +53,9 @@ public class HomeController {
 	
 	@PostMapping("/chart")
 	@ResponseBody
-	public List<Wasserstand> getchartdata(@RequestBody ObjectNode on){
-		String searched = on.get("searched").asText();
-		List<Wasserstand> wsl = new ArrayList<>();
-		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
-		wsl = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
+	public List<Lastsevendays> getchartdata(){
+		List<Lastsevendays> wsl = new ArrayList<>();
+		wsl = lastsevendaysService.findAll();
 		
 		return wsl;
 	}
