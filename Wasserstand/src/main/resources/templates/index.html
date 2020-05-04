@@ -20,25 +20,26 @@
 				<a id="timestamp">Letztes Update:</a>
 				<a id="timestamp" th:text="${timestamp}"></a>
 			</div>
-		</div>
-		<div class="container" id="graphcon">
+		<div class="container" id="temcon">
 			
 		</div>
+		<div class="container" id="graphcon">
 		
+		</div>
 		
 		<script th:inline="javascript">
 			var chart = anychart.area();
 		
-			anychart.onDocumentReady(drawchart());
+			anychart.onDocumentReady(tagesdurchschnitt());
 			
-			function drawchart() {
+			function tagesdurchschnitt() {
 					
 					var dbdata = [];
 					
 					$.ajax({
 						type: "POST",
 						contentType: "application/json",
-						url: "/chart",
+						url: "/tagesdurchschnitt",
 						cache: false,
 						timeout: 60000,
 						success: function(data) {

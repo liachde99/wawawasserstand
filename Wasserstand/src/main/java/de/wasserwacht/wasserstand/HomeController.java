@@ -56,7 +56,7 @@ public class HomeController {
 		return date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR) + "";
 	}
 	
-	@PostMapping("/chart")
+	@PostMapping("/tagesdurchschnitt")
 	@ResponseBody
 	public List<Tagesdurchschnitt> getchartdata(){
 		List<Lastsevendays> lsd = new ArrayList<>();

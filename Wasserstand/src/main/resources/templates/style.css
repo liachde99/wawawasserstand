@@ -10,10 +10,22 @@ body{
 #anzeigecon{
 	position: absolute;
 	top: calc(50% - 300px);
-	left: calc(50% - 300px);
+	left: calc(50% - 610px);
 	display: block;
 	width: 600px;
 	height: 600px;
+	border-radius: 50%;
+	border: 3px solid #f4f0e5;
+	background-color: #313131;
+}
+
+#tempcon{
+	position: absolute;
+	top: calc(50% - 300px);
+	left: calc(50% + 10px);
+	display: block;
+	height: 600px;
+	width: 600px;
 	border-radius: 50%;
 	border: 3px solid #f4f0e5;
 	background-color: #313131;
@@ -99,6 +111,12 @@ ul div{
 	
 	#anzeigecon{
 		top: calc(50% - 150px);
+		left: calc(50% - 150px);
+		width: 300px;
+		height: 300px;
+	}
+	#tempcon{
+		top: calc(50% + 160px);
 		left: calc(50% - 150px);
 		width: 300px;
 		height: 300px;
