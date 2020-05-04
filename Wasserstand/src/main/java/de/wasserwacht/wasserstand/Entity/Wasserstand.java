@@ -72,28 +72,30 @@ public class Wasserstand {
 	public int getYear() {return year;}
 	
 	public String stamp() {
+		
+		String day, month, hour, min;
 		if(getDay()<10) {
-			String day = "0" + getDay();
+			day = "0" + getDay();
 		}else {
-			String day = getDay() + "";
+			day = getDay() + "";
 		}
 		
 		if(getMonth()<10) {
-			String month = "0" + getMonth();
+			month = "0" + getMonth();
 		}else {
-			String month = getMonth() + "";
+			month = getMonth() + "";
 		}
 		
 		if(getHour()<10) {
-			String hour = "0" + getHour();
+			hour = "0" + getHour();
 		}else {
-			String hour = getHour() + "";
+			hour = getHour() + "";
 		}
 		
 		if(getDay()<10) {
-			String min = "0" + getMin();
+			min = "0" + getMin();
 		}else {
-			String min = getMin() + "";
+			min = getMin() + "";
 		}
 		return day + "." + month + " - " + hour + ":" + min;
 	}
