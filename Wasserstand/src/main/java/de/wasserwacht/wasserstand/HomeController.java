@@ -1,5 +1,7 @@
 package de.wasserwacht.wasserstand;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,9 +51,9 @@ public class HomeController {
 		return mv;
 	}
 	
-	@GetMapping("/tagesdurchschnitt")
+	@GetMapping("/lastsevendays")
 	@ResponseBody
-	public List<Tagesdurchschnitt> getchartdata(){
+	public List<Tagesdurchschnitt> getchartdatalastsevendays(){
 		List<Lastsevendays> lsd = new ArrayList<>();
 		List<Tagesdurchschnitt> wsl = new ArrayList<>();
 		lsd = lastsevendaysService.findAll();
@@ -61,6 +62,13 @@ public class HomeController {
 		}
 		
 		return wsl;
+	}
+	
+	@GetMapping("/today")
+	@ResponseBody
+	public List<Wasserstand> getchartdatatoday(){
+		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
+		return service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 	}
 	
 	@GetMapping("/{passwort}/{stand}/{temperatur}")

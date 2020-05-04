@@ -55,7 +55,7 @@
 			function lastsevendays() {
 				$.ajax({
 					type: "GET",
-					url: "/tagesdurchschnitt",
+					url: "/lastsevendays",
 					cache: false,
 					timeout: 60000,
 					success: function(dbdata) {
@@ -91,7 +91,7 @@
 						
 						var title = chart.title();
 						title.enabled(true);
-						title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year + " - " + dbdata[dbdata.length-1].day + "." + dbdata[dbdata.length-1].month + "." + dbdata[dbdata.length-1].year);
+						title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
 						
 						title.fontSize("25");
 
@@ -111,7 +111,44 @@
 					cache: false,
 					timeout: 60000,
 					success: function(dbdata) {
+						chart.dispose();
+						chart = anychart.area();
 						
+						var entries = [];
+						var entry = [];
+						
+						dbdata.forEach(function(item){
+							entry = [];
+							var date;
+							
+							time = item.hour + ":" + item.min;
+							
+							entry.push(date);
+							entry.push(item.wasserstand);
+							
+							entries.push(entry);
+						})
+						
+						
+						
+					  	var series = chart.area(entries);
+
+						chart.background().fill("none"); 
+					    chart.container('container');
+					  	chart.xScale().mode('continuous');   
+						
+						series.normal().fill("#bbddff");
+						series.normal().stroke("#FFFFFF", 3);
+						series.name("Wasserstand");
+						
+						var title = chart.title();
+						title.enabled(true);
+						title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year + " - " + dbdata[dbdata.length-1].day + "." + dbdata[dbdata.length-1].month + "." + dbdata[dbdata.length-1].year);
+						
+						title.fontSize("25");
+
+						chart.container("graphcon");
+						chart.draw();
 					},
 					error: function(){
 						alert("DATENFEHLER");
