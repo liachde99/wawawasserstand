@@ -41,11 +41,13 @@ public class ScheduledTasks {
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
 		staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 		
-		for (Wasserstand wasserstand : staende) {
-			durchschnitt += wasserstand.getWasserstand();
+		if(staende.size()!=0) {
+			for (Wasserstand wasserstand : staende) {
+				durchschnitt += wasserstand.getWasserstand();
+			}
+			
+			tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 		}
-		
-		tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 	}
 	
 	@Scheduled(cron="0 0 0 1 * *")
