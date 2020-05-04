@@ -121,7 +121,7 @@ public class HomeController {
 		}while(!staende.isEmpty());
 		
 		
-		
+		/*
 		lsdService.truncate();
 		for(int i=1;i<=7;i++) {
 			date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
@@ -148,5 +148,7 @@ public class HomeController {
 			}
 			date.minus(1, ChronoUnit.DAYS);
 		}while(!tagesdurchschnitte.isEmpty());
+		*/
 	}
+	
 }
