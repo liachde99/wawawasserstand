@@ -1,8 +1,5 @@
 package de.wasserwacht.wasserstand;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.temporal.IsoFields;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +22,8 @@ import de.wasserwacht.wasserstand.Service.WasserstandService;
 @Controller
 public class HomeController {
 	
+	private double temperatur;
+	
 	@Autowired
 	private WasserstandService service;
 	
@@ -46,17 +45,12 @@ public class HomeController {
 			mv.addObject("wasserstand", 0);
 		}
 		mv.addObject("timestamp", last.stamp());
+		mv.addObject("temperatur", this.temperatur);
 		
 		return mv;
 	}
 	
-	@GetMapping("/week")
-	public String week() {
-		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
-		return date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR) + "";
-	}
-	
-	@PostMapping("/tagesdurchschnitt")
+	@GetMapping("/tagesdurchschnitt")
 	@ResponseBody
 	public List<Tagesdurchschnitt> getchartdata(){
 		List<Lastsevendays> lsd = new ArrayList<>();
@@ -70,9 +64,10 @@ public class HomeController {
 	}
 	
 	@GetMapping("/{passwort}/{stand}/{temperatur}")
-	public String sendwasserstand(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
+	public String sendwasserstandundtemperatur(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand,@PathVariable("temperatur") int temperatur) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			service.save(new Wasserstand(stand));
+			this.temperatur = temperatur / 10;
 		}
 		return "";
 	}

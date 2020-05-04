@@ -22,78 +22,103 @@
 			</div>
 		</div>
 		<div class="container" id="tempcon">
-			<a>a</a>
+			<a th:text="${temperatur}"></a>
+		</div>
+		<div class="selectioncon">
+			<select onchange="chnggraph()" id="selcet">
+				<option value="lastsevendays" selected>Vergangenen 7 Tage</option>
+				<option value="today">Heute</option>
+				<option value="month">Letzter Monat</option>
+			</select>
 		</div>
 		<div class="container" id="graphcon">
 		
 		</div>
 		
 		<script th:inline="javascript">
+			
 			var chart = anychart.area();
-		
-			anychart.onDocumentReady(tagesdurchschnitt());
+			anychart.onDocumentReady(lastsevendays());
 			
-			function tagesdurchschnitt() {
-					
-					var dbdata = [];
-					
-					$.ajax({
-						type: "POST",
-						contentType: "application/json",
-						url: "/tagesdurchschnitt",
-						cache: false,
-						timeout: 60000,
-						success: function(data) {
-							fortfahren(data);
-						},
-						error: function(){
-							alert("DATENFEHLER");
-						}
-					});
+			function chnggraph(){
+				var input = document.getElementById('select').value;
+				switch (input){
+				case "lastsevendays":
+					lastsevendays();
+					break;
+				case "today":
+					today();
+					break;
+				}
+			}
+			
+			function lastsevendays()) {
+				$.ajax({
+					type: "GET",
+					url: "/tagesdurchschnitt",
+					cache: false,
+					timeout: 60000,
+					success: function(dbdata) {
+						chart.dispose();
+						chart = anychart.area();
+						
+						var entries = [];
+						var entry = [];
+						
+						dbdata.forEach(function(item){
+							entry = [];
+							var date;
+							
+							date = item.day + "." + item.month + "." + item.year;
+							
+							entry.push(date);
+							entry.push(item.wasserstand);
+							
+							entries.push(entry);
+						})
+						
+						
+						
+					  	var series = chart.area(entries);
+
+						chart.background().fill("none"); 
+					    chart.container('container');
+					  	chart.xScale().mode('continuous');   
+						
+						series.normal().fill("#bbddff");
+						series.normal().stroke("#FFFFFF", 3);
+						series.name("Wasserstand");
+						
+						var title = chart.title();
+						title.enabled(true);
+						title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year + " - " + dbdata[dbdata.length-1].day + "." + dbdata[dbdata.length-1].month + "." + dbdata[dbdata.length-1].year);
+						
+						title.fontSize("25");
+
+						chart.container("graphcon");
+						chart.draw();
+					},
+					error: function(){
+						alert("DATENFEHLER");
+					}
+				});
 			};
 			
-			function fortfahren(dbdata){		
-				
-					chart.dispose();
-					chart = anychart.area();
-					
-					var entries = [];
-					var entry = [];
-					
-					dbdata.forEach(function(item){
-						entry = [];
-						var date;
+			function today(){
+				$.ajax({
+					type: "GET",
+					url: "/today",
+					cache: false,
+					timeout: 60000,
+					success: function(dbdata) {
 						
-						date = item.day + "." + item.month + "." + item.year;
-						
-						entry.push(date);
-						entry.push(item.wasserstand);
-						
-						entries.push(entry);
-					})
-					
-					debugger;
-					
-				  	var series = chart.area(entries);
-
-					chart.background().fill("none"); 
-				    chart.container('container');
-				  	chart.xScale().mode('continuous');   
-					
-					series.normal().fill("#bbddff");
-					series.normal().stroke("#FFFFFF", 3);
-					series.name("Wasserstand");
-					
-					var title = chart.title();
-					title.enabled(true);
-					title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year + " - " + dbdata[dbdata.length-1].day + "." + dbdata[dbdata.length-1].month + "." + dbdata[dbdata.length-1].year);
-					
-					title.fontSize("25");
-
-					chart.container("graphcon");
-					chart.draw();
-					
-			};
+					},
+					error: function(){
+						alert("DATENFEHLER");
+					}
+				})
+			}
+			
 		</script>
 	</body>
 </html>
