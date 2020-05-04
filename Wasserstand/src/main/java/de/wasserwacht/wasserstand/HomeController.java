@@ -26,7 +26,6 @@ import de.wasserwacht.wasserstand.Service.LastsevendaysService;
 import de.wasserwacht.wasserstand.Service.MonatsdurchschnittService;
 import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
-import de.wasserwacht.wasserstand.schedule.ScheduledTasks;
 
 
 @Controller
@@ -34,9 +33,6 @@ public class HomeController {
 	
 	@Autowired
 	private WasserstandService service;
-	
-	@Autowired
-	private ScheduledTasks task;
 	
 	
 	

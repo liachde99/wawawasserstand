@@ -52,43 +52,6 @@ public class ScheduledTasks {
 		monatsdurchschnitt();
 	}
 	
-	public void force() {
-		int durchschnitt = 0;
-		date =  LocalDateTime.now(ZoneId.of("CET"));
-		do {
-			staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
-			
-			if(!staende.isEmpty()) {
-				for (Wasserstand wasserstand : staende) {
-					durchschnitt += wasserstand.getWasserstand();
-				}
-				
-				tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
-			}
-			date.minus(1, ChronoUnit.DAYS);
-		}while(!staende.isEmpty());
-		
-		
-		
-		lastsevendays();
-		
-		durchschnitt = 0;
-		date =  LocalDateTime.now(ZoneId.of("CET"));
-		
-		do {
-			
-			tagesdurchschnitte = tdservice.findByMonthAndYear(date.getMonthValue(), date.getYear());
-			if(tagesdurchschnitte.size()!=0) {
-				for (Tagesdurchschnitt tagesdurchschnitt : tagesdurchschnitte) {
-					durchschnitt += tagesdurchschnitt.getWasserstand();
-				}
-				
-				mdservice.save(new Monatsdurchschnitt(durchschnitt,date.getMonthValue(),date.getYear()));
-			}
-			date.minus(1, ChronoUnit.DAYS);
-		}while(!tagesdurchschnitte.isEmpty());
-	}
-	
 	public void lastsevendays() {
 		lsdService.truncate();
 		for(int i=1;i<=7;i++) {
