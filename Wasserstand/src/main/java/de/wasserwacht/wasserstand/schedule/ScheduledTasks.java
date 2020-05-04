@@ -53,12 +53,14 @@ public class ScheduledTasks {
 		int durchschnitt = 0;
 		
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
-		tagesdurchschnitte = tdservice.findByMonthAndYear(date.getMonthValue(), date.getYear());
-		
-		for (Tagesdurchschnitt tagesdurchschnitt : tagesdurchschnitte) {
-			durchschnitt += tagesdurchschnitt.getWasserstand();
+			tagesdurchschnitte = tdservice.findByMonthAndYear(date.getMonthValue(), date.getYear());
+			
+			if(tagesdurchschnitte.size()!=0) {
+			for (Tagesdurchschnitt tagesdurchschnitt : tagesdurchschnitte) {
+				durchschnitt += tagesdurchschnitt.getWasserstand();
+			}
+			
+			mdservice.save(new Monatsdurchschnitt(durchschnitt,date.getMonthValue(),date.getYear()));
 		}
-		
-		mdservice.save(new Monatsdurchschnitt(durchschnitt,date.getMonthValue(),date.getYear()));
 	}
 }
