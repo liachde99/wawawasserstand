@@ -21,12 +21,6 @@
 				<a id="timestamp" th:text="${timestamp}"></a>
 			</div>
 		</div>
-		<select onchange="drawchart()" id="selectchart">
-			<option value="today" selected>Tagesdiagramm</option>
-			<option value="week">Wochendiagramm</option>
-			<option value="month">Monatsdiagramm</option>
-			<option value="year">Jahresdiagramm</option>
-		</select>
 		<div class="container" id="graphcon">
 			
 		</div>
@@ -34,13 +28,11 @@
 		
 		<script th:inline="javascript">
 			var chart = anychart.area();
-			var input;
 		
 			anychart.onDocumentReady(drawchart());
 			
 			function drawchart() {
 					debugger;
-					input = document.getElementById('selectchart').value;
 					
 					var dbdata = [];
 
@@ -56,8 +48,8 @@
 						dataType: 'json',
 						cache: false,
 						timeout: 60000,
-						success: function(data, input) {
-							fortfahren(data, input);
+						success: function(data) {
+							fortfahren(data);
 						},
 						error: function(){
 							alert("DATENFEHLER");
@@ -78,14 +70,7 @@
 						entry = [];
 						var date;
 						
-						if(input=="today"){
-							date = item.hour + ":" + item.min;
-						}
-						else if(input=="week"||input=="month"){
-							date = item.day + "." + item.month + "." + item.year;
-						}else{
-							date = item.month;
-						}
+						date = item.hour + ":" + item.min;
 						
 						entry.push(date);
 						entry.push(item.wasserstand);
@@ -105,52 +90,8 @@
 					
 					var title = chart.title();
 					title.enabled(true);
-					if(input=="today"){
-						title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
-					}else if(input=="week"){
-						title.text("Week: " + dbdata[0].week);
-					}else if(input=="month"){
-						switch(dbdata[0].month){
-						case 1:
-							title.text("Januar");
-							break;
-						case 2:
-							title.text("Februar");
-							break;
-						case 3:
-							title.text("März");
-							break;
-						case 4:
-							title.text("April");
-							break;
-						case 5:
-							title.text("Mai");
-							break;
-						case 6:
-							title.text("Juni");
-							break;
-						case 7:
-							title.text("Juli");
-							break;
-						case 8:
-							title.text("August");
-							break;
-						case 9:
-							title.text("September");
-							break;
-						case 10:
-							title.text("Oktober");
-							break;
-						case 11:
-							title.text("November");
-							break;
-						case 12:
-							title.text("Dezember");
-							break;
-						}
-					}else{
-						title.text(dbdata[0].year);
-					}
+					title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
+					
 					title.fontSize("25");
 
 					chart.container("graphcon");

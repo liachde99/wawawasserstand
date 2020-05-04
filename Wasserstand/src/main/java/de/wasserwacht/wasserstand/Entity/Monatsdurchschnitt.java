@@ -12,8 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "wasserstand")
-public class Wasserstand {
+@Table(name = "monatsdurchschnitt")
+public class Monatsdurchschnitt {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,56 +23,32 @@ public class Wasserstand {
 	@NotNull
 	@Column(name = "wasserstand", nullable = false)
 	private int wasserstand;
-	
-	@Column(name ="day")
-	private int day;
-	 
+
 	@Column(name="month")
 	private int month;
 	
 	@Column(name="year")
 	private int year;
-
-	@Column(name="hour")
-	private int hour;
 	
-	@Column(name="min")
-	private int min;
+	public Monatsdurchschnitt() {};
 	
-	
-	public Wasserstand() {};
-	
-	public Wasserstand(int stand) {
+	public Monatsdurchschnitt(int stand) {
 		this.wasserstand = stand;
 		
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
 		
-		this.day = date.getDayOfMonth();
 		this.month = date.getMonthValue();
 		this.year = date.getYear();
-		this.hour = date.getHour();
-		this.min = date.getMinute();
 		
 	}
 	
-	public Wasserstand(int stand, int day, int month, int year, int hour, int min) {
-		this.day = day;
-		this.hour = hour;
-		this.min = min;
+	public Monatsdurchschnitt(int stand, int month, int year) {
 		this.month = month;
 		this.year = year;
 		this.wasserstand = stand;
 	}
 	
 	public int getWasserstand() {return wasserstand;}
-	public int getDay() {return day;}
-	public int getHour() {return hour;}
-	public int getMin() {return min;}
 	public int getMonth() {return month;}
 	public int getYear() {return year;}
-	
-	public String stamp() {
-		return getDay() + "." + getMonth() + " - " + getHour() + ":" + getMin();
-	}
-	
 }

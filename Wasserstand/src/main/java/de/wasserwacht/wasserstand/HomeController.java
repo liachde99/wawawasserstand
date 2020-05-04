@@ -55,20 +55,7 @@ public class HomeController {
 		String searched = on.get("searched").asText();
 		List<Wasserstand> wsl = new ArrayList<>();
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
-		
-		switch(searched) {
-		case "week":
-			wsl = service.findByWeek(date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR));
-			break;
-		case "year":
-			wsl = service.findByYear(date.getYear());
-			break;
-		case "month":
-			wsl = service.findByMonthAndYear(date.getMonthValue(), date.getYear());
-			break;
-		default:
-			wsl = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
-		}
+		wsl = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 		
 		return wsl;
 	}
