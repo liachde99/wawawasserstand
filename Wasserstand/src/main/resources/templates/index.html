@@ -155,7 +155,18 @@
 							entry = [];
 							var time;
 							
-							time = item.hour + ":" + item.min;
+							if(item.hour>10){
+								var hour = item.hour;
+							}else{
+								var hour = "0" + item.hour;
+							}
+							if(item.min>10){
+								var min = item.min;
+							}else{
+								var min = "0" + item.min;
+							}
+							
+							time = hour + ":" + item;
 							
 							entry.push(time);
 							entry.push(item.wasserstand);
@@ -177,7 +188,19 @@
 						
 						var title = chart.title();
 						title.enabled(true);
-						title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year + " - " + dbdata[dbdata.length-1].day + "." + dbdata[dbdata.length-1].month + "." + dbdata[dbdata.length-1].year);
+						
+						if(dbdata[0].month>10){
+							var month = dbdata[0].month;
+						}else{
+							var month = "0" + dbdata[0].month;
+						}
+						if(dbdata[0].day>10){
+							var day = dbdata[0].day;
+						}else{
+							var day = "0" + dbdata[0].day;
+						}
+						
+						title.text(day + "." + .month + "." + dbdata[0].year);
 						
 						title.fontSize("25");
 
