@@ -110,9 +110,12 @@ public class HomeController {
 		do {
 			staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 			if(!staende.isEmpty()) {
+				int counter = 0;
 				for (Wasserstand wasserstand : staende) {
 					durchschnitt += wasserstand.getWasserstand();
+					counter++;
 				}
+				durchschnitt = durchschnitt/counter;
 				tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 			}
 			date = date.minus(1, ChronoUnit.DAYS);
