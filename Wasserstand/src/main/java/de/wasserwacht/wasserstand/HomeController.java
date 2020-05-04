@@ -106,7 +106,7 @@ public class HomeController {
 		LocalDateTime date;
 
 		int durchschnitt = 0;
-		date =  LocalDateTime.now(ZoneId.of("CET"));
+		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
 		do {
 			staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 			
