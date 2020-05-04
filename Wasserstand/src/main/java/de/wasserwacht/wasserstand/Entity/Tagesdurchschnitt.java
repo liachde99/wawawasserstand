@@ -60,6 +60,7 @@ public class Tagesdurchschnitt {
 		this.wasserstand = stand;
 	}
 	
+	public Long getId() {return id;}
 	public int getWasserstand() {return wasserstand;}
 	public int getDay() {return day;}
 	public int getWeek() {return week;}

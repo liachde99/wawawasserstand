@@ -1,6 +1,5 @@
 package de.wasserwacht.wasserstand.Repository;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +12,7 @@ public interface TagesdurchschnittRepo extends CrudRepository<Tagesdurchschnitt,
 	Optional<Tagesdurchschnitt> findById(Long id);
 	List<Tagesdurchschnitt> findByMonthAndYear(int month,int year);
 	List<Tagesdurchschnitt> findByWeek(int week);
-	List<Tagesdurchschnitt> findByDayInAndMonthAndYear(Collection<Integer> days, int month, int year);
+	Tagesdurchschnitt findByDayAndMonthAndYear(int day, int month, int year);
 	
 	<S extends Tagesdurchschnitt> S save(S wasserstand);
 	

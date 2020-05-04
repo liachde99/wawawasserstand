@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import de.wasserwacht.wasserstand.Entity.Lastsevendays;
 import de.wasserwacht.wasserstand.Entity.Monatsdurchschnitt;
 import de.wasserwacht.wasserstand.Entity.Tagesdurchschnitt;
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
@@ -53,6 +54,14 @@ public class ScheduledTasks {
 			tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 		}
 		
+		lsdService.truncate();
+		for(int i=1;i<=7;i++) {
+			date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
+			Tagesdurchschnitt td = tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(),date.getMonthValue(),date.getYear());
+			if(td!=null) {
+				lsdService.save(new Lastsevendays(td.getId()));
+			}
+		}
 		
 	}
 	
@@ -61,9 +70,9 @@ public class ScheduledTasks {
 		int durchschnitt = 0;
 		
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
-			tagesdurchschnitte = tdservice.findByMonthAndYear(date.getMonthValue(), date.getYear());
-			
-			if(tagesdurchschnitte.size()!=0) {
+		tagesdurchschnitte = tdservice.findByMonthAndYear(date.getMonthValue(), date.getYear());
+		
+		if(tagesdurchschnitte.size()!=0) {
 			for (Tagesdurchschnitt tagesdurchschnitt : tagesdurchschnitte) {
 				durchschnitt += tagesdurchschnitt.getWasserstand();
 			}

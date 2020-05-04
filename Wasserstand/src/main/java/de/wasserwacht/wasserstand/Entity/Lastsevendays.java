@@ -19,14 +19,14 @@ public class Lastsevendays {
 	
 	@NotNull
 	@Column(name = "tageswasserstand_id", nullable = false)
-	private int tageswasserstand_id;
+	private Long tageswasserstand_id;
 	
 	
 	public Lastsevendays() {};
 	
-	public Lastsevendays(int id) {
+	public Lastsevendays(Long id) {
 		this.tageswasserstand_id = id;
 	}
 	
-	public int getTagesWasserstanId() {return tageswasserstand_id;}
+	public Long getTagesWasserstanId() {return tageswasserstand_id;}
 }

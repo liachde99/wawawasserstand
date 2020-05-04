@@ -29,6 +29,10 @@ public class TagesdurchschnittService {
 		return repo.findByWeek(week);
 	}
 	
+	public Tagesdurchschnitt findByDayAndMonthAndYear(int day, int month, int year){
+		return repo.findByDayAndMonthAndYear(day, month, year);
+	}
+	
 	public <S extends Tagesdurchschnitt> S save(S tagesdurchschnitt) {
 		return repo.save(tagesdurchschnitt);
 	}
