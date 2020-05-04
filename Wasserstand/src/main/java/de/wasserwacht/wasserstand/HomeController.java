@@ -115,7 +115,8 @@ public class HomeController {
 					durchschnitt += wasserstand.getWasserstand();
 				}
 				System.out.println(durchschnitt + ": " + date.getDayOfMonth());
-				tdservice.save(new Tagesdurchschnitt(durchschnitt));
+				Tagesdurchschnitt td = new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR));
+				tdservice.save(td);
 			}
 			date.minus(1, ChronoUnit.DAYS);
 		}while(!staende.isEmpty());
