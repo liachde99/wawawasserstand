@@ -2,6 +2,7 @@ package de.wasserwacht.wasserstand;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.IsoFields;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import de.wasserwacht.wasserstand.Entity.Lastsevendays;
+import de.wasserwacht.wasserstand.Entity.Monatsdurchschnitt;
+import de.wasserwacht.wasserstand.Entity.Tagesdurchschnitt;
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
+import de.wasserwacht.wasserstand.Service.LastsevendaysService;
+import de.wasserwacht.wasserstand.Service.MonatsdurchschnittService;
+import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
 import de.wasserwacht.wasserstand.schedule.ScheduledTasks;
 
@@ -30,6 +37,23 @@ public class HomeController {
 	
 	@Autowired
 	private ScheduledTasks task;
+	
+	
+	
+	@Autowired
+	private TagesdurchschnittService tdservice;
+	
+	@Autowired
+	private MonatsdurchschnittService mdservice;
+	
+	@Autowired
+	private LastsevendaysService lsdService;
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -73,7 +97,56 @@ public class HomeController {
 	}
 	
 	@GetMapping("/force")
-	public void force(){
-		task.force();
+	public String forceing(){
+		force();
+		return "";
+	}
+	
+	public void force() {
+		List<Wasserstand> staende = new ArrayList<>();
+		List<Tagesdurchschnitt> tagesdurchschnitte = new ArrayList<>();
+		LocalDateTime date;
+
+		int durchschnitt = 0;
+		date =  LocalDateTime.now(ZoneId.of("CET"));
+		do {
+			staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
+			
+			if(!staende.isEmpty()) {
+				for (Wasserstand wasserstand : staende) {
+					durchschnitt += wasserstand.getWasserstand();
+				}
+				
+				tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
+			}
+			date.minus(1, ChronoUnit.DAYS);
+		}while(!staende.isEmpty());
+		
+		
+		
+		lsdService.truncate();
+		for(int i=1;i<=7;i++) {
+			date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
+			Tagesdurchschnitt td = tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(),date.getMonthValue(),date.getYear());
+			if(td!=null) {
+				lsdService.save(new Lastsevendays(td.getId()));
+			}
+		}
+		
+		durchschnitt = 0;
+		date =  LocalDateTime.now(ZoneId.of("CET"));
+		
+		do {
+			
+			tagesdurchschnitte = tdservice.findByMonthAndYear(date.getMonthValue(), date.getYear());
+			if(tagesdurchschnitte.size()!=0) {
+				for (Tagesdurchschnitt tagesdurchschnitt : tagesdurchschnitte) {
+					durchschnitt += tagesdurchschnitt.getWasserstand();
+				}
+				
+				mdservice.save(new Monatsdurchschnitt(durchschnitt,date.getMonthValue(),date.getYear()));
+			}
+			date.minus(1, ChronoUnit.DAYS);
+		}while(!tagesdurchschnitte.isEmpty());
 	}
 }
