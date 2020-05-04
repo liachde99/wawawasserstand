@@ -41,6 +41,7 @@ public class ScheduledTasks {
 	
 	@Scheduled(cron="0 1 * * * *")
 	public void tag() {
+		System.out.println("lastsevendays");
 		lastsevendays();
 	}
 	
