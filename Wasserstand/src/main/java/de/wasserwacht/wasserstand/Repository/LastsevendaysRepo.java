@@ -6,13 +6,12 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 import de.wasserwacht.wasserstand.Entity.Lastsevendays;
-import de.wasserwacht.wasserstand.Entity.Monatsdurchschnitt;
 
 public interface LastsevendaysRepo extends CrudRepository<Lastsevendays, Long> {
 	
 	Optional<Lastsevendays> findById(Long id);
 	List<Lastsevendays> findByTageswasserstandid(Long id);
-	void truncateLastsevendays();
+	void deleteAll();
 	
 	<S extends Lastsevendays> S save(S lastsevendays);
 	

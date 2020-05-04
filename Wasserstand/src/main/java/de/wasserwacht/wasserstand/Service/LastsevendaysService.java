@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import de.wasserwacht.wasserstand.Entity.Lastsevendays;
-import de.wasserwacht.wasserstand.Entity.Monatsdurchschnitt;
 import de.wasserwacht.wasserstand.Repository.LastsevendaysRepo;
 
 @Service
@@ -31,7 +30,7 @@ public class LastsevendaysService {
 	}
 	
 	public void truncate() {
-		repo.truncateLastsevendays();
+		repo.deleteAll();
 	}
 
 }
