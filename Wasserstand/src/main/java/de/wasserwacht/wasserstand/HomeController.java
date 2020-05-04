@@ -33,24 +33,7 @@ public class HomeController {
 	
 	@Autowired
 	private WasserstandService service;
-	
-	
-	
-	@Autowired
-	private TagesdurchschnittService tdservice;
-	
-	@Autowired
-	private MonatsdurchschnittService mdservice;
-	
-	@Autowired
-	private LastsevendaysService lsdService;
-	
-	
-	
-	
-	
-	
-	
+
 	@GetMapping("/")
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("index.html");
@@ -91,68 +74,4 @@ public class HomeController {
 		}
 		return "";
 	}
-	
-	@GetMapping("/force")
-	public String forcing(){
-		System.out.println("forcing");
-		force();
-		return "index2.html";
-	}
-	
-	public void force() {
-		System.out.println("force");
-		List<Wasserstand> staende = new ArrayList<>();
-		List<Tagesdurchschnitt> tagesdurchschnitte = new ArrayList<>();
-		LocalDateTime date;
-
-		int durchschnitt = 0;
-		int counter2 = 2;
-		date = LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
-		do {
-			staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
-			if(!staende.isEmpty()) {
-				int counter = 0;
-				for (Wasserstand wasserstand : staende) {
-					durchschnitt += wasserstand.getWasserstand();
-					counter++;
-				}
-				durchschnitt = durchschnitt/counter;
-				tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
-			}
-			date = LocalDateTime.now(ZoneId.of("CET")).minus(counter2, ChronoUnit.DAYS);
-			counter2++;
-			durchschnitt = 0;
-		}while(!staende.isEmpty());
-		
-		
-		/*
-		lsdService.truncate();
-		for(int i=1;i<=7;i++) {
-			date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
-			Tagesdurchschnitt td = tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(),date.getMonthValue(),date.getYear());
-			if(td!=null) {
-
-				System.out.println(td.getId());
-				lsdService.save(new Lastsevendays(td.getId()));
-			}
-		}
-		
-		durchschnitt = 0;
-		date =  LocalDateTime.now(ZoneId.of("CET"));
-		
-		do {
-			
-			tagesdurchschnitte = tdservice.findByMonthAndYear(date.getMonthValue(), date.getYear());
-			if(tagesdurchschnitte.size()!=0) {
-				for (Tagesdurchschnitt tagesdurchschnitt : tagesdurchschnitte) {
-					durchschnitt += tagesdurchschnitt.getWasserstand();
-				}
-				System.out.println(durchschnitt + ": " + date.getMonthValue());
-				mdservice.save(new Monatsdurchschnitt(durchschnitt,date.getMonthValue(),date.getYear()));
-			}
-			date.minus(1, ChronoUnit.DAYS);
-		}while(!tagesdurchschnitte.isEmpty());
-		*/
-	}
-	
 }

@@ -54,7 +54,7 @@ public class ScheduledTasks {
 	
 	public void lastsevendays() {
 		lsdService.truncate();
-		for(int i=1;i<=7;i++) {
+		for(int i=7;i<=1;i++) {
 			date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
 			Tagesdurchschnitt td = tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(),date.getMonthValue(),date.getYear());
 			if(td!=null) {
