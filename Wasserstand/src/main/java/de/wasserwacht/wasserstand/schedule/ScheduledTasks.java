@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import de.wasserwacht.wasserstand.Entity.Monatsdurchschnitt;
 import de.wasserwacht.wasserstand.Entity.Tagesdurchschnitt;
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
+import de.wasserwacht.wasserstand.Service.LastsevendaysService;
 import de.wasserwacht.wasserstand.Service.MonatsdurchschnittService;
 import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
@@ -34,6 +35,9 @@ public class ScheduledTasks {
 	@Autowired
 	private MonatsdurchschnittService mdservice;
 	
+	@Autowired
+	private LastsevendaysService lsdService;
+	
 	@Scheduled(cron="0 0 0 * * *")
 	public void daily() {
 		int durchschnitt = 0;
@@ -48,6 +52,8 @@ public class ScheduledTasks {
 			
 			tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 		}
+		
+		
 	}
 	
 	@Scheduled(cron="0 0 0 1 * *")
