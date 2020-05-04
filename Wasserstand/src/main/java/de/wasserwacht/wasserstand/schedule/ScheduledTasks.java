@@ -34,7 +34,7 @@ public class ScheduledTasks {
 	@Autowired
 	private MonatsdurchschnittService mdservice;
 	
-	@Scheduled(cron="0 0 * * *")
+	@Scheduled(cron="0 0 0 * * *")
 	public void daily() {
 		int durchschnitt = 0;
 		
@@ -48,7 +48,7 @@ public class ScheduledTasks {
 		tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 	}
 	
-	@Scheduled(cron="0 0 1 * *")
+	@Scheduled(cron="0 0 0 1 * *")
 	public void monthly() {
 		int durchschnitt = 0;
 		
