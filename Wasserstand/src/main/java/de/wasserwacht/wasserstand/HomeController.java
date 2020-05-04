@@ -114,7 +114,7 @@ public class HomeController {
 				for (Wasserstand wasserstand : staende) {
 					durchschnitt += wasserstand.getWasserstand();
 				}
-				
+				System.out.println(durchschnitt + ": " + date.getDayOfMonth());
 				tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 			}
 			date.minus(1, ChronoUnit.DAYS);
@@ -127,6 +127,8 @@ public class HomeController {
 			date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
 			Tagesdurchschnitt td = tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(),date.getMonthValue(),date.getYear());
 			if(td!=null) {
+
+				System.out.println(td.getId());
 				lsdService.save(new Lastsevendays(td.getId()));
 			}
 		}
@@ -141,7 +143,7 @@ public class HomeController {
 				for (Tagesdurchschnitt tagesdurchschnitt : tagesdurchschnitte) {
 					durchschnitt += tagesdurchschnitt.getWasserstand();
 				}
-				
+				System.out.println(durchschnitt + ": " + date.getMonthValue());
 				mdservice.save(new Monatsdurchschnitt(durchschnitt,date.getMonthValue(),date.getYear()));
 			}
 			date.minus(1, ChronoUnit.DAYS);
