@@ -18,11 +18,11 @@ public class LastsevendaysService {
 		this.repo = repo;
 	}
 	
-	public Optional<Monatsdurchschnitt> findById(Long id){
+	public Optional<Lastsevendays> findById(Long id){
 		return repo.findById(id);
 	}
 	
-	public List<Monatsdurchschnitt> findByTageswasserstand_id(Long tageswasserstand_id){
+	public List<Lastsevendays> findByTageswasserstand_id(Long tageswasserstand_id){
 		return repo.findByTageswasserstand_id(tageswasserstand_id);
 	}
 	

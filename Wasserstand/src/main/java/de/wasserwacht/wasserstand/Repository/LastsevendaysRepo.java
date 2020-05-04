@@ -8,10 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import de.wasserwacht.wasserstand.Entity.Lastsevendays;
 import de.wasserwacht.wasserstand.Entity.Monatsdurchschnitt;
 
-public interface LastsevendaysRepo extends CrudRepository<Monatsdurchschnitt, Long> {
+public interface LastsevendaysRepo extends CrudRepository<Lastsevendays, Long> {
 	
-	Optional<Monatsdurchschnitt> findById(Long id);
-	List<Monatsdurchschnitt> findByTageswasserstand_id(Long id);
+	Optional<Lastsevendays> findById(Long id);
+	List<Lastsevendays> findByTageswasserstand_id(Long id);
 	void truncateLastsevendays();
 	
 	<S extends Lastsevendays> S save(S lastsevendays);
