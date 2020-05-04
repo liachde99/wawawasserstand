@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 public class Tagesdurchschnitt {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 	
