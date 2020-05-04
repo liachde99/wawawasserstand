@@ -92,7 +92,7 @@ public class Wasserstand {
 			hour = getHour() + "";
 		}
 		
-		if(getDay()<10) {
+		if(getMin()<10) {
 			min = "0" + getMin();
 		}else {
 			min = getMin() + "";
