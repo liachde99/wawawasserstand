@@ -39,6 +39,11 @@ public class ScheduledTasks {
 	@Autowired
 	private LastsevendaysService lsdService;
 	
+	@Scheduled(cron="0 1 * * * *")
+	public void tag() {
+		lastsevendays();
+	}
+	
 	@Scheduled(cron="0 0 0 * * *")
 	public void daily() {
 		tagesdurchschnitt();
