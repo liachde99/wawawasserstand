@@ -1,7 +1,6 @@
 package de.wasserwacht.wasserstand.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,7 @@ public class TagesdurchschnittService {
 		this.repo = repo;
 	}
 	
-	public Optional<Tagesdurchschnitt> findById(Long id){
+	public Tagesdurchschnitt findById(Long id){
 		return repo.findById(id);
 	}
 	

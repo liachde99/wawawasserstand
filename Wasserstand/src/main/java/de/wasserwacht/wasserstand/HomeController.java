@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.wasserwacht.wasserstand.Entity.Lastsevendays;
+import de.wasserwacht.wasserstand.Entity.Tagesdurchschnitt;
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
 import de.wasserwacht.wasserstand.Service.LastsevendaysService;
+import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
 
 
@@ -28,6 +30,9 @@ public class HomeController {
 	
 	@Autowired
 	private LastsevendaysService lastsevendaysService;
+	
+	@Autowired
+	private TagesdurchschnittService tagesdurchschnittService;
 
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -53,9 +58,13 @@ public class HomeController {
 	
 	@PostMapping("/chart")
 	@ResponseBody
-	public List<Lastsevendays> getchartdata(){
-		List<Lastsevendays> wsl = new ArrayList<>();
-		wsl = lastsevendaysService.findAll();
+	public List<Tagesdurchschnitt> getchartdata(){
+		List<Lastsevendays> lsd = new ArrayList<>();
+		List<Tagesdurchschnitt> wsl = new ArrayList<>();
+		lsd = lastsevendaysService.findAll();
+		for (Lastsevendays lastsevendays : lsd) {
+			wsl.add(tagesdurchschnittService.findById(lastsevendays.getTagesWasserstanId()));
+		}
 		
 		return wsl;
 	}

@@ -1,15 +1,14 @@
 package de.wasserwacht.wasserstand.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.Repository;
 
 import de.wasserwacht.wasserstand.Entity.Tagesdurchschnitt;
 
-public interface TagesdurchschnittRepo extends CrudRepository<Tagesdurchschnitt, Long> {
+public interface TagesdurchschnittRepo extends Repository<Tagesdurchschnitt, Long> {
 	
-	Optional<Tagesdurchschnitt> findById(Long id);
+	Tagesdurchschnitt findById(Long id);
 	List<Tagesdurchschnitt> findByMonthAndYear(int month,int year);
 	List<Tagesdurchschnitt> findByWeek(int week);
 	Tagesdurchschnitt findByDayAndMonthAndYear(int day, int month, int year);
