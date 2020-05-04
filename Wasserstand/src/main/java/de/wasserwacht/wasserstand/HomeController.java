@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import de.wasserwacht.wasserstand.Entity.Wasserstand;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
+import de.wasserwacht.wasserstand.schedule.ScheduledTasks;
 
 
 @Controller
@@ -26,6 +27,9 @@ public class HomeController {
 	
 	@Autowired
 	private WasserstandService service;
+	
+	@Autowired
+	private ScheduledTasks task;
 	
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -66,5 +70,10 @@ public class HomeController {
 			service.save(new Wasserstand(stand));
 		}
 		return "";
+	}
+	
+	@GetMapping("/force")
+	public void force(){
+		task.force();
 	}
 }
