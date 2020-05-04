@@ -109,9 +109,9 @@ public class HomeController {
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
 		do {
 			staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
-			
 			if(!staende.isEmpty()) {
 				for (Wasserstand wasserstand : staende) {
+					System.out.println(wasserstand.getWasserstand());
 					durchschnitt += wasserstand.getWasserstand();
 				}
 				System.out.println(durchschnitt + ": " + date.getDayOfMonth());
