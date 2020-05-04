@@ -23,7 +23,7 @@ public class LastsevendaysService {
 	}
 	
 	public List<Lastsevendays> findByTageswasserstand_id(Long tageswasserstand_id){
-		return repo.findByTageswasserstand_id(tageswasserstand_id);
+		return repo.findByTageswasserstandid(tageswasserstand_id);
 	}
 	
 	public <S extends Lastsevendays> S save(S lastsevendays) {
