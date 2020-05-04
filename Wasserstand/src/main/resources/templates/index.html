@@ -69,7 +69,18 @@
 							entry = [];
 							var date;
 							
-							date = item.day + "." + item.month + "." + item.year;
+							if(item.month>10){
+								var month = item.month;
+							}else{
+								var month = "0" + item.month;
+							}
+							if(item.day>10){
+								var day = item.day;
+							}else{
+								var day = "0" + item.day;
+							}
+							
+							date = day + "." + month + "." + item.year;
 							
 							entry.push(date);
 							entry.push(item.wasserstand);
@@ -91,7 +102,30 @@
 						
 						var title = chart.title();
 						title.enabled(true);
-						title.text(dbdata[0].day + "." + dbdata[0].month + "." + dbdata[0].year);
+						
+						if(dbdata[0].month>10){
+							var month = dbdata[0].month;
+						}else{
+							var month = "0" + dbdata[0].month;
+						}
+						if(dbdata[0].day>10){
+							var day = dbdata[0].day;
+						}else{
+							var day = "0" + dbdata[0].day;
+						}
+						
+						if(dbdata[dbdata.length-1].month>10){
+							var monthb = dbdata[dbdata.length-1].month;
+						}else{
+							var monthb = "0" + dbdata[dbdata.length-1].month;
+						}
+						if(dbdata[dbdata.length-1].day>10){
+							var dayb = dbdata[dbdata.length-1].day;
+						}else{
+							var dayb = "0" + dbdata[dbdata.length-1].day;
+						}
+						
+						title.text(day + "." + month + "." + dbdata[0].year + " - " + dayb + "." + monthb + "." + dbdata[dbdata.length-1].year);
 						
 						title.fontSize("25");
 
