@@ -39,12 +39,6 @@ public class ScheduledTasks {
 	@Autowired
 	private LastsevendaysService lsdService;
 	
-	@Scheduled(cron="0 * * * * *")
-	public void tag() {
-		System.out.println("lastsevendays");
-		lastsevendays();
-	}
-	
 	@Scheduled(cron="0 0 0 * * *")
 	public void daily() {
 		tagesdurchschnitt();
@@ -65,9 +59,7 @@ public class ScheduledTasks {
 		for(int i=7;i>=1;i--) {
 			date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
 			Tagesdurchschnitt td = tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(),date.getMonthValue(),date.getYear());
-			System.out.println(date.getDayOfMonth() + "," + date.getMonthValue() + "," + date.getYear());
 			if(td!=null) {
-				System.out.println(td.getWasserstand());
 				lsdService.save(new Lastsevendays(td.getId()));
 			}
 		}
