@@ -96,7 +96,7 @@ public class HomeController {
 	public String forcing(){
 		System.out.println("forcing");
 		force();
-		return "";
+		return "index2.html";
 	}
 	
 	public void force() {
