@@ -84,7 +84,7 @@ public class HomeController {
 		return wsl;
 	}
 	
-	@GetMapping("/{passwort}/{stand}")
+	@GetMapping("/{passwort}/{stand}/{temperatur}")
 	public String sendwasserstand(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			service.save(new Wasserstand(stand));
@@ -106,7 +106,8 @@ public class HomeController {
 		LocalDateTime date;
 
 		int durchschnitt = 0;
-		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
+		int counter2 = 2;
+		date = LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
 		do {
 			staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 			if(!staende.isEmpty()) {
@@ -118,7 +119,8 @@ public class HomeController {
 				durchschnitt = durchschnitt/counter;
 				tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 			}
-			date = date.minus(1, ChronoUnit.DAYS);
+			date = LocalDateTime.now(ZoneId.of("CET")).minus(counter2, ChronoUnit.DAYS);
+			counter2++;
 			durchschnitt = 0;
 		}while(!staende.isEmpty());
 		
