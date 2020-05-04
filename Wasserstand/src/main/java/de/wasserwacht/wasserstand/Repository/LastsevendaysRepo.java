@@ -11,7 +11,7 @@ import de.wasserwacht.wasserstand.Entity.Monatsdurchschnitt;
 public interface LastsevendaysRepo extends CrudRepository<Monatsdurchschnitt, Long> {
 	
 	Optional<Monatsdurchschnitt> findById(Long id);
-	List<Monatsdurchschnitt> findByTageswasserstand_id(int id);
+	List<Monatsdurchschnitt> findByTageswasserstand_id(Long id);
 	void truncateLastsevendays();
 	
 	<S extends Lastsevendays> S save(S lastsevendays);

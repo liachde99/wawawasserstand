@@ -22,7 +22,7 @@ public class LastsevendaysService {
 		return repo.findById(id);
 	}
 	
-	public List<Monatsdurchschnitt> findByTageswasserstand_id(int tageswasserstand_id){
+	public List<Monatsdurchschnitt> findByTageswasserstand_id(Long tageswasserstand_id){
 		return repo.findByTageswasserstand_id(tageswasserstand_id);
 	}
 	
