@@ -1,5 +1,5 @@
 body{
-	background-color: #2F4F4F;
+	background-color: #011115;
 	height: 100%;
 	overflow: overlay;
 }
@@ -16,7 +16,7 @@ body{
 	height: 600px;
 	border-radius: 50%;
 	border: 3px solid #f4f0e5;
-	background-color: #2F4F4F;
+	background-color: #011115;
 }
 
 #tempcon{
@@ -28,7 +28,7 @@ body{
 	width: 600px;
 	border-radius: 50%;
 	border: 3px solid #f4f0e5;
-	background-color: #2F4F4F;
+	background-color: #011115;
 }
 .upper{
 	width: 100%;
