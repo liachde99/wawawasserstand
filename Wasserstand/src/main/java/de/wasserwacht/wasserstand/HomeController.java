@@ -72,7 +72,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/{passwort}/{stand}/{temperatur}")
-	public String sendwasserstandundtemperatur(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand,@PathVariable("temperatur") int temperatur) {
+	public String sendwasserstandundtemperatur(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand,@PathVariable("temperatur") double temperatur) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
 			service.save(new Wasserstand(stand));
 			this.temperatur = temperatur / 10;
