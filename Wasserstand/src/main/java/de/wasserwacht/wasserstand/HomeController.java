@@ -45,11 +45,12 @@ public class HomeController {
 		if(last!=null) {
 			mv.addObject("wasserstand", last.getWasserstand());
 			mv.addObject("temperatur", last.getTemperatur());
+			mv.addObject("timestamp", last.stamp());
 		}else {
 			mv.addObject("wasserstand", 0);
 			mv.addObject("temperatur", 0);
+			mv.addObject("timestamp", "none");
 		}
-		mv.addObject("timestamp", last.stamp());
 		
 		return mv;
 	}
