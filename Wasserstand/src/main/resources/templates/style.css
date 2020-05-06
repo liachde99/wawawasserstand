@@ -104,31 +104,31 @@ ul div{
 	width: 100%;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1600px) {
 	#value{font-size: 100px;}
 	#textbig{font-size: 50px;}
 	#textsmall{font-size: 20px;}
 	
 	#anzeigecon{
-		width: 300px;
-		height: 300px;
-		top: calc(50% - 150px);
+		width: 450px;
+		height: 450px;
+		top: calc(50% - 225px);
 	}
 	
 	#tempcon{
-		width: 300px;
-		height: 300px;
-		top: calc(50% - 150px);
+		width: 450px;
+		height: 450px;
+		top: calc(50% - 225px);
 	}
 	
 	.upper{
-		height: 150px;
-		border-radius: 150px 150px 0 0;
+		height: 225px;
+		border-radius: 225px 225px 0 0;
 	}
 	.lower{
-		height: 150px;
+		height: 225px;
 		line-height: 2;
-		border-radius: 0 0 150px 150px;
+		border-radius: 0 0 225px 225px;
 	}
 }
 
@@ -138,9 +138,22 @@ ul div{
 	#anzeigecon{
 		top: 5%;
 		left: calc(50% - 150px);
+		width: 300px;
+		height: 300px;
 	}
 	#tempcon{
 		top: 53%;
+		width: 300px;
+		height: 300px;
 		left: calc(50% - 150px);
+	}
+	.upper{
+		height: 150px;
+		border-radius: 150px 150px 0 0;
+	}
+	.lower{
+		height: 150px;
+		line-height: 2;
+		border-radius: 0 0 150px 150px;
 	}
 }
