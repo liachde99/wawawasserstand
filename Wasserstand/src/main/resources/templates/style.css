@@ -136,14 +136,11 @@ ul div{
 
 	
 	#anzeigecon{
-		top: calc(50% - 150px);
+		top: calc(50% - 250px);
 		left: calc(50% - 150px);
 	}
 	#tempcon{
-		top: calc(50% + 160px);
+		top: calc(50% + 60px);
 		left: calc(50% - 150px);
-	}
-	#graphcon{
-		top: 100%;
 	}
 }
