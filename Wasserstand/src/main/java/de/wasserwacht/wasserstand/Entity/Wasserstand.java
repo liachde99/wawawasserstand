@@ -24,6 +24,10 @@ public class Wasserstand {
 	@Column(name = "wasserstand", nullable = false)
 	private int wasserstand;
 	
+	@NotNull
+	@Column(name = "temperatur", nullable = false)
+	private double temperatur;
+	
 	@Column(name ="day")
 	private int day;
 	 
@@ -42,8 +46,9 @@ public class Wasserstand {
 	
 	public Wasserstand() {};
 	
-	public Wasserstand(int stand) {
+	public Wasserstand(int stand, double temp) {
 		this.wasserstand = stand;
+		this.temperatur = temp;
 		
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
 		
@@ -55,16 +60,18 @@ public class Wasserstand {
 		
 	}
 	
-	public Wasserstand(int stand, int day, int month, int year, int hour, int min) {
+	public Wasserstand(int stand, double temp, int day, int month, int year, int hour, int min) {
 		this.day = day;
 		this.hour = hour;
 		this.min = min;
 		this.month = month;
 		this.year = year;
 		this.wasserstand = stand;
+		this.temperatur = temp;
 	}
 	
 	public int getWasserstand() {return wasserstand;}
+	public double getTemperatur() {return temperatur;}
 	public int getDay() {return day;}
 	public int getHour() {return hour;}
 	public int getMin() {return min;}

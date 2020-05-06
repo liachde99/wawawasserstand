@@ -64,6 +64,7 @@
 						
 						var entries = [];
 						var entry = [];
+						var tempentries = [];
 						
 						dbdata.forEach(function(item){
 							entry = [];
@@ -86,11 +87,20 @@
 							entry.push(item.wasserstand);
 							
 							entries.push(entry);
+							
+							entry = [];
+							
+							entry.push(date);
+							entry.push(item.temperatur);
+							
+							tempentries.push(entry);
+							
 						})
 						
 						
 						
 					  	var series = chart.area(entries);
+						var series2 = chart.area(tempentries);
 
 						chart.background().fill("none"); 
 					    chart.container('container');
@@ -99,6 +109,19 @@
 						series.normal().fill("none");
 						series.normal().stroke("#13c3ef", 3);
 						series.name("Wasserstand");
+						
+						series2.normal().fill("none");
+						series2.normal().stroke("red", 3);
+						series2.name("Temperatur");
+						
+						var extraYScale = anychart.scales.linear();
+	
+						chart.yAxis(1).enabled(true);
+						chart.yAxis(1).orientation("right");
+						chart.yAxis(1).scale(extraYScale);
+						
+						series2.yScale(extraYScale);
+						
 						
 						var title = chart.title();
 						title.enabled(true);

@@ -23,6 +23,10 @@ public class Monatsdurchschnitt {
 	@NotNull
 	@Column(name = "wasserstand", nullable = false)
 	private int wasserstand;
+	
+	@NotNull
+	@Column(name = "temperatur", nullable = false)
+	private double temperatur;
 
 	@Column(name="month")
 	private int month;
@@ -32,8 +36,9 @@ public class Monatsdurchschnitt {
 	
 	public Monatsdurchschnitt() {};
 	
-	public Monatsdurchschnitt(int stand) {
+	public Monatsdurchschnitt(int stand,double temp) {
 		this.wasserstand = stand;
+		this.temperatur = temp;
 		
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
 		
@@ -42,13 +47,15 @@ public class Monatsdurchschnitt {
 		
 	}
 	
-	public Monatsdurchschnitt(int stand, int month, int year) {
+	public Monatsdurchschnitt(int stand, double temp, int month, int year) {
 		this.month = month;
 		this.year = year;
 		this.wasserstand = stand;
+		this.temperatur = temp;
 	}
 	
 	public int getWasserstand() {return wasserstand;}
 	public int getMonth() {return month;}
 	public int getYear() {return year;}
+	public double getTemperatur() {return temperatur;}
 }

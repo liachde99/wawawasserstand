@@ -25,6 +25,10 @@ public class Tagesdurchschnitt {
 	@Column(name = "wasserstand", nullable = false)
 	private int wasserstand;
 	
+	@NotNull
+	@Column(name = "temperatur", nullable = false)
+	private double temperatur;
+	
 	@Column(name ="day")
 	private int day;
 	 
@@ -40,8 +44,9 @@ public class Tagesdurchschnitt {
 	
 	public Tagesdurchschnitt() {};
 	
-	public Tagesdurchschnitt(int stand) {
+	public Tagesdurchschnitt(int stand, double temp) {
 		this.wasserstand = stand;
+		this.temperatur = temp; 
 		
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
 		
@@ -52,12 +57,13 @@ public class Tagesdurchschnitt {
 		
 	}
 	
-	public Tagesdurchschnitt(int stand, int day, int month, int year, int week) {
+	public Tagesdurchschnitt(int stand, double temp, int day, int month, int year, int week) {
 		this.day = day;
 		this.week = week;
 		this.month = month;
 		this.year = year;
 		this.wasserstand = stand;
+		this.temperatur = temp;
 	}
 	
 	public Long getId() {return id;}
@@ -66,4 +72,5 @@ public class Tagesdurchschnitt {
 	public int getWeek() {return week;}
 	public int getMonth() {return month;}
 	public int getYear() {return year;}
+	public double getTemperatur() {return temperatur;}
 }

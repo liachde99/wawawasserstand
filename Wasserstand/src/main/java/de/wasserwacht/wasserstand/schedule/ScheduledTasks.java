@@ -39,12 +39,12 @@ public class ScheduledTasks {
 	@Autowired
 	private LastsevendaysService lsdService;
 	
+	
+	
 	@Scheduled(cron="0 0 0 * * *")
 	public void daily() {
 		tagesdurchschnitt();
-		
 		lastsevendays();
-		
 	}
 	
 	@Scheduled(cron="0 0 0 1 * *")
@@ -64,6 +64,8 @@ public class ScheduledTasks {
 	}
 	public void tagesdurchschnitt() {
 		int durchschnitt = 0;
+		double tempdurchschnitt = 0;
+		int counter = 0;
 		
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
 		staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
@@ -71,22 +73,28 @@ public class ScheduledTasks {
 		if(staende.size()!=0) {
 			for (Wasserstand wasserstand : staende) {
 				durchschnitt += wasserstand.getWasserstand();
+				tempdurchschnitt += wasserstand.getTemperatur();
+				counter++;
 			}
 			
-			tdservice.save(new Tagesdurchschnitt(durchschnitt,date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
+			tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
 		}
 	}
 	public void monatsdurchschnitt() {
 		int durchschnitt = 0;
+		double tempdurchschnitt = 0;
+		int counter = 0;
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
 		tagesdurchschnitte = tdservice.findByMonthAndYear(date.getMonthValue(), date.getYear());
 		
 		if(tagesdurchschnitte.size()!=0) {
 			for (Tagesdurchschnitt tagesdurchschnitt : tagesdurchschnitte) {
 				durchschnitt += tagesdurchschnitt.getWasserstand();
+				tempdurchschnitt  += tagesdurchschnitt.getTemperatur();
+				counter++;
 			}
 			
-			mdservice.save(new Monatsdurchschnitt(durchschnitt,date.getMonthValue(),date.getYear()));
+			mdservice.save(new Monatsdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),date.getMonthValue(),date.getYear()));
 		}
 	}
 }

@@ -24,8 +24,6 @@ import de.wasserwacht.wasserstand.schedule.ScheduledTasks;
 @Controller
 public class HomeController {
 	
-	private double temperatur;
-	
 	@Autowired
 	private WasserstandService service;
 	
@@ -46,11 +44,12 @@ public class HomeController {
 		
 		if(last!=null) {
 			mv.addObject("wasserstand", last.getWasserstand());
+			mv.addObject("temperatur", last.getTemperatur());
 		}else {
 			mv.addObject("wasserstand", 0);
+			mv.addObject("temperatur", 0);
 		}
 		mv.addObject("timestamp", last.stamp());
-		mv.addObject("temperatur", this.temperatur);
 		
 		return mv;
 	}
@@ -78,8 +77,7 @@ public class HomeController {
 	@GetMapping("/{passwort}/{stand}/{temperatur}")
 	public String sendwasserstandundtemperatur(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand,@PathVariable("temperatur") double temperatur) {
 		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
-			service.save(new Wasserstand(stand));
-			this.temperatur = temperatur / 10;
+			service.save(new Wasserstand(stand,(temperatur/10)));
 		}
 		return "";
 	}
