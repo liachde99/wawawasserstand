@@ -11,7 +11,7 @@ body{
 	position: absolute;
 	color: #13c3ef;
 	top: calc(50% - 300px);
-	left: 6vw;
+	left: 12vw;
 	display: block;
 	width: 600px;
 	height: 600px;
@@ -24,7 +24,7 @@ body{
 	position: absolute;
 	color: red;
 	top: calc(50% - 300px);
-	right: 6vw;
+	right: 12vw;
 	display: block;
 	height: 600px;
 	width: 600px;
