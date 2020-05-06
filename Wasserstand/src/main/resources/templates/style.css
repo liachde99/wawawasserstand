@@ -11,7 +11,7 @@ body{
 	position: absolute;
 	color: #13c3ef;
 	top: calc(50% - 300px);
-	left: 0.1vw;
+	left: 6vw;
 	display: block;
 	width: 600px;
 	height: 600px;
@@ -24,7 +24,7 @@ body{
 	position: absolute;
 	color: red;
 	top: calc(50% - 300px);
-	right: 0.2vw;
+	right: 6vw;
 	display: block;
 	height: 600px;
 	width: 600px;
@@ -105,6 +105,18 @@ ul div{
 }
 
 @media only screen and (max-width: 1400px) {
+	#anzeigecon{
+		width: 300px;
+		height: 300px;
+	}
+	
+	#tempcon{
+		width: 300px;
+		height: 300px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
 	#value{font-size: 100px;}
 	#textbig{font-size: 50px;}
 	#textsmall{font-size: 20px;}
