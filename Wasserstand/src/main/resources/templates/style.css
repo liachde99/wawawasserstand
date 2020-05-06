@@ -112,11 +112,13 @@ ul div{
 	#anzeigecon{
 		width: 300px;
 		height: 300px;
+		top: calc(50% - 150px);
 	}
 	
 	#tempcon{
 		width: 300px;
 		height: 300px;
+		top: calc(50% - 150px);
 	}
 	
 	.upper{
