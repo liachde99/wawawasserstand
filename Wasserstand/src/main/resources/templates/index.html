@@ -177,13 +177,10 @@
 						
 						
 					  	var series = chart.area(entries);
-
-						chart.background().fill("none"); 
-					    chart.container('container');
-					  	chart.xScale().mode('continuous');   
+ 
 						
-						series.fill("#13c3ef", 0.8);
-						series.stroke("#FFFFFF", 3);
+						series.fill("none");
+						series.stroke("#13c3ef", 3);
 						series.name("Wasserstand");
 						
 						var title = chart.title();
@@ -203,6 +200,9 @@
 						title.text(day + "." + month + "." + dbdata[0].year);
 						
 						title.fontSize("25");
+
+						chart.background().fill("none"); 
+					  	chart.xScale().mode('continuous');  
 
 						chart.container("graphcon");
 						chart.draw();

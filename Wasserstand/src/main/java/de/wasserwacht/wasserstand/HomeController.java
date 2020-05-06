@@ -18,6 +18,7 @@ import de.wasserwacht.wasserstand.Entity.Wasserstand;
 import de.wasserwacht.wasserstand.Service.LastsevendaysService;
 import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
+import de.wasserwacht.wasserstand.schedule.ScheduledTasks;
 
 
 @Controller
@@ -34,6 +35,9 @@ public class HomeController {
 	@Autowired
 	private TagesdurchschnittService tagesdurchschnittService;
 
+	@Autowired
+	private ScheduledTasks st;
+	
 	@GetMapping("/")
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView("index.html");
@@ -78,5 +82,10 @@ public class HomeController {
 			this.temperatur = temperatur / 10;
 		}
 		return "";
+	}
+	
+	@GetMapping("/st")
+	public void lsd() {
+		st.lastsevendays();
 	}
 }
