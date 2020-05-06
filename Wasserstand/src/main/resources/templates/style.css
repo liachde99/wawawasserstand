@@ -104,7 +104,7 @@ ul div{
 	width: 100%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1400px) {
 	#value{font-size: 100px;}
 	#textbig{font-size: 50px;}
 	#textsmall{font-size: 20px;}
