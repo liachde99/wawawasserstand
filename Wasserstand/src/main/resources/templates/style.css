@@ -105,9 +105,9 @@ ul div{
 }
 
 @media only screen and (max-width: 1600px) {
-	#value{font-size: 100px;}
-	#textbig{font-size: 50px;}
-	#textsmall{font-size: 20px;}
+	#value{font-size: 150px;}
+	#textbig{font-size: 62px;}
+	#textsmall{font-size: 35px;}
 	
 	#anzeigecon{
 		width: 450px;
@@ -133,6 +133,9 @@ ul div{
 }
 
 @media only screen and (max-width: 768px) {
+	#value{font-size: 100px;}
+	#textbig{font-size: 50px;}
+	#textsmall{font-size: 20px;}
 
 	
 	#anzeigecon{
