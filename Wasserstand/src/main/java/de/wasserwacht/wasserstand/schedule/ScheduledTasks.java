@@ -51,7 +51,6 @@ public class ScheduledTasks {
 	
 	@Scheduled(cron = "0 0 0 * * ?")
 	public void daily() {
-		System.out.println("schedule");
 		tagesdurchschnitt();
 		lastsevendays();
 	}
@@ -77,7 +76,6 @@ public class ScheduledTasks {
 		int counter = 0;
 		
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
-		System.out.println(date.getDayOfMonth()+"."+date.getMonthValue()+"."+date.getYear());
 		staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 		
 		if(staende.size()!=0) {
