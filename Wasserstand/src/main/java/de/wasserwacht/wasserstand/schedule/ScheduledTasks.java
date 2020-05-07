@@ -87,7 +87,9 @@ public class ScheduledTasks {
 				counter++;
 			}
 			
-			tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
+			if(tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear())==null) {
+				tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
+			}
 		}
 	}
 	public void monatsdurchschnitt() {
