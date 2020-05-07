@@ -41,8 +41,9 @@ public class ScheduledTasks {
 	
 	
 	
-	@Scheduled(cron="0 0 0 * * *")
+	@Scheduled(cron="0 44 8 * * *")
 	public void daily() {
+		System.out.println("schedule");
 		tagesdurchschnitt();
 		lastsevendays();
 	}
