@@ -41,14 +41,14 @@ public class ScheduledTasks {
 	
 	
 	
-	@Scheduled(cron="0 44 8 * * *")
+	@Scheduled(cron="0 51 8 * * ?")
 	public void daily() {
 		System.out.println("schedule");
 		tagesdurchschnitt();
 		lastsevendays();
 	}
 	
-	@Scheduled(cron="0 0 0 1 * *")
+	@Scheduled(cron="0 0 0 1 * ?")
 	public void monthly() {
 		monatsdurchschnitt();
 	}
