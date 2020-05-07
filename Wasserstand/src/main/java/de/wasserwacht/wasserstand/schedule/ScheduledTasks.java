@@ -1,10 +1,12 @@
 package de.wasserwacht.wasserstand.schedule;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.IsoFields;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,13 @@ public class ScheduledTasks {
 	@Autowired
 	private LastsevendaysService lsdService;
 	
-	
+	@Scheduled(fixedDelay = 1000)
+	public void dare() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+	      Date now = new Date();
+	      String strDate = sdf.format(now);
+	      System.out.println("Fixed Delay scheduler:: " + strDate);
+	}
 	
 	@Scheduled(cron = "0 25 14 * * ?")
 	public void daily() {
