@@ -49,7 +49,7 @@ public class ScheduledTasks {
 	      System.out.println("Fixed Delay scheduler:: " + strDate);
 	}
 	
-	@Scheduled(cron = "0 32 12 * * ?")
+	@Scheduled(cron = "0 40 12 * * ?")
 	public void daily() {
 		System.out.println("schedule");
 		tagesdurchschnitt();
@@ -77,6 +77,7 @@ public class ScheduledTasks {
 		int counter = 0;
 		
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
+		System.out.println(date.getDayOfMonth()+"."+date.getMonthValue()+"."+date.getYear());
 		staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 		
 		if(staende.size()!=0) {
