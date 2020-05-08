@@ -51,6 +51,7 @@ option:active{
   width: 50%;
   border-radius: 50%;
   border: 3px solid #00cc00;
+  height: auto;
 }
 
 .temperatur-circle{
