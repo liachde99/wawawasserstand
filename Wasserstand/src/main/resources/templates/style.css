@@ -14,11 +14,12 @@ body{
   width: 100%;
 }
 .graph-select{
-  width: 150px;
-  height: 30px;
-  background: none;
-  border: 1px solid #f4f0e5;
-  color: #f4f0e5;
+	font-size: 28px;
+	width: 300px;
+	height: 60px;
+	background: none;
+	border: 1px solid #f4f0e5;
+	color: #f4f0e5;
 }
 option{
 	background: #011115;
