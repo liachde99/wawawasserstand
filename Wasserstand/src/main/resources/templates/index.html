@@ -46,14 +46,14 @@
       </div>
     </div>
     <div class="graph-container">
-    <div class="container" id="graphcon">
-
-    </div>
     <select onchange="chnggraph()" id="select" class="graph-select">
 		<option value="lastsevendays" selected>Vergangenen 7 Tage</option>
 		<option value="today">Heute</option>
 		<option value="month">Letzter Monat</option>
 	</select>
+    <div class="container" id="graphcon">
+
+    </div>
     </div>
     <script th:inline="javascript">
       anychart.onDocumentReady(lastsevendays());
