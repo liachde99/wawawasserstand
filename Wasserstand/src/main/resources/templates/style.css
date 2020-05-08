@@ -23,7 +23,12 @@ body{
   color: #f4f0e5;
 }
 option{
-	background: none;
+	background: #011115;
+	color: #f4f0e5;
+}
+option:active{
+	background-color: #011115;
+	border: 1px solid #00cc00;
 }
 
 #graphcon{
