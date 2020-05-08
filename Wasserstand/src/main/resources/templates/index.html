@@ -109,7 +109,6 @@
               wasserstandeintrage.push(wseintrag);
               tempeintrage.push(tempeintrag);
             });
-            debugger;
 
             //Zwei Graphen mit daten füllen
             var wsseries = chart.area(wasserstandeintrage);
@@ -135,6 +134,10 @@
             chart.yAxis(1).enabled(true);
             chart.yAxis(1).orientation("right");
             chart.yAxis(1).scale(extraYScale);
+            
+            //Farbe Achsen
+            chart.yAxis(1).labels().fontColor("#f54021");
+            chart.yAxis(0).labels().fontColor("#13c3ef");
 
             //zuweisung zur Temperatur
             tempseries.yScale(extraYScale);
