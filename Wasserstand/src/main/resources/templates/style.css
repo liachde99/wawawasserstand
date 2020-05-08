@@ -22,6 +22,9 @@ body{
   border: 1px solid #f4f0e5;
   color: #f4f0e5;
 }
+option{
+	background: none;
+}
 
 #graphcon{
   display: block;
