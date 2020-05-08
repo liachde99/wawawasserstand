@@ -40,7 +40,7 @@ body{
 }
 
 .temperatur-circle{
-  color: #f2000d;
+  color: #f54021;
   margin-left: calc(0.5 * 33%);
 }
 .wasserstand-circle{
@@ -63,8 +63,9 @@ body{
 }
 .textarea{
   width: 80%;
-  height: 100%;
+  height: 90%;
   margin: auto;
+  margin-zop: 10%;
   border-top: 1px solid #f4f0e5;
   text-align: center;
 }
