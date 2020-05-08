@@ -19,7 +19,8 @@ body{
   height: 10%;
   min-height: 30px;
   background: none;
-  border: 1px solid black;
+  border: 1px solid #f4f0e5;
+  color: #f4f0e5;
 }
 
 #graphcon{
