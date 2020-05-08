@@ -49,7 +49,7 @@ public class ScheduledTasks {
 	      System.out.println("Fixed Delay scheduler:: " + strDate);
 	}
 	
-	@Scheduled(cron = "0 47 12 * * ?")
+	@Scheduled(cron = "0 0 0 * * ?")
 	public void daily() {
 		tagesdurchschnitt();
 		lastsevendays();
