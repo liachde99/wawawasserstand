@@ -20,6 +20,8 @@ body{
 	background: none;
 	border: 1px solid #f4f0e5;
 	color: #f4f0e5;
+	display: block;
+	margin: auto;
 }
 option{
 	background: #011115;
