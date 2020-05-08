@@ -165,8 +165,10 @@
           timeout: 60000,
           success: function(data){
             //reset the chart
-    	      chart.dispose();
+    	    chart.dispose();
             chart = anychart.area();
+            
+debugger;
 
             var wasserstandeintrage = [];
             var tempeintrage = [];
@@ -190,6 +192,8 @@
               tempeintrage.push(tempeintrag);
             });
 
+debugger;
+            
             //Zwei Graphen mit daten füllen
             var wsseries = chart.area(wasserstandeintrage);
             var tempseries = chart.area(tempeintrage);
