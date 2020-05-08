@@ -1,268 +1,249 @@
-<html>
-	<head>
-		<title>Wasserwacht Wasserstand</title>
-		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+<<!DOCTYPE html>
+<html lang="de" dir="ltr">
+  <head>
+    <title>Wasserstand</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="style.css" />
-		
+
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8"/>
-		
+
 		<script src="https://cdn.anychart.com/releases/8.5.0/js/anychart-base.min.js"></script>
 		<script src="webjars/jquery/3.0.0/jquery.min.js"></script>
 		<script src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<div class="container" id="anzeigecon">
-			<div class="upper show">
-				<a th:text="${wasserstand}" id="value"></a><a id="textbig"> cm</a>
-			</div>
-			<div class="lower show">
-				<a id="textsmall">Wasserstand</a><br/>
-				<a id="timestamp">Letztes Update:</a>
-				<a id="timestamp" th:text="${timestamp}"></a>
-			</div>
-		</div>
-		<div class="container" id="tempcon">
-			<div class="upper show">
-				<a th:text="${temperatur}" id="value"></a><a id="textbig"> °C</a>
-			</div>
-			<div class="lower show">
-				<a id="textsmall">Temperatur</a>
-			</div>
-		</div>
-		<div class="selectioncon">
-			<select onchange="chnggraph()" id="select">
+
+  </head>
+  <body>
+    <div class="circle-container">
+      <div class="wasserstand-circle-con">
+        <div class="wasserstand-circle">
+          <div class="upper-half">
+            <a class="value" th:text="${wasserstand}"></a>
+            <a class="einheit">cm</a>
+          </div>
+          <div class="lower-half">
+            <div class="textarea">
+              <a class="beschreibung">Wasserstand</a>
+              <br/>
+              <a class="timestamp" th:text="${timestamp}">Timestamp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="temperatur-circle-con">
+        <div class="temperatur-circle">
+          <div class="upper-half">
+            <a class="value" th:text="${temperatur}"></a>
+            <a class="einheit">°C</a>
+          </div>
+          <div class="lower-half">
+            <div class="textarea">
+              <a class="beschreibung">Temperatur</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="graph-container">
+      <select onchange="chnggraph()" id="select" class="graph-select">
 				<option value="lastsevendays" selected>Vergangenen 7 Tage</option>
 				<option value="today">Heute</option>
 				<option value="month">Letzter Monat</option>
 			</select>
-		</div>
-		<div class="container" id="graphcon">
-		
-		</div>
-		
-		<script th:inline="javascript">
-			
-			var chart = anychart.area();
-			anychart.onDocumentReady(lastsevendays());
-			
-			function chnggraph(){
-				var input = document.getElementById('select').value;
-				switch (input){
-				case "lastsevendays":
-					lastsevendays();
-					break;
-				case "today":
-					today();
-					break;
-				}
-			}
-			
-			function lastsevendays() {
-				$.ajax({
-					type: "GET",
-					url: "/lastsevendays",
-					cache: false,
-					timeout: 60000,
-					success: function(dbdata) {
-						chart.dispose();
-						chart = anychart.area();
-						
-						var entries = [];
-						var entry = [];
-						var tempentries = [];
-						
-						dbdata.forEach(function(item){
-							entry = [];
-							var date;
-							
-							if(item.month>10){
-								var month = item.month;
-							}else{
-								var month = "0" + item.month;
-							}
-							if(item.day>10){
-								var day = item.day;
-							}else{
-								var day = "0" + item.day;
-							}
-							
-							date = day + "." + month + "." + item.year;
-							
-							entry.push(date);
-							entry.push(item.wasserstand);
-							
-							entries.push(entry);
-							
-							entry = [];
-							
-							entry.push(date);
-							entry.push(item.temperatur);
-							
-							tempentries.push(entry);
-							
-						})
-						
-						
-						
-					  	var series = chart.area(entries);
-						var series2 = chart.area(tempentries);
+      <div class="container" id="graphcon">
 
-						chart.background().fill("none"); 
-					    chart.container('container');
-					  	chart.xScale().mode('continuous');   
-						
-						series.normal().fill("none");
-						series.normal().stroke("#13c3ef", 3);
-						series.name("Wasserstand");
-						
-						series2.normal().fill("none");
-						series2.normal().stroke("red", 3);
-						series2.name("Temperatur");
-						
-						var extraYScale = anychart.scales.linear();
-	
-						chart.yAxis(1).enabled(true);
-						chart.yAxis(1).orientation("right");
-						chart.yAxis(1).scale(extraYScale);
-						
-						series2.yScale(extraYScale);
-						
-						
-						var title = chart.title();
-						title.enabled(true);
-						
-						if(dbdata[0].month>10){
-							var month = dbdata[0].month;
-						}else{
-							var month = "0" + dbdata[0].month;
-						}
-						if(dbdata[0].day>10){
-							var day = dbdata[0].day;
-						}else{
-							var day = "0" + dbdata[0].day;
-						}
-						
-						if(dbdata[dbdata.length-1].month>10){
-							var monthb = dbdata[dbdata.length-1].month;
-						}else{
-							var monthb = "0" + dbdata[dbdata.length-1].month;
-						}
-						if(dbdata[dbdata.length-1].day>10){
-							var dayb = dbdata[dbdata.length-1].day;
-						}else{
-							var dayb = "0" + dbdata[dbdata.length-1].day;
-						}
-						
-						title.text(day + "." + month + "." + dbdata[0].year + " - " + dayb + "." + monthb + "." + dbdata[dbdata.length-1].year);
-						
-						title.fontSize("25");
+      </div>
+    </div>
+    <script th:inline="javascript">
+      anychart.onDocumentReady(lastsevendays());
 
-						chart.container("graphcon");
-						chart.draw();
-					},
-					error: function(){
-						alert("DATENFEHLER");
-					}
-				});
-			};
-			
-			function today(){
-				$.ajax({
-					type: "GET",
-					url: "/today",
-					cache: false,
-					timeout: 60000,
-					success: function(dbdata) {
-						chart.dispose();
-						chart = anychart.area();
-						
-						var entries = [];
-						var entry = [];
-						var tempentries = [];
-						
-						dbdata.forEach(function(item){
-							entry = [];
-							var time;
-							
-							if(item.hour>10){
-								var hour = item.hour;
-							}else{
-								var hour = "0" + item.hour;
-							}
-							if(item.min>10){
-								var min = item.min;
-							}else{
-								var min = "0" + item.min;
-							}
-							
-							time = hour + ":" + min;
-							
-							entry.push(time);
-							entry.push(item.wasserstand);
-							
-							entries.push(entry);
-							
-							entry = [];
-							
-							entry.push(time);
-							entry.push(item.temperatur);
-							
-							tempentries.push(entry);
-						})
-						
-						
-						
-					  	var series = chart.area(entries);
-						var series2 = chart.area(tempentries);
- 
-						
-						series.fill("none");
-						series.stroke("#13c3ef", 3);
-						series.name("Wasserstand");
-						
-						series2.normal().fill("none");
-						series2.normal().stroke("red", 3);
-						series2.name("Temperatur");
-						
-						var extraYScale = anychart.scales.linear();
-						
-						chart.yAxis(1).enabled(true);
-						chart.yAxis(1).orientation("right");
-						chart.yAxis(1).scale(extraYScale);
-						
-						series2.yScale(extraYScale);
-						
-						var title = chart.title();
-						title.enabled(true);
-						
-						if(dbdata[0].month>10){
-							var month = dbdata[0].month;
-						}else{
-							var month = "0" + dbdata[0].month;
-						}
-						if(dbdata[0].day>10){
-							var day = dbdata[0].day;
-						}else{
-							var day = "0" + dbdata[0].day;
-						}
-						
-						title.text(day + "." + month + "." + dbdata[0].year);
-						
-						title.fontSize("25");
+      var chart = anychart.area();
 
-						chart.background().fill("none"); 
-					  	chart.xScale().mode('continuous');  
+      function chnggraph(){
+        switch(document.getElementById('select').value){
+        case "lastsevendays":
+          lastsevendays();
+          break;
+        case "today":
+          today();
+          break;
+        case "month":
+          month();
+          break;
+        }
+      }
 
-						chart.container("graphcon");
-						chart.draw();
-					},
-					error: function(){
-						alert("DATENFEHLER");
-					}
-				})
-			}
-			
-		</script>
-	</body>
+      function lastsevendays(){
+
+        //get temp and wasserstand data of the last seven days
+        $.ajax({
+          type: "GET",
+          url: "/lastsevendays",
+          cache: false,
+          timeout: 60000,
+          success: function(data) {
+
+            //reset the chart
+    	      chart.dispose();
+            chart = anychart.area();
+
+            var wasserstandeintrage = [];
+            var tempeintrage = [];
+
+            data.forEach(function(item){
+              var wseintrag = [];
+              var tempeintrag = [];
+
+              //führende nullen bei monat und tag
+              var day = dbldigitdate(item.day);
+              var month = dbldigitdate(item.month);
+
+              var date = day + "." + month + "." + item.year;
+
+              wseintrag.push(date);
+              wseintrag.push(item.wasserstand);
+              tempeintrag.push(date);
+              tempeintrag.push(item.temperatur);
+
+              wasserstandeintrage.push(wseintrag);
+              tempeintrage.push(tempeintrag);
+            });
+
+            //Zwei Graphen mit daten füllen
+            var wsseries = chart.area(wasserstandeintrage);
+            var tempseries = chart.area(tempeintrage);
+
+            //chartstyle
+            chart.background().fill("none");
+            chart.container('container');
+            chart.xScale().mode("continuous");
+
+            //wasserstand graph style
+            wsseries.normal().fill("none");
+            wsseries.normal().stroke("#f2000d", 3);
+            wsseries.name("Wasserstand");
+
+            //temperatur graph style
+            tempseries.normal().fill("none");
+            tempseries.normal().stroke("#13c3ef", 3);
+            tempseries.name("Temperatur");
+
+            //rechte skalierung
+            var extraYScale = anychart.scales.linear();
+            chart.yAxis(1).enabled(true);
+            chart.yAxis(1).orientation("right");
+            chart.yAxis(1).scale(extraYScale);
+
+            //zuweisung zur Temperatur
+            tempseries.yScale(extraYScale);
+
+            //Titel des Graphen
+            var title = chart.title();
+            title.enabled(true);
+
+            var day = dbldigitdate(data[0].day);
+            var month = dbldigitdate(data[0].month);
+            var ndday = dbldigitdate(data[data.length-1].day);
+            var ndmonth = dbldigitdate(data[data.length-1].month);
+
+            title.text(day + "." + month + "." + dbdata[0].year + " - " + ndday + "." + ndmonth + "." + data[date.length-1].year);
+            title.fontSize("25");
+
+            //chart ort festlegten;
+            chart.container("graphcon");
+            chart.draw();
+          }
+        });
+      };
+
+      function today(){
+        $.ajax({
+          type: "GET",
+          url: "/today",
+          cache: false,
+          timeout: 60000,
+          success: function(data){
+            //reset the chart
+    	      chart.dispose();
+            chart = anychart.area();
+
+            var wasserstandeintrage = [];
+            var tempeintrage = [];
+
+            data.forEach(function(item){
+              var wseintrag = [];
+              var tempeintrag = [];
+
+              //führende nullen bei stunde und minute
+              var hour = dbldigitdate(item.hour);
+              var min = dbldigitdate(item.min);
+
+              var time = hour + ":" + min;
+
+              wseintrag.push(time);
+              wseintrag.push(item.wasserstand);
+              tempeintrag.push(time);
+              tempeintrag.push(item.temperatur);
+
+              wasserstandeintrage.push(wseintrag);
+              tempeintrage.push(tempeintrag);
+            });
+
+            //Zwei Graphen mit daten füllen
+            var wsseries = chart.area(wasserstandeintrage);
+            var tempseries = chart.area(tempeintrage);
+
+            //chartstyle
+            chart.background().fill("none");
+            chart.container('container');
+            chart.xScale().mode("continuous");
+
+            //wasserstand graph style
+            wsseries.normal().fill("none");
+            wsseries.normal().stroke("#f2000d", 3);
+            wsseries.name("Wasserstand");
+
+            //temperatur graph style
+            tempseries.normal().fill("none");
+            tempseries.normal().stroke("#13c3ef", 3);
+            tempseries.name("Temperatur");
+
+            //rechte skalierung
+            var extraYScale = anychart.scales.linear();
+            chart.yAxis(1).enabled(true);
+            chart.yAxis(1).orientation("right");
+            chart.yAxis(1).scale(extraYScale);
+
+            //zuweisung zur Temperatur
+            tempseries.yScale(extraYScale);
+
+            //Titel des Graphen
+            var title = chart.title();
+            title.enabled(true);
+
+            var day = dbldigitdate(data[0].day);
+            var month = dbldigitdate(data[0].month);
+            var ndday = dbldigitdate(data[data.length-1].day);
+            var ndmonth = dbldigitdate(data[data.length-1].month);
+
+            title.text(day + "." + month + "." + dbdata[0].year);
+            title.fontSize("25");
+
+            //chart ort festlegten;
+            chart.container("graphcon");
+            chart.draw();
+          }
+        });
+      };
+
+      function dbldigitdate(nr){
+        if(nr<10){
+          return "0" + nr;
+        }else{
+          return nr;
+        }
+      }
+    </script>
+  </body>
 </html>

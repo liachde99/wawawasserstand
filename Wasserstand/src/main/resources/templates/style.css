@@ -1,162 +1,87 @@
-body{
-	background-color: #011115;
-	height: 100%;
-	overflow: overlay;
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 ::-webkit-scrollbar {
 	width: 0px;
 }
-
-#anzeigecon{
-	position: absolute;
-	color: #13c3ef;
-	top: calc(50% - 300px);
-	left: 12vw;
-	display: block;
-	width: 600px;
-	height: 600px;
-	border-radius: 50%;
-	border: 3px solid #00cc00;
-	background-color: #011115;
+body{
+  background-color: #011115;
 }
 
-#tempcon{
-	position: absolute;
-	color: red;
-	top: calc(50% - 300px);
-	right: 12vw;
-	display: block;
-	height: 600px;
-	width: 600px;
-	border-radius: 50%;
-	border: 3px solid #00cc00;
-	background-color: #011115;
+[class$="container"]{
+  width: 100%;
+  height: 70%;
 }
-.upper{
-	width: 100%;
-	height: 300px;
-	line-height: 2;
-	border-radius: 300px 300px 0 0;
-}
-.lower{
-	width: 80%;
-	height: 300px;
-	margin: auto;
-	line-height: 3;
-	border-top: 2px solid #f4f0e5;
-	border-radius: 0 0 300px 300px;
-}
-.show{
-	font-family: 'Source Sans Pro', sans-serif;
-	text-align: center;
+.graph-select{
+  width: 10%;
+  height: 10%;
 }
 
-#value{font-size: 200px;}
-#textbig{font-size: 75px;}
-#textsmall{font-size: 50px;}
-
-#timestamp{
-	font-size: 20px;
+#graphcon{
+  display: block;
+  height: 60%;
+  width: 100%;
 }
 
-.navbar{
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100px;
-	width: 100%;
-	border-bottom: 1px solid #f4f0e5;
-	background-color: #3f3a3a;
-	opacity: .5;
-	z-index: 100;
+.wasserstand-circle-con{float: left;}
+.temperatur-circle-con{float: right;}
+
+[class$="con"]{
+  width: 50%;
+  margin-top: 5%;
 }
 
-ul{
-	list-style: none;
-	margin: auto;
+[class$="circle"]{
+  width: 50%;
+  border-radius: 50%;
+  border: 3px solid #00cc00;
 }
 
-ul li {
-	display: inline-block;
-    height: 100%;
+.temperatur-circle{
+  color: #f2000d;
+  margin-left: calc(0.5 * 33%);
+}
+.wasserstand-circle{
+  color: #13c3ef;
+  margin-left: 33%;
+}
+
+.value{font-size: 8vw;}
+.einheit{font-size: 5vw;}
+.beschreibung{font-size: 2vw;}
+.timestamp{font-size: 1vw;line-height: 400%;}
+
+[class^="upper"] a{
+  line-height: 200%;
+}
+[class$="half"]{
+  width: 100%;
+  height: 12.5vw;
+  text-align: center;
+}
+.textarea{
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  border-top: 1px solid #f4f0e5;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  [class$="con"]{
+    width: 100%;
+    float: none;
+  }
+  [class$="half"]{
+    height: 25vw;
+  }
+  [class$="circle"]{
     margin: auto;
-	width: 10%;
-}
-
-ul li:not(:last-of-type){
-	border-right: 1px solid white;
-}
-
-ul div{
-	color: #fff;
-    text-align: center;
-    font-size: 28px;
-    padding: calc(50px - 16px) 0;
-    cursor: pointer;
-}
-
-#graphcon {
-	position: absolute;
-	display: block;
-	left: 0;
-	top: 100%;
-	height: 50%;
-	width: 100%;
-}
-
-@media only screen and (max-width: 1600px) {
-	#value{font-size: 150px;}
-	#textbig{font-size: 62px;}
-	#textsmall{font-size: 35px;}
-	
-	#anzeigecon{
-		width: 450px;
-		height: 450px;
-		top: calc(50% - 225px);
-	}
-	
-	#tempcon{
-		width: 450px;
-		height: 450px;
-		top: calc(50% - 225px);
-	}
-	
-	.upper{
-		height: 225px;
-		border-radius: 225px 225px 0 0;
-	}
-	.lower{
-		height: 225px;
-		line-height: 2;
-		border-radius: 0 0 225px 225px;
-	}
-}
-
-@media only screen and (max-width: 768px) {
-	#value{font-size: 100px;}
-	#textbig{font-size: 50px;}
-	#textsmall{font-size: 20px;}
-
-	
-	#anzeigecon{
-		top: 5%;
-		left: calc(50% - 150px);
-		width: 300px;
-		height: 300px;
-	}
-	#tempcon{
-		top: 53%;
-		width: 300px;
-		height: 300px;
-		left: calc(50% - 150px);
-	}
-	.upper{
-		height: 150px;
-		border-radius: 150px 150px 0 0;
-	}
-	.lower{
-		height: 150px;
-		line-height: 2;
-		border-radius: 0 0 150px 150px;
-	}
+  }
+  .value{font-size: 16vw;}
+  .einheit{font-size: 10vw;}
+  .beschreibung{font-size: 4vw;}
+  .timestamp{font-size: 2vw;}
 }

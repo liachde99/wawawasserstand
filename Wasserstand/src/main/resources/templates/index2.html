@@ -1,1 +1,268 @@
-Congratulation! your SIM800L http Request Test has been successfull!!! -miliohm.com-
+<html>
+	<head>
+		<title>Wasserwacht Wasserstand</title>
+		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8"/>
+		
+		<script src="https://cdn.anychart.com/releases/8.5.0/js/anychart-base.min.js"></script>
+		<script src="webjars/jquery/3.0.0/jquery.min.js"></script>
+		<script src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container" id="anzeigecon">
+			<div class="upper show">
+				<a th:text="${wasserstand}" id="value"></a><a id="textbig"> cm</a>
+			</div>
+			<div class="lower show">
+				<a id="textsmall">Wasserstand</a><br/>
+				<a id="timestamp">Letztes Update:</a>
+				<a id="timestamp" th:text="${timestamp}"></a>
+			</div>
+		</div>
+		<div class="container" id="tempcon">
+			<div class="upper show">
+				<a th:text="${temperatur}" id="value"></a><a id="textbig"> °C</a>
+			</div>
+			<div class="lower show">
+				<a id="textsmall">Temperatur</a>
+			</div>
+		</div>
+		<div class="selectioncon">
+			<select onchange="chnggraph()" id="select">
+				<option value="lastsevendays" selected>Vergangenen 7 Tage</option>
+				<option value="today">Heute</option>
+				<option value="month">Letzter Monat</option>
+			</select>
+		</div>
+		<div class="container" id="graphcon">
+		
+		</div>
+		
+		<script th:inline="javascript">
+			
+			var chart = anychart.area();
+			anychart.onDocumentReady(lastsevendays());
+			
+			function chnggraph(){
+				var input = document.getElementById('select').value;
+				switch (input){
+				case "lastsevendays":
+					lastsevendays();
+					break;
+				case "today":
+					today();
+					break;
+				}
+			}
+			
+			function lastsevendays() {
+				$.ajax({
+					type: "GET",
+					url: "/lastsevendays",
+					cache: false,
+					timeout: 60000,
+					success: function(dbdata) {
+						chart.dispose();
+						chart = anychart.area();
+						
+						var entries = [];
+						var entry = [];
+						var tempentries = [];
+						
+						dbdata.forEach(function(item){
+							entry = [];
+							var date;
+							
+							if(item.month>10){
+								var month = item.month;
+							}else{
+								var month = "0" + item.month;
+							}
+							if(item.day>10){
+								var day = item.day;
+							}else{
+								var day = "0" + item.day;
+							}
+							
+							date = day + "." + month + "." + item.year;
+							
+							entry.push(date);
+							entry.push(item.wasserstand);
+							
+							entries.push(entry);
+							
+							entry = [];
+							
+							entry.push(date);
+							entry.push(item.temperatur);
+							
+							tempentries.push(entry);
+							
+						})
+						
+						
+						
+					  	var series = chart.area(entries);
+						var series2 = chart.area(tempentries);
+
+						chart.background().fill("none"); 
+					    chart.container('container');
+					  	chart.xScale().mode('continuous');   
+						
+						series.normal().fill("none");
+						series.normal().stroke("#13c3ef", 3);
+						series.name("Wasserstand");
+						
+						series2.normal().fill("none");
+						series2.normal().stroke("red", 3);
+						series2.name("Temperatur");
+						
+						var extraYScale = anychart.scales.linear();
+	
+						chart.yAxis(1).enabled(true);
+						chart.yAxis(1).orientation("right");
+						chart.yAxis(1).scale(extraYScale);
+						
+						series2.yScale(extraYScale);
+						
+						
+						var title = chart.title();
+						title.enabled(true);
+						
+						if(dbdata[0].month>10){
+							var month = dbdata[0].month;
+						}else{
+							var month = "0" + dbdata[0].month;
+						}
+						if(dbdata[0].day>10){
+							var day = dbdata[0].day;
+						}else{
+							var day = "0" + dbdata[0].day;
+						}
+						
+						if(dbdata[dbdata.length-1].month>10){
+							var monthb = dbdata[dbdata.length-1].month;
+						}else{
+							var monthb = "0" + dbdata[dbdata.length-1].month;
+						}
+						if(dbdata[dbdata.length-1].day>10){
+							var dayb = dbdata[dbdata.length-1].day;
+						}else{
+							var dayb = "0" + dbdata[dbdata.length-1].day;
+						}
+						
+						title.text(day + "." + month + "." + dbdata[0].year + " - " + dayb + "." + monthb + "." + dbdata[dbdata.length-1].year);
+						
+						title.fontSize("25");
+
+						chart.container("graphcon");
+						chart.draw();
+					},
+					error: function(){
+						alert("DATENFEHLER");
+					}
+				});
+			};
+			
+			function today(){
+				$.ajax({
+					type: "GET",
+					url: "/today",
+					cache: false,
+					timeout: 60000,
+					success: function(dbdata) {
+						chart.dispose();
+						chart = anychart.area();
+						
+						var entries = [];
+						var entry = [];
+						var tempentries = [];
+						
+						dbdata.forEach(function(item){
+							entry = [];
+							var time;
+							
+							if(item.hour>10){
+								var hour = item.hour;
+							}else{
+								var hour = "0" + item.hour;
+							}
+							if(item.min>10){
+								var min = item.min;
+							}else{
+								var min = "0" + item.min;
+							}
+							
+							time = hour + ":" + min;
+							
+							entry.push(time);
+							entry.push(item.wasserstand);
+							
+							entries.push(entry);
+							
+							entry = [];
+							
+							entry.push(time);
+							entry.push(item.temperatur);
+							
+							tempentries.push(entry);
+						})
+						
+						
+						
+					  	var series = chart.area(entries);
+						var series2 = chart.area(tempentries);
+ 
+						
+						series.fill("none");
+						series.stroke("#13c3ef", 3);
+						series.name("Wasserstand");
+						
+						series2.normal().fill("none");
+						series2.normal().stroke("red", 3);
+						series2.name("Temperatur");
+						
+						var extraYScale = anychart.scales.linear();
+						
+						chart.yAxis(1).enabled(true);
+						chart.yAxis(1).orientation("right");
+						chart.yAxis(1).scale(extraYScale);
+						
+						series2.yScale(extraYScale);
+						
+						var title = chart.title();
+						title.enabled(true);
+						
+						if(dbdata[0].month>10){
+							var month = dbdata[0].month;
+						}else{
+							var month = "0" + dbdata[0].month;
+						}
+						if(dbdata[0].day>10){
+							var day = dbdata[0].day;
+						}else{
+							var day = "0" + dbdata[0].day;
+						}
+						
+						title.text(day + "." + month + "." + dbdata[0].year);
+						
+						title.fontSize("25");
+
+						chart.background().fill("none"); 
+					  	chart.xScale().mode('continuous');  
+
+						chart.container("graphcon");
+						chart.draw();
+					},
+					error: function(){
+						alert("DATENFEHLER");
+					}
+				})
+			}
+			
+		</script>
+	</body>
+</html>
