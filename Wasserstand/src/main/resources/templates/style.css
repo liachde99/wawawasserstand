@@ -96,4 +96,5 @@ option:active{
   .einheit{font-size: 10vw;}
   .beschreibung{font-size: 4vw;}
   .timestamp{font-size: 2vw;}
+  .graph-select{margin: auto;}
 }
