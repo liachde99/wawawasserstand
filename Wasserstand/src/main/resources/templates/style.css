@@ -21,6 +21,8 @@ body{
 	background: none;
 	border: 1px solid #f4f0e5;
 	color: #f4f0e5;
+  	margin: auto;
+  	display: block;
 }
 option{
 	background: #011115;
@@ -97,8 +99,4 @@ option:active{
   .einheit{font-size: 10vw;}
   .beschreibung{font-size: 4vw;}
   .timestamp{font-size: 2vw;}
-  .graph-select{
-  	margin: auto;
-  	display: block;
-  }
 }
