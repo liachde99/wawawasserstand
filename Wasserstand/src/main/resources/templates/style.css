@@ -96,14 +96,17 @@ option:active{
   }
   [class$="half"]{
     height: 25vw;
+    min-height: 200px !important;
+    min-width: 400px !important;
   }
   [class$="circle"]{
     margin: auto;
+    min-width: 400px;
   }
-  .value{font-size: 16vw;}
-  .einheit{font-size: 10vw;}
-  .beschreibung{font-size: 4vw;}
-  .timestamp{font-size: 2vw;}
+  .value{font-size: calc(130px + 1.5vw);}
+  .einheit{font-size: calc(80px + 1vw);}
+  .beschreibung{font-size: calc(40px + 0.4vw);}
+  .timestamp{font-size: calc(20px + 0.2vw);}
   .graph-select{
 	font-size: 20px;
 	width: 200px;
@@ -111,5 +114,6 @@ option:active{
   }
   .circle-container{
   	height: 110vw;
+  	min-height: 850px;
   }
 }
