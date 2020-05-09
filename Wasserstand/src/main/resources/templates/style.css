@@ -48,7 +48,7 @@ option:active{
 }
 
 .circle-container{
-	height: 25vw;
+	height: 35vw;
 }
 
 [class$="circle"]{
@@ -110,6 +110,6 @@ option:active{
 	height: 40px;
   }
   .circle-container{
-  	height: 50vw;
+  	height: 110vw;
   }
 }
