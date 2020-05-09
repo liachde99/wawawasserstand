@@ -47,6 +47,10 @@ option:active{
   margin-top: 5%;
 }
 
+.circle-container{
+	height: 25vw;
+}
+
 [class$="circle"]{
   width: 50%;
   border-radius: 50%;
@@ -104,5 +108,8 @@ option:active{
 	font-size: 20px;
 	width: 200px;
 	height: 40px;
+  }
+  .circle-container{
+  	height: 50vw;
   }
 }
