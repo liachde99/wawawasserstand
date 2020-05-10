@@ -88,7 +88,9 @@ public class HomeController {
 	public List<Tagesdurchschnitt> getchartmonth(){
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
 		System.out.println(date.getMonthValue() + "." + date.getYear());
-		return tagesdurchschnittService.findByMonthAndYear(date.getMonthValue(), date.getYear());
+		List<Tagesdurchschnitt> td =  tagesdurchschnittService.findByMonthAndYear(date.getMonthValue(), date.getYear());
+		System.out.println(td.size());
+		return td;
 	}
 	
 	@GetMapping("/st")
