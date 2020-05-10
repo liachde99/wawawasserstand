@@ -242,6 +242,92 @@
           }
         });
       };
+      
+      function month(){
+    	//get temp and wasserstand data of the last seven days
+          $.ajax({
+            type: "GET",
+            url: "/month",
+            cache: false,
+            timeout: 60000,
+            success: function(data) {
+
+              //reset the chart
+      	      chart.dispose();
+              chart = anychart.area();
+
+              var wasserstandeintrage = [];
+              var tempeintrage = [];
+
+              data.forEach(function(item){
+                var wseintrag = [];
+                var tempeintrag = [];
+
+                //führende nullen bei monat und tag
+                var day = dbldigitdate(item.day);
+                var month = dbldigitdate(item.month);
+
+                var date = day + "." + month + "." + item.year;
+
+                wseintrag.push(date);
+                wseintrag.push(item.wasserstand);
+                tempeintrag.push(date);
+                tempeintrag.push(item.temperatur);
+
+                wasserstandeintrage.push(wseintrag);
+                tempeintrage.push(tempeintrag);
+              });
+
+              //Zwei Graphen mit daten füllen
+              var wsseries = chart.area(wasserstandeintrage);
+              var tempseries = chart.area(tempeintrage);
+
+              //chartstyle
+              chart.background().fill("none");
+              chart.container('container');
+              chart.xScale().mode("continuous");
+
+              //wasserstand graph style
+              wsseries.normal().fill("none");
+              wsseries.normal().stroke("#f54021", 3);
+              wsseries.name("Wasserstand");
+
+              //temperatur graph style
+              tempseries.normal().fill("none");
+              tempseries.normal().stroke("#13c3ef", 3);
+              tempseries.name("Temperatur");
+
+              //rechte skalierung
+              var extraYScale = anychart.scales.linear();
+              chart.yAxis(1).enabled(true);
+              chart.yAxis(1).orientation("right");
+              chart.yAxis(1).scale(extraYScale);
+              
+              //Farbe Achsen
+              chart.yAxis(1).labels().fontColor("#f54021");
+              chart.yAxis(0).labels().fontColor("#13c3ef");
+
+              //zuweisung zur Temperatur
+              tempseries.yScale(extraYScale);
+
+              //Titel des Graphen
+              var title = chart.title();
+              title.enabled(true);
+
+              var day = dbldigitdate(data[0].day);
+              var month = dbldigitdate(data[0].month);
+              var ndday = dbldigitdate(data[data.length-1].day);
+              var ndmonth = dbldigitdate(data[data.length-1].month);
+
+              title.text(day + "." + month + "." + data[0].year + " - " + ndday + "." + ndmonth + "." + data[data.length-1].year);
+              title.fontSize("25");
+
+              //chart ort festlegten;
+              chart.container("graphcon");
+              chart.draw();
+            }
+          });
+      }
 
       function dbldigitdate(nr){
         if(nr<10){

@@ -2,6 +2,7 @@ package de.wasserwacht.wasserstand;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +82,12 @@ public class HomeController {
 			service.save(new Wasserstand(stand,(temperatur/10)));
 		}
 		return "";
+	}
+	
+	@GetMapping("/month")
+	public List<Tagesdurchschnitt> getchartmonth(){
+		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
+		return tagesdurchschnittService.findByMonthAndYear(date.getMonthValue(), date.getYear());
 	}
 	
 	@GetMapping("/st")
