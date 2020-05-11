@@ -52,16 +52,48 @@ public class ScheduledTasks {
 	@Scheduled(fixedDelay = 3000)
 	public void test() {
 		log.info("The time is now {}", dateFormat.format(new Date()));
+		int durchschnitt = 0;
+		double tempdurchschnitt = 0;
+		int counter = 0;
+		
+		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
+		staende = service.findByDayAndMonthAndYear(9, 5, 2020);
+		
+		if(staende.size()!=0) {
+			for (Wasserstand wasserstand : staende) {
+				durchschnitt += wasserstand.getWasserstand();
+				tempdurchschnitt += wasserstand.getTemperatur();
+				counter++;
+			}
+			
+			if(tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear())==null) {
+				tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
+			}
+		}
+		
+		staende = service.findByDayAndMonthAndYear(10, 5, 2020);
+		
+		if(staende.size()!=0) {
+			for (Wasserstand wasserstand : staende) {
+				durchschnitt += wasserstand.getWasserstand();
+				tempdurchschnitt += wasserstand.getTemperatur();
+				counter++;
+			}
+			
+			if(tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear())==null) {
+				tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
+			}
+		}
 	}
 	
 	
-	@Scheduled(cron = "0 0 0 * * ?")
+	@Scheduled(cron = "0 0 2 * * ?")
 	public void daily() {
 		tagesdurchschnitt();
 		lastsevendays();
 	}
 	
-	@Scheduled(cron="0 0 0 1 * ?")
+	@Scheduled(cron="0 0 2 1 * ?")
 	public void monthly() {
 		monatsdurchschnitt();
 	}
