@@ -66,8 +66,8 @@ public class ScheduledTasks {
 				counter++;
 			}
 			
-			if(tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear())==null) {
-				tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
+			if(tdservice.findByDayAndMonthAndYear(9, 5, 2020)==null) {
+				tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),9,5,2020,19));
 			}
 		}
 		
@@ -81,7 +81,7 @@ public class ScheduledTasks {
 			}
 			
 			if(tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear())==null) {
-				tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),date.getDayOfMonth(),date.getMonthValue(),date.getYear(),date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR)));
+				tdservice.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),10,5,2020,19));
 			}
 		}
 	}
