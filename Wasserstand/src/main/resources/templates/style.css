@@ -96,8 +96,8 @@ option:active{
   }
   [class$="half"]{
     height: 25vw;
-    min-height: 200px !important;
-    min-width: 400px !important;
+    min-height: 150px !important;
+    min-width: 300px !important;
   }
   [class$="circle"]{
     margin: auto;
