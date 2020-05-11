@@ -101,7 +101,7 @@ option:active{
   }
   [class$="circle"]{
     margin: auto;
-    min-width: 400px;
+    min-width: 300px;
   }
   .value{font-size: calc(130px + 1.5vw);}
   .einheit{font-size: calc(80px + 1vw);}
