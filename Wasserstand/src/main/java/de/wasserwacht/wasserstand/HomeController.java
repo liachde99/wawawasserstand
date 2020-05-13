@@ -90,7 +90,7 @@ public class HomeController {
 		return td;
 	}
 	
-	@GetMapping("/td/{day]/{month}/{year}/{week}")
+	@GetMapping("/td/{day}/{month}/{year}/{week}")
 	public void lsd(@PathVariable("day") int day, @PathVariable("month") int month,@PathVariable("year") int year, @PathVariable("week") int week) {
 		int durchschnitt = 0;
 		double tempdurchschnitt = 0;
