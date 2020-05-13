@@ -2,6 +2,7 @@ package de.wasserwacht.wasserstand;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,7 +89,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/td/{day}/{month}/{year}/{week}")
-	public void lsd(@PathVariable("day") int day, @PathVariable("month") int month,@PathVariable("year") int year, @PathVariable("week") int week) {
+	public void td(@PathVariable("day") int day, @PathVariable("month") int month,@PathVariable("year") int year, @PathVariable("week") int week) {
 		int durchschnitt = 0;
 		double tempdurchschnitt = 0;
 		int counter = 0;
@@ -104,6 +105,18 @@ public class HomeController {
 			
 			if(tagesdurchschnittService.findByDayAndMonthAndYear(day, month, year)==null) {
 				tagesdurchschnittService.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),day,month,year,week));
+			}
+		}
+	}
+	
+	@GetMapping("/lsd")
+	public void lsd() {
+		lastsevendaysService.truncate();
+		for(int i=7;i>=1;i--) {
+			LocalDateTime date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
+			Tagesdurchschnitt td = tagesdurchschnittService.findByDayAndMonthAndYear(date.getDayOfMonth(),date.getMonthValue(),date.getYear());
+			if(td!=null) {
+				lastsevendaysService.save(new Lastsevendays(td.getId()));
 			}
 		}
 	}
