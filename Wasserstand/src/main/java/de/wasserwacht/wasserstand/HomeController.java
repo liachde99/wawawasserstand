@@ -2,6 +2,8 @@ package de.wasserwacht.wasserstand;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.IsoFields;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,9 +34,6 @@ public class HomeController {
 	
 	@Autowired
 	private TagesdurchschnittService tagesdurchschnittService;
-
-	@Autowired
-	private ScheduledTasks st;
 	
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -91,8 +90,24 @@ public class HomeController {
 		return td;
 	}
 	
-	@GetMapping("/st")
-	public void lsd() {
-		st.lastsevendays();
+	@GetMapping("/td/{day]/{month}/{year}/{week}")
+	public void lsd(@PathVariable("day") int day, @PathVariable("month") int month,@PathVariable("year") int year, @PathVariable("week") int week) {
+		int durchschnitt = 0;
+		double tempdurchschnitt = 0;
+		int counter = 0;
+		
+		List<Wasserstand> staende = service.findByDayAndMonthAndYear(day, month, year);
+		
+		if(staende.size()!=0) {
+			for (Wasserstand wasserstand : staende) {
+				durchschnitt += wasserstand.getWasserstand();
+				tempdurchschnitt += wasserstand.getTemperatur();
+				counter++;
+			}
+			
+			if(tagesdurchschnittService.findByDayAndMonthAndYear(day, month, year)==null) {
+				tagesdurchschnittService.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),day,month,year,week));
+			}
+		}
 	}
 }

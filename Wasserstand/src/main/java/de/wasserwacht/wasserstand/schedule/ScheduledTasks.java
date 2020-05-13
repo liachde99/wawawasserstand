@@ -39,7 +39,7 @@ public class ScheduledTasks {
 	@Autowired
 	private LastsevendaysService lsdService;
 	
-	@Scheduled(cron = "0  55 6 * * ?")
+	@Scheduled(cron = "0 0 2 * * ?")
 	public void home() {
 		lastsevendays();
 	}
