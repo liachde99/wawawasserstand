@@ -2,8 +2,6 @@ package de.wasserwacht.wasserstand;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.IsoFields;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +18,6 @@ import de.wasserwacht.wasserstand.Entity.Wasserstand;
 import de.wasserwacht.wasserstand.Service.LastsevendaysService;
 import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
-import de.wasserwacht.wasserstand.schedule.ScheduledTasks;
 
 
 @Controller
