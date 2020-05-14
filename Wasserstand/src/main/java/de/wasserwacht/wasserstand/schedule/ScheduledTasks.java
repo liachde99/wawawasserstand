@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.IsoFields;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -40,8 +41,9 @@ public class ScheduledTasks {
 	private LastsevendaysService lsdService;
 	
 	@Scheduled(cron = "0 0 2 * * ?")
-	public void daily() {
+	public void daily() throws InterruptedException {
 		tagesdurchschnitt();
+		TimeUnit.MINUTES.sleep(1);
 		lastsevendays();
 	}
 	
