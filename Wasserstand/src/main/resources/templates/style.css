@@ -13,6 +13,7 @@ body{
 [class$="container"]{
   width: 100%;
   margin-top: 20px;
+  height: 80%;
 }
 .graph-select{
 	font-size: 28px;
@@ -59,7 +60,7 @@ option:active{
 }
 
 .temperatur-circle{
-  color: #ff6600;
+  color: #e60073;
   margin-left: calc(0.5 * 33%);
 }
 .wasserstand-circle{
