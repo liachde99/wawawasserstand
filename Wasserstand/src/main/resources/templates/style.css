@@ -12,7 +12,6 @@ body{
 
 [class$="container"]{
   width: 100%;
-  margin-top: 20px;
   height: 50vw;
   min-height: 250px;
 }
@@ -46,7 +45,7 @@ option:active{
 
 [class$="con"]{
   width: 50%;
-  margin-top: 5%;
+  margin-top: 12.5vw;
 }
 
 [class$="circle"]{
