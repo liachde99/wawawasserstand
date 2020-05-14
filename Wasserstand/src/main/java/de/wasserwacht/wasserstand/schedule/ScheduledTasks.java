@@ -40,13 +40,7 @@ public class ScheduledTasks {
 	@Autowired
 	private LastsevendaysService lsdService;
 	
-	@Scheduled(fixedDelay = 1000)
-	public void ho() {
-		LocalDateTime date = LocalDateTime.now();
-		System.out.println(date.toString());
-	}
-	
-	@Scheduled(cron = "0 12 0 ? * * ")
+	@Scheduled(cron = "0 0 0 ? * * ")
 	public void daily() throws InterruptedException {
 		tagesdurchschnitt();
 		TimeUnit.MINUTES.sleep(1);
@@ -62,7 +56,6 @@ public class ScheduledTasks {
 		lsdService.truncate();
 		for(int i=7;i>=1;i--) {
 			date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
-			System.out.println("lastsevendays: " + date.toString());
 			Tagesdurchschnitt td = tdservice.findByDayAndMonthAndYear(date.getDayOfMonth(),date.getMonthValue(),date.getYear());
 			if(td!=null) {
 				lsdService.save(new Lastsevendays(td.getId()));
@@ -75,7 +68,6 @@ public class ScheduledTasks {
 		int counter = 0;
 		
 		date =  LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
-		System.out.println("tagesdurchschnitt: " + date.toString());
 		staende = service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 		
 		if(staende.size()!=0) {
