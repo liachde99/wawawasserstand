@@ -13,7 +13,8 @@ body{
 [class$="container"]{
   width: 100%;
   margin-top: 20px;
-  height: 80%;
+  height: 45vh;
+  min-height: 250px;
 }
 .graph-select{
 	font-size: 28px;
