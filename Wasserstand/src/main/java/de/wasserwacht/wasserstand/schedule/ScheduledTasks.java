@@ -46,14 +46,14 @@ public class ScheduledTasks {
 		System.out.println(date.toString());
 	}
 	
-	@Scheduled(cron = "0 10 2 ? * * ")
+	@Scheduled(cron = "0 12 0 ? * * ")
 	public void daily() throws InterruptedException {
 		tagesdurchschnitt();
 		TimeUnit.MINUTES.sleep(1);
 		lastsevendays();
 	}
 	
-	@Scheduled(cron="1 0 2 1 * ?")
+	@Scheduled(cron="0 0 0 1 * ?")
 	public void monthly() {
 		monatsdurchschnitt();
 	}
