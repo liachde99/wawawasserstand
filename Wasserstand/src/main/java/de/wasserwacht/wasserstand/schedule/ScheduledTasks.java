@@ -40,7 +40,13 @@ public class ScheduledTasks {
 	@Autowired
 	private LastsevendaysService lsdService;
 	
-	@Scheduled(cron = "1 7 2 ? * * ")
+	@Scheduled(fixedDelay = 1000)
+	public void ho() {
+		LocalDateTime date = LocalDateTime.now();
+		System.out.println(date.toString());
+	}
+	
+	@Scheduled(cron = "0 10 2 ? * * ")
 	public void daily() throws InterruptedException {
 		tagesdurchschnitt();
 		TimeUnit.MINUTES.sleep(1);
