@@ -98,7 +98,7 @@ option:active{
   [class$="half"]{
     height: 22vw;
     margin-top: 3vw;
-    min-height: 125px !important;
+    min-height: calc(125px - 3vw) !important;
     min-width: 250px !important;
   }
   [class$="circle"]{
