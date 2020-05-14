@@ -13,7 +13,7 @@ body{
 [class$="container"]{
   width: 100%;
   margin-top: 20px;
-  height: 45vh;
+  height: 50vw;
   min-height: 250px;
 }
 .graph-select{
@@ -47,10 +47,6 @@ option:active{
 [class$="con"]{
   width: 50%;
   margin-top: 5%;
-}
-
-.circle-container{
-	height: 35vw;
 }
 
 [class$="circle"]{
