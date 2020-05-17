@@ -102,10 +102,10 @@ option:active{
     margin: auto;
     min-width: 250px;
   }
-  .value{font-size: calc(82px + 1.5vw);}
-  .einheit{font-size: calc(58px + 1vw);}
-  .beschreibung{font-size: calc(28px + 0.4vw);}
-  .timestamp{font-size: calc(13px + 0.2vw);}
+  .value{font-size: calc(80px + 1.5vw);}
+  .einheit{font-size: calc(56px + 1vw);}
+  .beschreibung{font-size: calc(26px + 0.4vw);}
+  .timestamp{font-size: calc(11px + 0.2vw);}
   .graph-select{
 	font-size: 20px;
 	width: 200px;
