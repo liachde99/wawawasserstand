@@ -69,7 +69,7 @@ option:active{
 .beschreibung{font-size: 2vw;}
 .timestamp{font-size: 1vw;line-height: 400%;}
 
-[class!="upper"] {
+[class^="upper"] {
   padding-bottom: 10%;
   height: calc(11vw - 10%);
 }
