@@ -81,9 +81,7 @@ option:active{
 .textarea{
   width: 80%;
   padding-top: 10%;
-  height: 90%;
   margin: auto;
-  margin-top: 10%;
   border-top: 1px solid #f4f0e5;
   text-align: center;
 }
