@@ -52,6 +52,11 @@ public class HomeController {
 		return mv;
 	}
 	
+	@GetMapping("/impressum")
+	public ModelAndView impressum() {
+		return new ModelAndView("impressum.html");
+	}
+	
 	@GetMapping("/lastsevendays")
 	@ResponseBody
 	public List<Tagesdurchschnitt> getchartdatalastsevendays(){
