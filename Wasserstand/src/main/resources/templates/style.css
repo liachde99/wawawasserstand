@@ -80,6 +80,7 @@ option:active{
 }
 .textarea{
   width: 80%;
+  padding-top: 10%;
   height: 90%;
   margin: auto;
   margin-top: 10%;
