@@ -69,6 +69,10 @@ option:active{
 .beschreibung{font-size: 2vw;}
 .timestamp{font-size: 1vw;line-height: 400%;}
 
+[class!="upper"] {
+  padding-bottom: 10%;
+  height: calc(11vw - 10%);
+}
 [class^="upper"] a{
   line-height: 200%;
 }
@@ -96,6 +100,9 @@ option:active{
     margin-top: 3vw;
     min-height: calc(125px - 3vw) !important;
     min-width: 250px !important;
+  }
+  [class^="upper"]{
+  	min-height: calc(125px - 3vw - 10%) !important;
   }
   [class$="circle"]{
     margin: auto;
