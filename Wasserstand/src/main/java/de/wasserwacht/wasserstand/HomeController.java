@@ -57,6 +57,11 @@ public class HomeController {
 		return new ModelAndView("impressum.html");
 	}
 	
+	@GetMapping("/datenschutz")
+	public ModelAndView datenschutz() {
+		return new ModelAndView("datenschutz.html");
+	}
+	
 	@GetMapping("/lastsevendays")
 	@ResponseBody
 	public List<Tagesdurchschnitt> getchartdatalastsevendays(){
