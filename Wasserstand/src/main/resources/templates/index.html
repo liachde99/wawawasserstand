@@ -222,23 +222,33 @@
             wsseries.normal().stroke("#13c3ef", 3);
             wsseries.name("Wasserstand");
 
-            //temperatur graph style
+          	//temperatur graph style
             tempseries.normal().fill("none");
             tempseries.normal().stroke("#ff4f26", 3);
             tempseries.name("Temperatur");
-
-            //rechte skalierung
-            var extraYScale = anychart.scales.linear();
+			
+            //wasserstand skalierung
+            var wsYScale = anychart.scales.linear();
+            wsYScale.minimum(200);
+            wsYScale.maximum(600);
+            chart.yAxis(0).scale(wsYScale);
+            
+            //temperatur skalierung
             chart.yAxis(1).enabled(true);
             chart.yAxis(1).orientation("right");
-            chart.yAxis(1).scale(extraYScale);
+            
+            var tempYScale = anychart.scales.linear();
+            tempYScale.minimum(0);
+            tempYScale.maximum(30);
+            chart.yAxis(1).scale(tempYScale);
             
             //Farbe Achsen
             chart.yAxis(1).labels().fontColor("#ff4f26");
             chart.yAxis(0).labels().fontColor("#13c3ef");
 
-            //zuweisung zur Temperatur
-            tempseries.yScale(extraYScale);
+            //zuweisung zur Temperatur & wasserstand
+            wsseries.yScale(wsYScale)
+            tempseries.yScale(tempYScale);
 
             //Titel des Graphen
             var title = chart.title();
@@ -306,29 +316,33 @@
               wsseries.normal().stroke("#13c3ef", 3);
               wsseries.name("Wasserstand");
 
-              //temperatur graph style
+           	  //temperatur graph style
               tempseries.normal().fill("none");
               tempseries.normal().stroke("#ff4f26", 3);
               tempseries.name("Temperatur");
-
-              //rechte skalierung
-              var extraYScale = anychart.scales.linear();
+  			
+              //wasserstand skalierung
+              var wsYScale = anychart.scales.linear();
+              wsYScale.minimum(200);
+              wsYScale.maximum(600);
+              chart.yAxis(0).scale(wsYScale);
+              
+              //temperatur skalierung
               chart.yAxis(1).enabled(true);
               chart.yAxis(1).orientation("right");
-              chart.yAxis(1).scale(extraYScale);
+              
+              var tempYScale = anychart.scales.linear();
+              tempYScale.minimum(0);
+              tempYScale.maximum(30);
+              chart.yAxis(1).scale(tempYScale);
               
               //Farbe Achsen
               chart.yAxis(1).labels().fontColor("#ff4f26");
               chart.yAxis(0).labels().fontColor("#13c3ef");
-              
-              //Werte
-              chart.yAxis(0).scale().maximum(600);
-              chart.yAxis(0).scale().minimum(200);
-              chart.yAxis(1).scale().maximum(30);
-              chart.yAxis(1).scale().minimum(0);
 
-              //zuweisung zur Temperatur
-              tempseries.yScale(extraYScale);
+              //zuweisung zur Temperatur & wasserstand
+              wsseries.yScale(wsYScale)
+              tempseries.yScale(tempYScale);
 
               //Titel des Graphen
               var title = chart.title();
