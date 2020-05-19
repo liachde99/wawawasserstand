@@ -3,6 +3,7 @@ package de.wasserwacht.wasserstand;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.IsoFields;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,14 +83,6 @@ public class HomeController {
 		return service.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 	}
 	
-	@GetMapping("/{passwort}/{stand}/{temperatur}")
-	public String sendwasserstandundtemperatur(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand,@PathVariable("temperatur") double temperatur) {
-		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
-			service.save(new Wasserstand(stand,(temperatur/10)));
-		}
-		return "";
-	}
-	
 	@GetMapping("/month")
 	@ResponseBody
 	public List<Tagesdurchschnitt> getchartmonth(){
@@ -98,11 +91,31 @@ public class HomeController {
 		return td;
 	}
 	
-	@GetMapping("/td/{day}/{month}/{year}/{week}")
-	public void td(@PathVariable("day") int day, @PathVariable("month") int month,@PathVariable("year") int year, @PathVariable("week") int week) {
+	@GetMapping("/{passwort}/{stand}/{temperatur}")
+	public String sendwasserstandundtemperatur(@PathVariable("passwort") String passwort,@PathVariable("stand") int stand,@PathVariable("temperatur") double temperatur) {
+		
+		if(checkDbUpdateDaily()) {
+			tagesdurchschnitt();
+			lastsevendays();
+		}
+		
+		if(passwort.equalsIgnoreCase("gxcxWUxezdAgrhZz2EZH")) {
+			service.save(new Wasserstand(stand,(temperatur/10)));
+		}
+		return "";
+	}
+
+	public void tagesdurchschnitt() {
 		int durchschnitt = 0;
 		double tempdurchschnitt = 0;
 		int counter = 0;
+		
+		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
+		date.minus(1, ChronoUnit.DAYS);
+		int day = date.getDayOfMonth();
+		int month = date.getMonthValue();
+		int year = date.getYear();
+		int week = date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
 		
 		List<Wasserstand> staende = service.findByDayAndMonthAndYear(day, month, year);
 		
@@ -118,9 +131,8 @@ public class HomeController {
 			}
 		}
 	}
-	
-	@GetMapping("/lsd")
-	public void lsd() {
+
+	public void lastsevendays() {
 		lastsevendaysService.truncate();
 		for(int i=7;i>=1;i--) {
 			LocalDateTime date =  LocalDateTime.now(ZoneId.of("CET")).minus(i, ChronoUnit.DAYS);
@@ -129,5 +141,16 @@ public class HomeController {
 				lastsevendaysService.save(new Lastsevendays(td.getId()));
 			}
 		}
+	}
+	
+	
+	public boolean checkDbUpdateDaily() {
+		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
+		date.minus(1, ChronoUnit.DAYS);
+		
+		if(tagesdurchschnittService.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear())!=null) {
+			return false;
+		}
+		return true;
 	}
 }
