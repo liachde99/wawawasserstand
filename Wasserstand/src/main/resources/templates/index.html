@@ -144,10 +144,10 @@
             chart.yAxis(0).labels().fontColor("#13c3ef");
             
             //Werte
-            chart.yScale(0).maximum(600);
-            chart.yScale(0).minimum(200);
-            chart.yScale(1).maximum(30);
-            chart.yScale(1).minimum(0);
+            chart.yAxis(0).yScale().maximum(600);
+            chart.yAxis(0).yScale().minimum(200);
+            chart.yAxis(1).yScale().maximum(30);
+            chart.yAxis(1).yScale().minimum(0);
 
             //zuweisung zur Temperatur
             tempseries.yScale(extraYScale);
@@ -318,10 +318,10 @@
               chart.yAxis(0).labels().fontColor("#13c3ef");
               
               //Werte
-              chart.yScale(0).maximum(600);
-              chart.yScale(0).minimum(200);
-              chart.yScale(1).maximum(30);
-              chart.yScale(1).minimum(0);
+              chart.yAxis(0).yScale().maximum(600);
+              chart.yAxis(0).yScale().minimum(200);
+              chart.yAxis(1).yScale().maximum(30);
+              chart.yAxis(1).yScale().minimum(0);
 
               //zuweisung zur Temperatur
               tempseries.yScale(extraYScale);
