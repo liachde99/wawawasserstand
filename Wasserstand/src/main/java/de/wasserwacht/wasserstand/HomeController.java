@@ -146,9 +146,8 @@ public class HomeController {
 	
 	public boolean checkDbUpdateDaily() {
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
-		date.minus(1, ChronoUnit.DAYS);
 		
-		if(tagesdurchschnittService.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear())!=null) {
+		if(tagesdurchschnittService.findByDayAndMonthAndYear(date.getDayOfMonth()-1, date.getMonthValue(), date.getYear())!=null) {
 			return false;
 		}
 		return true;
