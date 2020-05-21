@@ -110,8 +110,7 @@ public class HomeController {
 		double tempdurchschnitt = 0;
 		int counter = 0;
 		
-		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
-		date.minus(1, ChronoUnit.DAYS);
+		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
 		int day = date.getDayOfMonth();
 		int month = date.getMonthValue();
 		int year = date.getYear();
@@ -146,7 +145,6 @@ public class HomeController {
 	
 	public boolean checkDbUpdateDaily() {
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
-		System.out.println(date.getDayOfMonth());
 		if(tagesdurchschnittService.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear())==null) {
 			return true;
 		}
