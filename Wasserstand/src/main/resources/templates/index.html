@@ -94,10 +94,12 @@
 
             var wasserstandeintrage = [];
             var tempeintrage = [];
+            var stauzieleintraege = [];
 
             data.forEach(function(item){
               var wseintrag = [];
               var tempeintrag = [];
+              var stauzieleintrag = [];
 
               //führende nullen bei monat und tag
               var day = dbldigitdate(item.day);
@@ -109,14 +111,18 @@
               wseintrag.push(item.wasserstand);
               tempeintrag.push(date);
               tempeintrag.push(item.temperatur);
+              stauzieleintrag.push(date);
+              stauzieleintrag.push(277);
 
               wasserstandeintrage.push(wseintrag);
               tempeintrage.push(tempeintrag);
+              stauzieleintraege.push(stauzieleintrag);
             });
 
             //Zwei Graphen mit daten füllen
             var wsseries = chart.area(wasserstandeintrage);
             var tempseries = chart.area(tempeintrage);
+            var stauziel = chart.area(stauzieleintraege);
 
             //chartstyle
             chart.background().fill("none");
@@ -132,6 +138,11 @@
             tempseries.normal().fill("none");
             tempseries.normal().stroke("#ff4f26", 3);
             tempseries.name("Temperatur");
+            
+          	//stauziel graph style
+            stauziel.normal().fill("none");
+            stauziel.normal().stroke("#cc0066", 3);
+            stauziel.name("Stauziel");
 			
             //wasserstand skalierung
             var wsYScale = anychart.scales.linear();
@@ -153,7 +164,8 @@
             chart.yAxis(0).labels().fontColor("#13c3ef");
 
             //zuweisung zur Temperatur & wasserstand
-            wsseries.yScale(wsYScale)
+            wsseries.yScale(wsYScale);
+            stauziel.yScale(wsYScale);
             tempseries.yScale(tempYScale);
 
             //Titel des Graphen
@@ -188,10 +200,12 @@
 
             var wasserstandeintrage = [];
             var tempeintrage = [];
+            var stauzieleintraege = [];
 
             data.forEach(function(item){
               var wseintrag = [];
               var tempeintrag = [];
+              var stauzieleintrag = [];
 
               //führende nullen bei stunde und minute
               var hour = dbldigitdate(item.hour);
@@ -203,14 +217,18 @@
               wseintrag.push(item.wasserstand);
               tempeintrag.push(time);
               tempeintrag.push(item.temperatur);
+              stauzieleintrag.push(time);
+              stauzieleintrag.push(277);
 
               wasserstandeintrage.push(wseintrag);
               tempeintrage.push(tempeintrag);
+              stauzieleintraege.push(stauzieleintrag);
             });
             
             //Zwei Graphen mit daten füllen
             var wsseries = chart.area(wasserstandeintrage);
             var tempseries = chart.area(tempeintrage);
+            var stauziel = chart.area(stauzieleintraege);
 
             //chartstyle
             chart.background().fill("none");
@@ -227,6 +245,11 @@
             tempseries.normal().stroke("#ff4f26", 3);
             tempseries.name("Temperatur");
 			
+            //stauzieleintrag style
+            stauziel.normal().fill("none");
+            stauziel.normal().stroke("#cc0066", 5);
+            stauziel.name("Stauziel");
+            
             //wasserstand skalierung
             var wsYScale = anychart.scales.linear();
             wsYScale.minimum(200);
@@ -248,6 +271,7 @@
 
             //zuweisung zur Temperatur & wasserstand
             wsseries.yScale(wsYScale)
+            stauziel.yScale(wsYScale)
             tempseries.yScale(tempYScale);
 
             //Titel des Graphen
@@ -282,10 +306,12 @@
 
               var wasserstandeintrage = [];
               var tempeintrage = [];
+              var stauzieleintraege = [];
 
               data.forEach(function(item){
                 var wseintrag = [];
                 var tempeintrag = [];
+                var stauzieleintrag = [];
 
                 //führende nullen bei monat und tag
                 var day = dbldigitdate(item.day);
@@ -297,14 +323,18 @@
                 wseintrag.push(item.wasserstand);
                 tempeintrag.push(date);
                 tempeintrag.push(item.temperatur);
+                stauzieleintrag.push(date);
+                stauzieleintrag.push(277);
 
                 wasserstandeintrage.push(wseintrag);
                 tempeintrage.push(tempeintrag);
+                stauzieleintraege.push(stauzieleintrag);
               });
               
               //Zwei Graphen mit daten füllen
               var wsseries = chart.area(wasserstandeintrage);
               var tempseries = chart.area(tempeintrage);
+              var stauziel = chart.area(stauzieleintraege);
 
               //chartstyle
               chart.background().fill("none");
@@ -320,7 +350,12 @@
               tempseries.normal().fill("none");
               tempseries.normal().stroke("#ff4f26", 3);
               tempseries.name("Temperatur");
-  			
+
+              //stauziel graph style
+              stauziel.normal().fill("none");
+              stauziel.normal().stroke("#13c3ef", 3);
+              stauziel.name("Stauziel");
+              
               //wasserstand skalierung
               var wsYScale = anychart.scales.linear();
               wsYScale.minimum(200);
@@ -341,8 +376,9 @@
               chart.yAxis(0).labels().fontColor("#13c3ef");
 
               //zuweisung zur Temperatur & wasserstand
-              wsseries.yScale(wsYScale)
+              wsseries.yScale(wsYScale);
               tempseries.yScale(tempYScale);
+              stauziel.yScale(wsYScale);
 
               //Titel des Graphen
               var title = chart.title();
