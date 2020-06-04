@@ -105,6 +105,7 @@ public class HomeController {
 		Tagesdurchschnitt td;
 		for(int i = 30; i > 0; i--) {
 			date = date.minus(i, ChronoUnit.DAYS);
+			System.out.println(date.toString());
 			td = tagesdurchschnittService.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
 			if(td!=null) {
 				tdl.add(td);
