@@ -101,12 +101,16 @@ public class HomeController {
 	@ResponseBody
 	public List<Tagesdurchschnitt> getchartmonth(){
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
-		List<Tagesdurchschnitt> td = new ArrayList<>();
+		List<Tagesdurchschnitt> tdl = new ArrayList<>();
+		Tagesdurchschnitt td;
 		for(int i = 30; i > 0; i--) {
 			date = date.minus(i, ChronoUnit.DAYS);
-			td.add(tagesdurchschnittService.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear()));
+			td = tagesdurchschnittService.findByDayAndMonthAndYear(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
+			if(td!=null) {
+				tdl.add(td);
+			}
 		}
-		return td;
+		return tdl;
 	}
 	
 	@GetMapping("/{passwort}/{stand}/{temperatur}")
