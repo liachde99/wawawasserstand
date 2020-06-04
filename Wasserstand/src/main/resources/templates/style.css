@@ -111,7 +111,7 @@ option:active{
 	height: 40px;
   }
   .circle-container{
-  	height: 110vw;
-  	min-height: 1150px;
+  	height: 120vw;
+  	min-height: 600px;
   }
 }
