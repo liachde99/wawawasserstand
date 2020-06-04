@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,6 +54,19 @@ public class HomeController {
 		return mv;
 	}
 	
+	@CrossOrigin(origins = "/")
+	@GetMapping("/reldata")
+	public List<String> reldata(){
+		List<String> data = new ArrayList<>();
+		Wasserstand last = service.findTopByOrderByIdDesc();
+		
+		data.add(last.getWasserstand()+"");
+		data.add(last.getTemperatur()+"");
+		data.add(last.stamp());
+		
+		return data;
+	}
+	
 	@GetMapping("/impressum")
 	public ModelAndView impressum() {
 		return new ModelAndView("impressum.html");
@@ -87,7 +101,7 @@ public class HomeController {
 	@ResponseBody
 	public List<Tagesdurchschnitt> getchartmonth(){
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET"));
-		List<Tagesdurchschnitt> td =  tagesdurchschnittService.findByMonthAndYear(date.getMonthValue(), date.getYear());
+		List<Tagesdurchschnitt> td = tagesdurchschnittService.findByMonthAndYear(date.getMonthValue(), date.getYear());
 		return td;
 	}
 	
@@ -141,7 +155,6 @@ public class HomeController {
 			}
 		}
 	}
-	
 	
 	public boolean checkDbUpdateDaily() {
 		LocalDateTime date = LocalDateTime.now(ZoneId.of("CET")).minus(1, ChronoUnit.DAYS);
