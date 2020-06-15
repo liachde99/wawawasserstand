@@ -53,7 +53,7 @@ option:active{
 
 [class$="con"]{
   width: 50%;
-  margin-top: 12.5vw;
+  margin-top: calc(12.5vw - 100px);
 }
 
 [class$="circle"]{
