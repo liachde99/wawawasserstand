@@ -15,7 +15,9 @@ body{
 	left: 0;
 	text-align: center;
 	color: #ff3399;
-	font-size: 3em;
+	font-size: 6em;
+}
+.head-location a{
 	text-decoration: none;
 }
 [class$="container"]{
@@ -96,7 +98,7 @@ option:active{
 
 @media only screen and (max-width: 1000px) {
   .head-location{
-	font-size: 1.5em;
+	font-size: 3em;
   }
   [class$="con"]{
     width: 100%;
