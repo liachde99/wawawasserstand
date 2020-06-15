@@ -16,7 +16,8 @@ body{
 	top: 0;
 	left: 0;
 	text-align: center;
-	color: #ff0000;
+	color: #ff3399;
+	font-size: 2em;
 }
 [class$="container"]{
   width: 100%;
