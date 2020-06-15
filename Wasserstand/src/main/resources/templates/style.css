@@ -14,10 +14,10 @@ body{
 	top: 0;
 	left: 0;
 	text-align: center;
-	color: #ff3399;
 	font-size: 6em;
 }
 .head-location a{
+	color: #ff3399;
 	text-decoration: none;
 }
 [class$="container"]{
