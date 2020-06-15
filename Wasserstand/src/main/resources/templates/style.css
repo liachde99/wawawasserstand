@@ -15,7 +15,7 @@ body{
 	left: 0;
 	text-align: center;
 	color: #ff3399;
-	font-size: 2em;
+	font-size: 3em;
 	text-decoration: none;
 }
 [class$="container"]{
@@ -95,9 +95,13 @@ option:active{
 }
 
 @media only screen and (max-width: 1000px) {
+  .head-location{
+	font-size: 1em;
+  }
   [class$="con"]{
     width: 100%;
     float: none;
+  	margin-top: 12.5vw;
   }
   [class$="half"]{
     height: 22vw;
