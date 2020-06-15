@@ -96,7 +96,7 @@ option:active{
 
 @media only screen and (max-width: 1000px) {
   .head-location{
-	font-size: 1em;
+	font-size: 1.5em;
   }
   [class$="con"]{
     width: 100%;
