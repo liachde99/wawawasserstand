@@ -1,5 +1,6 @@
 package de.wasserwacht.wasserstand;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -126,6 +127,13 @@ public class HomeController {
 			service.save(new Wasserstand(stand,(temperatur/10)));
 		}
 		return "";
+	}
+	
+	@GetMapping("/testpython")
+	public void python() throws IOException{
+		String pythonfile = "python Python.py";
+		String[] cmd = new String[] {"cmd.exe", "/c", pythonfile};
+		Runtime.getRuntime().exec(cmd);
 	}
 
 	public void tagesdurchschnitt() {
