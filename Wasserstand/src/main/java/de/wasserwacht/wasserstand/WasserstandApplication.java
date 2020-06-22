@@ -24,7 +24,7 @@ public class WasserstandApplication {
 	}
 	
 	@Bean(name="PythonServiceP")
-	public PythonService PythonServiceP() throws Exception {
+	public PythonService Python() throws Exception {
 		return psf().getObject();
 	}
 
