@@ -16,12 +16,12 @@ public class PythonServiceFactory implements FactoryBean<PythonService>{
 		// programmatically.  Here I hard code it just for the example.
 			//This is not required if we use jython standalone JAR 
 			PySystemState systemState = Py.getSystemState();
-			systemState.path.append(new PyString("C:\\jython2.7.1\\Lib"));		
+			systemState.path.append(new PyString("C:\\jython2.7.2\\Lib"));		
 		 
 			//Here is the actual code that interprets our python file. 
 			PythonInterpreter interpreter = new PythonInterpreter();
 			interpreter.execfile("python\\PythonServiceP.py"); 
-			PyObject buildingObject = interpreter.get("HelloServicePython").__call__(); 
+			PyObject buildingObject = interpreter.get("PythonServiceP").__call__(); 
 		 
 		//Cast the created object to our Java interface 
 			return (PythonService) buildingObject.__tojava__(PythonService.class);
