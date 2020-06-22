@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,6 @@ import de.wasserwacht.wasserstand.Entity.Wasserstand;
 import de.wasserwacht.wasserstand.Service.LastsevendaysService;
 import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
-import de.wasserwacht.wasserstand.python.PythonService;
 
 
 @Controller
@@ -36,10 +34,6 @@ public class HomeController {
 	
 	@Autowired
 	private TagesdurchschnittService tagesdurchschnittService;
-	
-	@Autowired
-	@Qualifier("python")
-	private PythonService pythonService;
 	
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -132,11 +126,6 @@ public class HomeController {
 			service.save(new Wasserstand(stand,(temperatur/10)));
 		}
 		return "";
-	}
-	
-	@GetMapping("/testpython")
-	public String python(){
-		return pythonService.python();
 	}
 
 	public void tagesdurchschnitt() {
