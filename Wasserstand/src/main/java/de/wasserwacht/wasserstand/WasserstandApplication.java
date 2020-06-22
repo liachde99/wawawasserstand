@@ -23,7 +23,7 @@ public class WasserstandApplication {
 		return new PythonServiceFactory();
 	}
 	
-	@Bean(name="PythonServiceP")
+	@Bean(name="python")
 	public PythonService Python() throws Exception {
 		return psf().getObject();
 	}

@@ -38,7 +38,7 @@ public class HomeController {
 	private TagesdurchschnittService tagesdurchschnittService;
 	
 	@Autowired
-	@Qualifier("PythonServiceP")
+	@Qualifier("python")
 	private PythonService pythonService;
 	
 	@GetMapping("/")
