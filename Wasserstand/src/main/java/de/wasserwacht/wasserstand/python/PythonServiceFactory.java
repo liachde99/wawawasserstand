@@ -21,7 +21,7 @@ public class PythonServiceFactory implements FactoryBean<PythonService>{
 			//Here is the actual code that interprets our python file. 
 			PythonInterpreter interpreter = new PythonInterpreter();
 			interpreter.execfile("python.py"); 
-			PyObject buildingObject = interpreter.get("python").__call__(); 
+			PyObject buildingObject = interpreter.get("Python").__call__(); 
 		 
 		//Cast the created object to our Java interface 
 			return (PythonService) buildingObject.__tojava__(PythonService.class);
