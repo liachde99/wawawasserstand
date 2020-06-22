@@ -1,6 +1,5 @@
 package de.wasserwacht.wasserstand;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +22,7 @@ import de.wasserwacht.wasserstand.Entity.Wasserstand;
 import de.wasserwacht.wasserstand.Service.LastsevendaysService;
 import de.wasserwacht.wasserstand.Service.TagesdurchschnittService;
 import de.wasserwacht.wasserstand.Service.WasserstandService;
+import de.wasserwacht.wasserstand.python.PythonService;
 
 
 @Controller
@@ -35,6 +36,10 @@ public class HomeController {
 	
 	@Autowired
 	private TagesdurchschnittService tagesdurchschnittService;
+	
+	@Autowired
+	@Qualifier("PythonServiceP")
+	private PythonService pythonService;
 	
 	@GetMapping("/")
 	public ModelAndView home() {
@@ -130,10 +135,8 @@ public class HomeController {
 	}
 	
 	@GetMapping("/testpython")
-	public void python() throws IOException{
-		String pythonfile = "python Python.py";
-		String[] cmd = new String[] {"cmd.exe", "/c", pythonfile};
-		Runtime.getRuntime().exec(cmd);
+	public String python(){
+		return pythonService.python();
 	}
 
 	public void tagesdurchschnitt() {
