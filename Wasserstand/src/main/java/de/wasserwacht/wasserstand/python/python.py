@@ -1,5 +1,5 @@
 from de.wasserwacht.wasserstand.python import PythonService
-class PythonServiceP(PythonService):
+class python(PythonService):
     def __init__(self):
         self.value="Hello from python"
 
