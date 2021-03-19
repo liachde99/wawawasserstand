@@ -70,6 +70,7 @@ public class Wasserstand {
 		this.temperatur = temp;
 	}
 	
+	public Long getId() {return id;}
 	public int getWasserstand() {return wasserstand;}
 	public double getTemperatur() {return temperatur;}
 	public int getDay() {return day;}

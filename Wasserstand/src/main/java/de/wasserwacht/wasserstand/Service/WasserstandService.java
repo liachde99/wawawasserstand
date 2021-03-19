@@ -29,6 +29,10 @@ public class WasserstandService {
 		return repo.findByDayAndMonthAndYear(day, month, year);
 	}
 	
+	public void deleteById(Long id) {
+		repo.deleteById(id);
+	}
+	
 	public <S extends Wasserstand> S save(S wasserstand) {
 		return repo.save(wasserstand);
 	}

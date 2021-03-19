@@ -12,8 +12,11 @@ public interface WasserstandRepo extends CrudRepository<Wasserstand, Long> {
 	Optional<Wasserstand> findById(Long id);
 	Wasserstand findTopByOrderByIdDesc();
 	List<Wasserstand> findByDayAndMonthAndYear(int day,int month,int year);
+
+	void deleteById(Long id);
 	
 	<S extends Wasserstand> S save(S wasserstand);
+	
 	
 }
 

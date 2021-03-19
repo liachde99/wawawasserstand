@@ -142,13 +142,14 @@ public class HomeController {
 		List<Wasserstand> staende = service.findByDayAndMonthAndYear(day, month, year);
 		
 		if(staende.size()!=0) {
-			for (Wasserstand wasserstand : staende) {
-				durchschnitt += wasserstand.getWasserstand();
-				tempdurchschnitt += wasserstand.getTemperatur();
-				counter++;
-			}
 			
 			if(tagesdurchschnittService.findByDayAndMonthAndYear(day, month, year)==null) {
+				for (Wasserstand wasserstand : staende) {
+					durchschnitt += wasserstand.getWasserstand();
+					tempdurchschnitt += wasserstand.getTemperatur();
+					counter++;
+					service.deleteById(wasserstand.getId());
+				}
 				tagesdurchschnittService.save(new Tagesdurchschnitt((durchschnitt/counter),(tempdurchschnitt/counter),day,month,year,week));
 			}
 		}
